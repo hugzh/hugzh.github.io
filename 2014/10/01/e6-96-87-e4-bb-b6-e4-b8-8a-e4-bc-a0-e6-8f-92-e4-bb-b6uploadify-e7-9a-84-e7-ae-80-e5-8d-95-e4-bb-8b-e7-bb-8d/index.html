@@ -1,0 +1,423 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>文件上传插件Uploadify的简单介绍 | 香蕉船的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Vince">
+    
+    <meta name="description" content="熟悉使用php的人一定会对php文件上传不陌生，多文件上传以及重命名等都是文件上传的重要应用，我在这里介绍一个ajax+jQuery的插件，这个插件比较好的地方就是前端的效果比较炫酷，使用比较简单，大大简化了代码复杂度。uploadify.swf是插件的核心部分，（下载地址:&amp;lt;a href=”">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/blog/img/my_favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/blog/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.svg" alt="香蕉船的博客" title="香蕉船的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="香蕉船的博客">香蕉船的博客</a></h1>
+				<h2 class="blog-motto">天赋不够，汗水来凑</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archive">归档|Archives</a></li>
+					
+						<li><a href="/about">关于我|About</a></li>
+					
+					<li>
+					
+					<form class="search" action="/blog/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2014/10/01/e6-96-87-e4-bb-b6-e4-b8-8a-e4-bc-a0-e6-8f-92-e4-bb-b6uploadify-e7-9a-84-e7-ae-80-e5-8d-95-e4-bb-8b-e7-bb-8d/" title="文件上传插件Uploadify的简单介绍" itemprop="url">文件上传插件Uploadify的简单介绍</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://hugzh.github.io/blog" title="Vince">Vince</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-09-30T16:00:00.000Z" itemprop="datePublished">2014-10-01</time>
+    更新日期:<time datetime="2015-08-11T06:27:15.182Z" itemprop="dateModified">2015-08-11</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+		</div>
+		
+		<p>熟悉使用php的人一定会对php文件上传不陌生，多文件上传以及重命名等都是文件上传的重要应用，我在这里介绍一个ajax+jQuery的插件，这个插件比较好的地方就是前端的效果比较炫酷，使用比较简单，大大简化了代码复杂度。uploadify.swf是插件的核心部分，（下载地址:&lt;a href=”<a href="http://www.uploadify.com/download/&quot;&gt;点击下载&lt;/a&gt;）前端的效果主要由jquery.uploadify.js实现，所以这两个文件要包含进前端的源代码。我在这里主要是想介绍前端的接口函数以及php后台里面的文件重命名的技巧。" target="_blank" rel="external">http://www.uploadify.com/download/&quot;&gt;点击下载&lt;/a&gt;）前端的效果主要由jquery.uploadify.js实现，所以这两个文件要包含进前端的源代码。我在这里主要是想介绍前端的接口函数以及php后台里面的文件重命名的技巧。</a><br>前端比较简单，主要是文件包含以及文件上传表单和接口函数。需要包含这几个js文件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&amp;lt;script src="jquery.min.js" type="text/javascript"&amp;gt;&amp;lt;/script&amp;gt;</span><br><span class="line">&amp;lt;script src="jquery.uploadify.min.js" type="text/javascript"&amp;gt;&amp;lt;/script&amp;gt;</span><br></pre></td></tr></table></figure>
+<p>还有就是接口函数:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&amp;lt;script type=<span class="string">"text/javascript"</span>&amp;gt;</span><br><span class="line"></span><br><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">$(<span class="string">'#file_upload'</span>).uploadify(&#123;</span><br><span class="line"><span class="string">'swf'</span> : <span class="string">'uploadify.swf'</span>,</span><br><span class="line"><span class="string">'uploader'</span> : <span class="string">'uploadify.php'</span></span><br><span class="line">&#125;);</span><br><span class="line">&#125;);</span><br><span class="line">&amp;lt;<span class="regexp">/script&amp;gt;</span></span><br></pre></td></tr></table></figure>
+<p>接口函数里面的uploadify()是属于插件uploadify.swf的函数，所以必须先把文件包含进去。<br>前端body部分的代码如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;&#38;lt;form&#38;gt;&#10;&#38;lt;div id=&#34;queue&#34;&#38;gt;&#38;lt;/div&#38;gt;&#10;&#38;lt;input id=&#34;file_upload&#34; name=&#34;file_upload&#34; type=&#34;file&#34; multiple=&#34;true&#34;&#38;gt;&#10;&#38;lt;/form&#38;gt;</span><br></pre></td></tr></table></figure>
+<p>后台部分的php代码比较简单，比较关键的部分就是重命名，根据接口，后台处理函数命名为uploadify.php。由于多文件上传可以在一秒钟之内完成多个文件上传，所以把时间戳作为唯一命名的做法需要注意的地方就是不能把time函数作为字符串，这样会导致字符串相同，如此便没办法上传多个文件，我在这里的解决办法就是使用microtime()生成微秒级的时间，再转化为字符串，这样每个文件的命名就会唯一了。主要代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Define a destination</span></span><br><span class="line"><span class="variable">$targetFolder</span> = <span class="string">'/uploads'</span>; <span class="comment">// Relative to the root</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*$verifyToken = md5('unique_salt' . $_POST['timestamp']);*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="variable">$_FILES</span>) &amp;amp;&amp;amp; <span class="variable">$_POST</span>[<span class="string">'token'</span>] == <span class="variable">$verifyToken</span>) &#123;</span><br><span class="line"><span class="variable">$tempFile</span> = <span class="variable">$_FILES</span>[<span class="string">'Filedata'</span>][<span class="string">'tmp_name'</span>];</span><br><span class="line"><span class="variable">$targetPath</span> = <span class="variable">$_SERVER</span>[<span class="string">'DOCUMENT_ROOT'</span>] . <span class="variable">$targetFolder</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*文件以时间戳重命名，这6行代码为个人添加，可以删除，删除之后保持文件原名*/</span></span><br><span class="line"><span class="variable">$date</span> = microtime();<span class="comment">//取得当前时间</span></span><br><span class="line"><span class="variable">$nodot</span> = explode(<span class="string">"."</span>,<span class="variable">$date</span>);<span class="comment">//切割掉 microtime()函数返回数据格式 0.25139300 1138197510中的点</span></span><br><span class="line"><span class="variable">$namestr</span> = str_replace(<span class="string">' '</span>,<span class="string">''</span>,<span class="variable">$nodot</span>[<span class="number">1</span>]);<span class="comment">//去除空格</span></span><br><span class="line"><span class="variable">$uptype</span> = explode(<span class="string">"."</span>, <span class="variable">$_FILES</span>[<span class="string">"Filedata"</span>][<span class="string">"name"</span>]);<span class="comment">//分割留下文件类型</span></span><br><span class="line"><span class="variable">$newname</span> = <span class="variable">$namestr</span>.<span class="string">"."</span>.<span class="variable">$uptype</span>[<span class="number">1</span>];</span><br><span class="line"><span class="variable">$_FILES</span>[<span class="string">"Filedata"</span>][<span class="string">"name"</span>] = <span class="variable">$newname</span>;<span class="comment">//重命名</span></span><br><span class="line"><span class="variable">$targetFile</span> = rtrim(<span class="variable">$targetPath</span>,<span class="string">'/'</span>).<span class="string">'/'</span>.iconv(<span class="string">"UTF-8"</span>,<span class="string">"GB2312"</span>,<span class="variable">$_FILES</span>[<span class="string">"Filedata"</span>][<span class="string">"name"</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Validate the file type</span></span><br><span class="line"><span class="variable">$fileTypes</span> = <span class="keyword">array</span>(<span class="string">'jpg'</span>,<span class="string">'jpeg'</span>,<span class="string">'pjpeg'</span>,<span class="string">'gif'</span>,<span class="string">'png'</span>); <span class="comment">// File extensions</span></span><br><span class="line"><span class="variable">$fileParts</span> = pathinfo(<span class="variable">$_FILES</span>[<span class="string">'Filedata'</span>][<span class="string">'name'</span>]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (in_array(<span class="variable">$fileParts</span>[<span class="string">'extension'</span>],<span class="variable">$fileTypes</span>)) &#123;</span><br><span class="line">move_uploaded_file(<span class="variable">$tempFile</span>,<span class="variable">$targetFile</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'1'</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'Invalid file type.'</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/blog/categories/javascript/">javascript</a>►<a class="article-category-link" href="/blog/categories/javascript/php/">php</a>►<a class="article-category-link" href="/blog/categories/javascript/php/前端开发/">前端开发</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://hugzh.github.io/blog/2014/10/01/e6-96-87-e4-bb-b6-e4-b8-8a-e4-bc-a0-e6-8f-92-e4-bb-b6uploadify-e7-9a-84-e7-ae-80-e5-8d-95-e4-bb-8b-e7-bb-8d/" data-title="文件上传插件Uploadify的简单介绍 | 香蕉船的博客" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2014/10/22/bat-e5-8f-8a-e5-90-84-e5-a4-a7-e4-ba-92-e8-81-94-e7-bd-91-e5-85-ac-e5-8f-b82014-e5-89-8d-e7-ab-af-e7-ac-94-e8-af-95-e9-9d-a2-e8-af-95-e9-a2-98-ef-bc-9ahtml-e7-af-87/" title="BAT及各大互联网公司2014前端笔试面试题：HTML篇">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  BAT及各大互联网公司2014前端笔试面试题：HTML篇</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2014/09/17/php-e9-aa-8c-e8-af-81-e7-a0-81-e5-88-b6-e4-bd-9c/"  title="Php验证码制作">
+ <strong>NEXT:</strong><br/> 
+ <span>Php验证码制作
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/blog/categories/Nodejs/" title="Nodejs">Nodejs<sup>1</sup></a></li>
+		
+			<li><a href="/blog/categories/javascript/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+		
+			<li><a href="/blog/categories/javascript/" title="javascript">javascript<sup>7</sup></a></li>
+		
+			<li><a href="/blog/categories/php/" title="php">php<sup>1</sup></a></li>
+		
+			<li><a href="/blog/categories/javascript/php/" title="php">php<sup>1</sup></a></li>
+		
+			<li><a href="/blog/categories/其它/" title="其它">其它<sup>2</sup></a></li>
+		
+			<li><a href="/blog/categories/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
+		
+			<li><a href="/blog/categories/javascript/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
+		
+			<li><a href="/blog/categories/javascript/php/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
+		
+			<li><a href="/blog/categories/Nodejs/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/blog/tags/SEO/" title="SEO">SEO<sup>1</sup></a></li>
+		
+			<li><a href="/blog/tags/cleaver/" title="cleaver">cleaver<sup>1</sup></a></li>
+		
+			<li><a href="/blog/tags/css/" title="css">css<sup>1</sup></a></li>
+		
+			<li><a href="/blog/tags/html5/" title="html5">html5<sup>1</sup></a></li>
+		
+			<li><a href="/blog/tags/js/" title="js">js<sup>1</sup></a></li>
+		
+			<li><a href="/blog/tags/幻灯/" title="幻灯">幻灯<sup>1</sup></a></li>
+		
+			<li><a href="/blog/tags/爬虫/" title="爬虫">爬虫<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/blog/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/blog/tags/cleaver/" style="font-size: 10px;">cleaver</a> <a href="/blog/tags/css/" style="font-size: 10px;">css</a> <a href="/blog/tags/html5/" style="font-size: 10px;">html5</a> <a href="/blog/tags/js/" style="font-size: 10px;">js</a> <a href="/blog/tags/幻灯/" style="font-size: 10px;">幻灯</a> <a href="/blog/tags/爬虫/" style="font-size: 10px;">爬虫</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://yangjian.me" target="_blank" title="YangJian">Alimon's Blog</a></li>
+      <li><a href="http://hexo.io" target="_blank" title="Hexo">Hexo</a></li>
+    </ul>
+</div>
+
+
+  
+<div class="commentslist">
+  <p class="asidetitle">comments</p>
+  <ul class="ds-recent-comments" data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="1" data-excerpt-length="32" data-show-title="1"></ul>
+</div>
+<!--多说js加载开始，一个页面只需要加载一次 -->
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"void_三国志"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!--多说js加载结束，一个页面只需要加载一次 -->
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/hugzh" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2015 
+		
+		<a href="http://hugzh.github.io/blog" target="_blank" title="Vince">Vince</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"void_三国志"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,446 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>如何使用Cleaver制作html5幻灯 | 香蕉船的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Vince">
+    
+    <meta name="description" content="Cleaver是一款基于html5的插件，依赖于Markdown文档格式，可以用来快速地制作幻灯片。这里主要是讲一讲如何安装和使用Cleaver制作炫酷幻灯片。
+1.Cleaver安装通过nodejs来安装Cleaver，而且只支持Linux系统，windows下暂时不支持。
+进入新建好的文件夹de">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/blog/img/my_favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/blog/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.svg" alt="香蕉船的博客" title="香蕉船的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="香蕉船的博客">香蕉船的博客</a></h1>
+				<h2 class="blog-motto">天赋不够，汗水来凑</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archive">归档|Archives</a></li>
+					
+						<li><a href="/about">关于我|About</a></li>
+					
+					<li>
+					
+					<form class="search" action="/blog/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2015/07/07/e5-a6-82-e4-bd-95-e4-bd-bf-e7-94-a8cleaver-e5-88-b6-e4-bd-9chtml5-e5-b9-bb-e7-81-af/" title="如何使用Cleaver制作html5幻灯" itemprop="url">如何使用Cleaver制作html5幻灯</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://hugzh.github.io/blog" title="Vince">Vince</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-07-07T15:24:02.000Z" itemprop="datePublished">2015-07-07</time>
+    更新日期:<time datetime="2015-08-11T06:25:27.613Z" itemprop="dateModified">2015-08-11</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Cleaver安装"><span class="toc-number">1.</span> <span class="toc-text">1.Cleaver安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Cleaver基本使用"><span class="toc-number">2.</span> <span class="toc-text">2.Cleaver基本使用 </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-简单做一些配置："><span class="toc-number">3.</span> <span class="toc-text">3.简单做一些配置：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-正文"><span class="toc-number">4.</span> <span class="toc-text">4.正文</span></a></li></ol>
+		</div>
+		
+		<p>Cleaver是一款基于html5的插件，依赖于Markdown文档格式，可以用来快速地制作幻灯片。这里主要是讲一讲如何安装和使用Cleaver制作炫酷幻灯片。</p>
+<h3 id="1-Cleaver安装"><strong>1.Cleaver安装</strong></h3><p>通过nodejs来安装Cleaver，而且只支持Linux系统，windows下暂时不支持。</p>
+<p>进入新建好的文件夹demo，使用命令 npm install cleaver -g ，即可安装完成。</p>
+<h3 id="2-Cleaver基本使用"><strong>2.<span style="color: #000000;">Cleaver基本使用</span> </strong></h3><p>执行cleaver命令，解析一个markdown文件。用cleaver自带的例子：</p>
+<p><code>cleaver node_modules/cleaver/examples/basic.md</code></p>
+<p>basic.md的内容是这样的：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">title: Basic Example</span><br><span class="line">author:</span><br><span class="line">name: Jordan Scales</span><br><span class="line">twitter: jdan</span><br><span class="line">url: http://jordanscales.com</span><br><span class="line">output: basic.html</span><br><span class="line"></span><br><span class="line">--</span><br><span class="line"></span><br><span class="line"># Cleaver 101</span><br><span class="line">## A first look at quick HTML presentations</span><br><span class="line"></span><br><span class="line">--</span><br><span class="line"></span><br><span class="line">### A textual example</span><br><span class="line"></span><br><span class="line">Content can be written in **Markdown!** New lines no longer need two angle brackets.</span><br><span class="line"></span><br><span class="line">This will be in a separate paragraph.</span><br><span class="line"></span><br><span class="line">&amp;lt;img src="http://whatismarkdown.com/workspace/img/logo.gif" alt="Drawing" style="width: 150px;"/&amp;gt;</span><br><span class="line"></span><br><span class="line">![markdown-logo](logo.gif)</span><br><span class="line">&amp;lt;img src="logo.gif" /&amp;gt;</span><br><span class="line"></span><br><span class="line">[Here's a link](http://google.com).</span><br><span class="line"></span><br><span class="line">--</span><br><span class="line"></span><br><span class="line">### A list of things</span><br><span class="line"></span><br><span class="line">* Item 1</span><br><span class="line">* Item B</span><br><span class="line">* Item gamma</span><br><span class="line"></span><br><span class="line">No need for multiple templates! [Another link](http://google.com).</span><br><span class="line"></span><br><span class="line">--</span><br><span class="line"></span><br><span class="line">### Unicode</span><br><span class="line"></span><br><span class="line">* 林花謝了春紅 太匆匆</span><br><span class="line">* 胭脂淚 留人醉 幾時重</span><br><span class="line">* Matching Pairs «»‹› “”‘’「」〈〉《》〔〕</span><br><span class="line">* Greek αβγδ εζηθ ικλμ νξοπ ρςτυ φχψω</span><br><span class="line">* currency ¤ $ ¢ € ₠ £ ¥</span><br><span class="line"></span><br><span class="line">--</span><br><span class="line"></span><br><span class="line">### A code example</span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">// cool looking code</span><br><span class="line">var func = function (arg1) &#123;</span><br><span class="line">return function (arg2) &#123;</span><br><span class="line">return "arg1: " + arg1 + "arg2: " + arg2;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">console.log(func(1)(2)); // result is three</span><br></pre></td></tr></table></figure>
+<p>And here is some <code>inline code</code> to check out.</p>
+<p>```</p>
+<p>&nbsp;</p>
+<p>然后打开该目录下的basic.html即可查看幻灯</p>
+<p><a href="http://bloghugzh-wordpress.stor.sinaapp.com/uploads/2015/07/cleaver-firefox.png" target="_blank" rel="external"><img src="http://bloghugzh-wordpress.stor.sinaapp.com/uploads/2015/07/cleaver-firefox-300x217.png" alt="" title="cleaver-firefox"></a></p>
+<h3 id="3-简单做一些配置："><strong>3.简单做一些配置：</strong></h3><p>1). title: HTML的标题名</p>
+<p>2). author: 作者信息,在最后一页显示</p>
+<p>包括下面信息：</p>
+<ul>
+<li>name: 名字</li>
+<li>url: 个人网站</li>
+<li>twitter: 微博</li>
+<li>email: 邮件地址<br>3). theme: 皮肤(theme: jdan/cleaver-retro)</li>
+</ul>
+<p>4). style: css样式表(style: css/main.css)</p>
+<p>5). output: 生成的HTML文件名(output: basic.html)</p>
+<p>6). controls: 控制按钮(controls: true)</p>
+<p>7). progress: 顶部显示进程条(progress: true)</p>
+<p>8). agenda: 生成一个目录页(progress: false)</p>
+<p>9). encoding: 文档的字符编码(encoding: utf-8)</p>
+<p>10). template: 设置每张slide的模板(template: template/slide.mustache)</p>
+<p>11). layout: 设置HTML模板(template: template/layout.mustache)</p>
+<h3 id="4-正文"><strong>4.正文</strong></h3><p>正文必须使用Markdown语法。</p>
+<p>&nbsp;</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/cleaver/">cleaver</a><a href="/blog/tags/幻灯/">幻灯</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/blog/categories/Nodejs/">Nodejs</a>►<a class="article-category-link" href="/blog/categories/Nodejs/前端开发/">前端开发</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://hugzh.github.io/blog/2015/07/07/e5-a6-82-e4-bd-95-e4-bd-bf-e7-94-a8cleaver-e5-88-b6-e4-bd-9chtml5-e5-b9-bb-e7-81-af/" data-title="如何使用Cleaver制作html5幻灯 | 香蕉船的博客" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/blog/2015/05/14/e4-bb-8eajax-e7-9a-84-e4-bd-bf-e7-94-a8-e5-88-b0-e7-88-ac-e8-99-ab-e5-8f-8b-e5-a5-bd-e5-88-b0seo-e4-bc-98-e5-8c-96/"  title="从AJAX的使用到爬虫友好到SEO优化">
+ <strong>NEXT:</strong><br/> 
+ <span>从AJAX的使用到爬虫友好到SEO优化
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Cleaver安装"><span class="toc-number">1.</span> <span class="toc-text">1.Cleaver安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Cleaver基本使用"><span class="toc-number">2.</span> <span class="toc-text">2.Cleaver基本使用 </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-简单做一些配置："><span class="toc-number">3.</span> <span class="toc-text">3.简单做一些配置：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-正文"><span class="toc-number">4.</span> <span class="toc-text">4.正文</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/blog/categories/Nodejs/" title="Nodejs">Nodejs<sup>1</sup></a></li>
+		
+			<li><a href="/blog/categories/javascript/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+		
+			<li><a href="/blog/categories/javascript/" title="javascript">javascript<sup>7</sup></a></li>
+		
+			<li><a href="/blog/categories/php/" title="php">php<sup>1</sup></a></li>
+		
+			<li><a href="/blog/categories/javascript/php/" title="php">php<sup>1</sup></a></li>
+		
+			<li><a href="/blog/categories/其它/" title="其它">其它<sup>2</sup></a></li>
+		
+			<li><a href="/blog/categories/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
+		
+			<li><a href="/blog/categories/javascript/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
+		
+			<li><a href="/blog/categories/javascript/php/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
+		
+			<li><a href="/blog/categories/Nodejs/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/blog/tags/SEO/" title="SEO">SEO<sup>1</sup></a></li>
+		
+			<li><a href="/blog/tags/cleaver/" title="cleaver">cleaver<sup>1</sup></a></li>
+		
+			<li><a href="/blog/tags/css/" title="css">css<sup>1</sup></a></li>
+		
+			<li><a href="/blog/tags/html5/" title="html5">html5<sup>1</sup></a></li>
+		
+			<li><a href="/blog/tags/js/" title="js">js<sup>1</sup></a></li>
+		
+			<li><a href="/blog/tags/幻灯/" title="幻灯">幻灯<sup>1</sup></a></li>
+		
+			<li><a href="/blog/tags/爬虫/" title="爬虫">爬虫<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/blog/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/blog/tags/cleaver/" style="font-size: 10px;">cleaver</a> <a href="/blog/tags/css/" style="font-size: 10px;">css</a> <a href="/blog/tags/html5/" style="font-size: 10px;">html5</a> <a href="/blog/tags/js/" style="font-size: 10px;">js</a> <a href="/blog/tags/幻灯/" style="font-size: 10px;">幻灯</a> <a href="/blog/tags/爬虫/" style="font-size: 10px;">爬虫</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://yangjian.me" target="_blank" title="YangJian">Alimon's Blog</a></li>
+      <li><a href="http://hexo.io" target="_blank" title="Hexo">Hexo</a></li>
+    </ul>
+</div>
+
+
+  
+<div class="commentslist">
+  <p class="asidetitle">comments</p>
+  <ul class="ds-recent-comments" data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="1" data-excerpt-length="32" data-show-title="1"></ul>
+</div>
+<!--多说js加载开始，一个页面只需要加载一次 -->
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"void_三国志"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!--多说js加载结束，一个页面只需要加载一次 -->
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/hugzh" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2015 
+		
+		<a href="http://hugzh.github.io/blog" target="_blank" title="Vince">Vince</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"void_三国志"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+  </body>
+</html>

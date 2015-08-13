@@ -1,0 +1,432 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>从AJAX的使用到爬虫友好到SEO优化 | 香蕉船的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Vince">
+    
+    <meta name="description" content="&amp;nbsp;
+关于Ajax的使用注意最近做爬虫项目的时候发现一个比较值得探讨的问题：由于Ajax的无刷新加载特性，web开发者都比较喜欢使用ajax进行与服务器的数据交互。很多DOM元素都是在基本DOM文档加载完毕之后再进行加载的。这种做法虽然对用户非常友好，但是有时候对于程序（搜索引擎）来说，页面">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/blog/img/my_favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/blog/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/blog/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/blog/"><img src="/blog/img/logo.svg" alt="香蕉船的博客" title="香蕉船的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/blog/" title="香蕉船的博客">香蕉船的博客</a></h1>
+				<h2 class="blog-motto">天赋不够，汗水来凑</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archive">归档|Archives</a></li>
+					
+						<li><a href="/about">关于我|About</a></li>
+					
+					<li>
+					
+					<form class="search" action="/blog/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/blog/2015/05/14/e4-bb-8eajax-e7-9a-84-e4-bd-bf-e7-94-a8-e5-88-b0-e7-88-ac-e8-99-ab-e5-8f-8b-e5-a5-bd-e5-88-b0seo-e4-bc-98-e5-8c-96/" title="从AJAX的使用到爬虫友好到SEO优化" itemprop="url">从AJAX的使用到爬虫友好到SEO优化</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://hugzh.github.io/blog" title="Vince">Vince</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-05-14T13:26:09.000Z" itemprop="datePublished">2015-05-14</time>
+    更新日期:<time datetime="2015-08-13T04:55:31.690Z" itemprop="dateModified">2015-08-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于Ajax的使用注意"><span class="toc-number">1.</span> <span class="toc-text">关于Ajax的使用注意</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-_关于异步加载"><span class="toc-number">1.1.</span> <span class="toc-text">1.  关于异步加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-搜索引擎优化(SEO)"><span class="toc-number">1.2.</span> <span class="toc-text">2.搜索引擎优化(SEO)</span></a></li></ol></li></ol>
+		</div>
+		
+		<p>&nbsp;</p>
+<h1 id="关于Ajax的使用注意">关于Ajax的使用注意</h1><p>最近做爬虫项目的时候发现一个比较值得探讨的问题：由于Ajax的无刷新加载特性，web开发者都比较喜欢使用ajax进行与服务器的数据交互。很多DOM元素都是在基本DOM文档加载完毕之后再进行加载的。这种做法虽然对用户非常友好，但是有时候对于程序（搜索引擎）来说，页面信息获取也会带来一些挑战。</p>
+<h2 id="1-_关于异步加载">1.  关于异步加载</h2><p>Ajax的使用是非常广泛的。作为前端开发者，我们往往喜欢JSON数据这种交互模式,所以在渲染页面的时候也倾向于使用ajax从服务器获取JSON数据，从而实现无刷新渲染。这么做对于用户体验肯定是加分的。但是大规模地使用Ajax有时候会使得爬虫很难去获得想要的数据，当然如果我们设计的网站本身就是不想要别人抓取到数据的那就另当别论（除此之外还要加上一些JS动态加载数据以及数据编码等开发方式）。</p>
+<p>我们知道，所谓的网络“爬虫” ，就是通过一些http的request模块获取某个URL对应的页面的整个html文档，然后根据一些XPath或者CSS路径语法提取出文档的DOM节点内容，从而获取想要的数据。因此，如果这个页面的重要数据是通过JS执行Ajax来实现的话，就要求爬虫自己去模拟JS事件的触发（这种情况出现最多的就是”load more“这种情景）。甚至有时候如果封装的函数和要传输的参数太过复杂的话，爬虫根本无法通过模拟事件获取最新数据。这样无形之中就会使得爬虫无法抓取更多的网页数据。也就是对爬虫不友好。当然，很多脚本语言已经实现了很多对于事件模拟的模块，但是如果在不是非常必要的情况下，我觉得还是不要滥用Ajax。 那么，爬虫在获取JSON数据的时候具体是怎样工作的呢？我这里举一个处理样例，这个例子是基于Nodejs的Osmosis插件做的爬虫处理。<br>首先  ，我们先来看看这个AJAX的访问url “<a href="http://russia.tv/video/json/menu_id/267?page=4" target="_blank" rel="external">http://russia.tv/video/json/menu_id/267?page=4</a>“ ,访问这个URL得到的数据格式如图：</p>
+<p><a href="http://bloghugzh-wordpress.stor.sinaapp.com/uploads/2015/05/捕获.jpg" target="_blank" rel="external"><img src="http://bloghugzh-wordpress.stor.sinaapp.com/uploads/2015/05/捕获-300x89.jpg" alt="" title="捕获JSON"></a></p>
+<p>我们需要的仅仅是里面的’url’键对应的值，所以爬虫可以这样去提取数据：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var json_text = JSON.parse(data.json);</span><br><span class="line">// get flower</span><br><span class="line">// &#123;<span class="string">"last_page"</span>:<span class="number">0</span>,<span class="string">"row_list"</span>:[&#123;<span class="string">"url"</span>:<span class="string">'xxxxx'</span>&#125;]&#125;</span><br><span class="line">var urls = [];</span><br><span class="line"> _.each(json_text.row_list, <span class="keyword">function</span>  (url) &#123;</span><br><span class="line"></span><br><span class="line">     urls.push(&#123;</span><br><span class="line">        url: url.url</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-搜索引擎优化(SEO)">2.搜索引擎优化(SEO)</h2><p>既然聊到了爬虫，那么第二个我想说的问题就是关于SEO。爬虫只是人工搜索数据的一种手段，但是更高级别的大规模数据搜索往往是谷歌百度等搜索引擎。这类的搜索引擎是使用robots来进行数据挖掘的。这就要求前端开发者需要做一些页面优化，使得自己的站点可以更好的被搜索引擎发现。这就是SEO的主要内容，比较简单的SEO方法就是添加meta标签。meta是用来在HTML文档中模拟HTTP协议的响应头报文。META标签是HTML语言HEAD区的一个辅助性标签，它位于HTML文档头部的&lt;HEAD&gt;标记和&lt;TITLE&gt;标记之间，它提供用户不可见的信息。以下是几种meta标签的用法：</p>
+<div align="left">1、&lt;meta name=”Generator” content=””&gt;用以说明生成工具（如Microsoft FrontPage 4.0）等；</div><br><div align="left">2、&lt;meta name=”KEYWords”  content=””&gt;向搜索引擎说明你的网页的关键词；</div><br><div align="left">3、&lt;meta name=”DEscription”  content=””&gt;告诉搜索引擎你的站点的主要内容；</div><br><div align="left">4、&lt;meta name=”Author”  content=”你的姓名”&gt;告诉搜索引擎你的站点的制作的作者；</div><br><div align="left">5、&lt;meta name=”Robots”  content= “all|none|index|noindex|follow|nofollow”&gt;</div><br><div align="left">　 其中的属性说明如下：</div><br><div align="left">　 设定为all：文件将被检索，且页面上的链接可以被查询；</div><br><div align="left">   设定为none：文件将不被检索，且页面上的链接不可以被查询；</div><br><div align="left">   设定为index：文件将被检索；</div><br><div align="left">   设定为follow：页面上的链接可以被查询；</div><br><div align="left">   设定为noindex：文件将不被检索，但页面上的链接可以被查询；</div><br><div align="left">   设定为nofollow：文件将不被检索，页面上的链接可以被查询。</div><br><div align="left"> 还有一种比较常见的meta标签是用户社交（<strong>Open Graph Protocol</strong>）。我们可以发现很多网页的head里面包含&lt;meta property=”og:title” content=”xxx”&gt;这样的标签。</div><br><div align="left">Meta Property=og标签是什么呢?og是一种新的HTTP头部标记，即Open Graph Protocol。即这种协议可以让网页成为一个“富媒体对象”。</div>
+
+<p>用了Meta Property=og标签，就是你同意了网页内容可以被其他社会化网站引用等，目前这种协议被SNS网站如Fackbook、renren采用。SNS已经成为网络上的一大热门应用，优质的内容通过分享在好友间迅速传播。为了提高站外内容的传播效率，2010年F8会议上Facebook公布 了一套开放内容协议(Open Graph Protocol)，任何网页只要遵守该协议，SNS就能从页面上提取最有效的信息并呈现给用户。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/blog/tags/SEO/">SEO</a><a href="/blog/tags/爬虫/">爬虫</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/blog/categories/javascript/">javascript</a>►<a class="article-category-link" href="/blog/categories/javascript/Nodejs/">Nodejs</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://hugzh.github.io/blog/2015/05/14/e4-bb-8eajax-e7-9a-84-e4-bd-bf-e7-94-a8-e5-88-b0-e7-88-ac-e8-99-ab-e5-8f-8b-e5-a5-bd-e5-88-b0seo-e4-bc-98-e5-8c-96/" data-title="从AJAX的使用到爬虫友好到SEO优化 | 香蕉船的博客" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/blog/2015/07/07/e5-a6-82-e4-bd-95-e4-bd-bf-e7-94-a8cleaver-e5-88-b6-e4-bd-9chtml5-e5-b9-bb-e7-81-af/" title="如何使用Cleaver制作html5幻灯">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  如何使用Cleaver制作html5幻灯</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/blog/2015/04/16/e4-bd-bf-e7-94-a8nodejs-e5-81-9a-e4-b8-80-e4-b8-aa-e6-96-b0-e9-97-bb-e7-bd-91-e9-a1-b5-e7-88-ac-e8-99-ab-nodejs-e5-88-9d-e4-bd-93-e9-aa-8c/"  title="使用nodejs做一个新闻网页爬虫——Nodejs初体验">
+ <strong>NEXT:</strong><br/> 
+ <span>使用nodejs做一个新闻网页爬虫——Nodejs初体验
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于Ajax的使用注意"><span class="toc-number">1.</span> <span class="toc-text">关于Ajax的使用注意</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-_关于异步加载"><span class="toc-number">1.1.</span> <span class="toc-text">1.  关于异步加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-搜索引擎优化(SEO)"><span class="toc-number">1.2.</span> <span class="toc-text">2.搜索引擎优化(SEO)</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/blog/categories/Nodejs/" title="Nodejs">Nodejs<sup>1</sup></a></li>
+		
+			<li><a href="/blog/categories/javascript/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+		
+			<li><a href="/blog/categories/javascript/" title="javascript">javascript<sup>7</sup></a></li>
+		
+			<li><a href="/blog/categories/php/" title="php">php<sup>1</sup></a></li>
+		
+			<li><a href="/blog/categories/javascript/php/" title="php">php<sup>1</sup></a></li>
+		
+			<li><a href="/blog/categories/其它/" title="其它">其它<sup>2</sup></a></li>
+		
+			<li><a href="/blog/categories/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
+		
+			<li><a href="/blog/categories/javascript/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
+		
+			<li><a href="/blog/categories/javascript/php/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
+		
+			<li><a href="/blog/categories/Nodejs/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/blog/tags/SEO/" title="SEO">SEO<sup>1</sup></a></li>
+		
+			<li><a href="/blog/tags/cleaver/" title="cleaver">cleaver<sup>1</sup></a></li>
+		
+			<li><a href="/blog/tags/css/" title="css">css<sup>1</sup></a></li>
+		
+			<li><a href="/blog/tags/html5/" title="html5">html5<sup>1</sup></a></li>
+		
+			<li><a href="/blog/tags/js/" title="js">js<sup>1</sup></a></li>
+		
+			<li><a href="/blog/tags/幻灯/" title="幻灯">幻灯<sup>1</sup></a></li>
+		
+			<li><a href="/blog/tags/爬虫/" title="爬虫">爬虫<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/blog/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/blog/tags/cleaver/" style="font-size: 10px;">cleaver</a> <a href="/blog/tags/css/" style="font-size: 10px;">css</a> <a href="/blog/tags/html5/" style="font-size: 10px;">html5</a> <a href="/blog/tags/js/" style="font-size: 10px;">js</a> <a href="/blog/tags/幻灯/" style="font-size: 10px;">幻灯</a> <a href="/blog/tags/爬虫/" style="font-size: 10px;">爬虫</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://yangjian.me" target="_blank" title="YangJian">Alimon's Blog</a></li>
+      <li><a href="http://hexo.io" target="_blank" title="Hexo">Hexo</a></li>
+    </ul>
+</div>
+
+
+  
+<div class="commentslist">
+  <p class="asidetitle">comments</p>
+  <ul class="ds-recent-comments" data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-admin="1" data-excerpt-length="32" data-show-title="1"></ul>
+</div>
+<!--多说js加载开始，一个页面只需要加载一次 -->
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"void_三国志"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!--多说js加载结束，一个页面只需要加载一次 -->
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/hugzh" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2015 
+		
+		<a href="http://hugzh.github.io/blog" target="_blank" title="Vince">Vince</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/blog/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"void_三国志"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+  </body>
+</html>
