@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Php验证码制作 | 香蕉船的博客</title>
+    <title>移动前端框架jQuery Mobile 的介绍（一） | 香蕉船的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Vince">
     
-    <meta name="description" content="关于网页制作中的验证码部分是一个比较有趣的知识点，验证码的制作主要是基于PHP的图片处理拓展功能。 验证码制作的一般流程是：1、创建验证码显示的底图2、列出所有可能用到的字符内容以及字体颜色3、随机截取部分（4或者5个）字符作为验证码输出4、确定验证码显示的角度以及坐标5、增加干扰元素（点和线条等）">
+    <meta name="description" content="简介：jQuery Mobile 是用于创建移动 Web应用的前端开发框架，可以应用于智能手机与平板电脑。是一个比较好用的前端框架。jMobile适用于ios，android，black berry，windows phone等主流移动终端操作系统。
+jQuery Mobile 的安装：安装非常简单">
     
     
     
@@ -66,15 +67,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/09/17/php-e9-aa-8c-e8-af-81-e7-a0-81-e5-88-b6-e4-bd-9c/" title="Php验证码制作" itemprop="url">Php验证码制作</a>
+      <a href="/2015/01/28/jmobile-use-1/" title="移动前端框架jQuery Mobile 的介绍（一）" itemprop="url">移动前端框架jQuery Mobile 的介绍（一）</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://hugzh.github.io" title="Vince">Vince</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-09-16T16:00:00.000Z" itemprop="datePublished">2014-09-17</time>
-    更新日期:<time datetime="2015-08-11T06:32:11.429Z" itemprop="dateModified">2015-08-11</time>
+    <time datetime="2015-01-27T16:00:00.000Z" itemprop="datePublished">2015-01-28</time>
+    更新日期:<time datetime="2015-08-11T06:28:50.304Z" itemprop="dateModified">2015-08-11</time>
     
   </p>
 </header>
@@ -86,9 +87,29 @@
 		
 		</div>
 		
-		<p>关于网页制作中的验证码部分是一个比较有趣的知识点，验证码的制作主要是基于PHP的图片处理拓展功能。 验证码制作的一般流程是：<br>1、创建验证码显示的底图<br>2、列出所有可能用到的字符内容以及字体颜色<br>3、随机截取部分（4或者5个）字符作为验证码输出<br>4、确定验证码显示的角度以及坐标<br>5、增加干扰元素（点和线条等）<br>6、php输出图片，并在脚本及时地destroy掉图片<br>然后是一个值得注意的地方就是，一般来说验证码不应该出现容易混淆的字符，比如l和1,2和z,0和o等等，这是作为一个开发者从用户体验的角度来说需要注意的地方，另外就是干扰元素的颜色不应该使用鲜艳的颜色，一般来说颜色RGB值在50之后比较稳妥。<br>以下是我的php代码，命名为yanzhengma.php:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">`<span class="variable">$image</span> = imagecreatetruecolor(<span class="number">100</span>,<span class="number">30</span>);<span class="comment">//100x30的图片生成</span></span><br><span class="line"><span class="variable">$bgcolor</span> = imagecolorallocate(<span class="variable">$image</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>);<span class="comment">//白色底色</span></span><br><span class="line">imagefill(<span class="variable">$image</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="variable">$bgcolor</span>);`</span><br><span class="line"></span><br><span class="line"><span class="comment">//保存验证码内容便于服务器验证</span></span><br><span class="line"><span class="variable">$capchcode</span>=<span class="string">''</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="variable">$i</span> = <span class="number">0</span>;<span class="variable">$i</span>&amp;lt;<span class="number">4</span>;<span class="variable">$i</span>++)&#123;</span><br><span class="line"><span class="variable">$fontsize</span>=<span class="number">12</span>;</span><br><span class="line"><span class="variable">$fontcolor</span> = imagecolorallocate(<span class="variable">$image</span>,rand(<span class="number">0</span>,<span class="number">120</span>),rand(<span class="number">0</span>,<span class="number">120</span>),rand(<span class="number">0</span>,<span class="number">120</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//$fontcotent = rand(0,9);//产生随机数字</span></span><br><span class="line"><span class="variable">$data</span> = <span class="string">'ABCDEHJKYSWTRabcdefghjkmnpqstuwsy23456789'</span>;</span><br><span class="line"><span class="variable">$fontcotent</span> = substr(<span class="variable">$data</span>,rand(<span class="number">0</span>,strlen(<span class="variable">$data</span>)),<span class="number">1</span>);<span class="comment">//随机截取一个字符</span></span><br><span class="line"><span class="variable">$capchcode</span> .= <span class="variable">$fontcotent</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$x</span> = (<span class="variable">$i</span>*<span class="number">100</span>/<span class="number">4</span>)+rand(<span class="number">5</span>,<span class="number">10</span>);<span class="comment">//定义内容的x坐标、y坐标，随机</span></span><br><span class="line"><span class="variable">$y</span> = rand(<span class="number">5</span>,<span class="number">12</span>);</span><br><span class="line">imagestring(<span class="variable">$image</span>,<span class="variable">$fontsize</span>,<span class="variable">$x</span>,<span class="variable">$y</span>,<span class="variable">$fontcotent</span>,<span class="variable">$fontcolor</span>);<span class="comment">//产生字符送到图片</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$_SESSION</span>[<span class="string">'authcode'</span>] = <span class="variable">$capchcode</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//添加点干扰元素</span></span><br><span class="line"><span class="keyword">for</span>(<span class="variable">$i</span> = <span class="number">0</span>;<span class="variable">$i</span>&amp;lt;<span class="number">300</span>;<span class="variable">$i</span>++)&#123;</span><br><span class="line"><span class="variable">$pointcolor</span> = imagecolorallocate(<span class="variable">$image</span>,rand(<span class="number">50</span>,<span class="number">200</span>),rand(<span class="number">50</span>,<span class="number">200</span>),rand(<span class="number">50</span>,<span class="number">200</span>));</span><br><span class="line">imagesetpixel(<span class="variable">$image</span>,rand(<span class="number">1</span>,<span class="number">99</span>),rand(<span class="number">1</span>,<span class="number">29</span>),<span class="variable">$pointcolor</span>);<span class="comment">//点元素分布</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//添加线条干扰</span></span><br><span class="line"><span class="keyword">for</span>(<span class="variable">$i</span> = <span class="number">0</span>;<span class="variable">$i</span>&amp;lt;<span class="number">3</span>;<span class="variable">$i</span>++)&#123;</span><br><span class="line"><span class="variable">$linecolor</span> = imagecolorallocate(<span class="variable">$image</span>,rand(<span class="number">80</span>,<span class="number">220</span>),rand(<span class="number">80</span>,<span class="number">220</span>),rand(<span class="number">80</span>,<span class="number">220</span>));</span><br><span class="line">imageline(<span class="variable">$image</span>,rand(<span class="number">1</span>,<span class="number">99</span>),rand(<span class="number">1</span>,<span class="number">29</span>),rand(<span class="number">1</span>,<span class="number">99</span>),rand(<span class="number">1</span>,<span class="number">29</span>),<span class="variable">$linecolor</span>);<span class="comment">//线条元素分布,两点确定一条直线</span></span><br><span class="line">&#125;</span><br><span class="line">header(<span class="string">'content-type:image/png'</span>);</span><br><span class="line">imagepng(<span class="variable">$image</span>);</span><br><span class="line">imagedestroy(<span class="variable">$image</span>);</span><br></pre></td></tr></table></figure>
-<p>总的来说，简单验证码的制作并不难，如果要做一些gif类型的验证码或者一些更加个性化的验证码就需要多花费一些时间去查找相关资料了，这里不做介绍。</p>
+		<p>简介：<br>jQuery Mobile 是用于创建移动 Web应用的前端开发框架，可以应用于智能手机与平板电脑。是一个比较好用的前端框架。<br>jMobile适用于ios，android，black berry，windows phone等主流移动终端操作系统。</p>
+<p>jQuery Mobile 的安装：<br>安装非常简单，就像jQuery的安装一样，可以直接把文件下载到本地，然后再html文件的head标签内引用，也可以直接通过<br>CDN 中加载。需要包含三个文件jquery.mobile.min.css、jquery.js以及jquery.mobile.min.js。由于jMobile是自带一套UI的框架，<br>所以第一个css文件是必须要包含进来的。</p>
+<p>一个简单的jMobile页面包括三个部分——header、content和footer。通过data-role来实现，比如:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&amp;lt;div data-role="header"&amp;gt;</span><br><span class="line">&amp;lt;h1&amp;gt;头&amp;lt;/h1&amp;gt;</span><br><span class="line">&amp;lt;/div&amp;gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&amp;lt;div data-role="content"&amp;gt;</span><br><span class="line">&amp;lt;p&amp;gt;主体&amp;lt;/p&amp;gt;</span><br><span class="line">&amp;lt;/div&amp;gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&amp;lt;div data-role="footer"&amp;gt;</span><br><span class="line">&amp;lt;h1&amp;gt;底部&amp;lt;/h1&amp;gt;</span><br><span class="line">&amp;lt;/div&amp;gt;</span><br></pre></td></tr></table></figure>
+<p>其中，jQuery Mobile 依赖 HTML5 data-* 属性来支持各种 UI 元素、过渡和页面结构：<br>data-role=”page” 是在浏览器中显示的页面。<br>data-role=”header” 是在页面顶部创建的工具条 (通常用于标题或者搜索按钮)<br>data-role=”content” 定义了页面的内容，比如文本， 图片，表单，按钮等。<br>data-role=”footer” 用于创建页面底部工具条。<br>在这些容器中你可以添加任何 HTML 元素 - 段落, 图片, 标题, 列表等。</p>
+<p>在页面的切换方式使用data-transition来定义，可以包括从上到下滑动，从左到右滑动，抛出页面，弹窗等多种形式。<br>在导航元素上，data-role=”navbar”加图标data-icon可以实现导航栏。每一个的导航元素可以通过class=”ui-btn-active”<br>来实现按钮激活状态。在布局方面，可以使用网格和可折叠板块来实现复杂布局。如需创建一个可折叠的内容块，需要为<br>容器添加 data-role=”collapsible” 属性。在容器（div）内，添加一个标题元素（H1-H6），后跟您想要进行扩展的 HTML<br>标记：</p>
+<p>一个默认展开的折叠板：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&amp;lt;div data-role="collapsible" data-collapsed="false"&amp;gt;</span><br><span class="line">&amp;lt;h1&amp;gt;点击我 - 我可以折叠!&amp;lt;/h1&amp;gt;</span><br><span class="line">&amp;lt;p&amp;gt;I'm 现在我默认是展开的。&amp;lt;/p&amp;gt;</span><br><span class="line">&amp;lt;/div&amp;gt;</span><br><span class="line"></span><br><span class="line">&amp;nbsp;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;</p>
+<p>一个默认折叠的折叠版：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&amp;lt;div data-role="collapsible"&amp;gt;</span><br><span class="line">&amp;lt;h1&amp;gt;点击我 - 我可以折叠!&amp;lt;/h1&amp;gt;</span><br><span class="line">&amp;lt;p&amp;gt;我是可折叠的内容。&amp;lt;/p&amp;gt;</span><br><span class="line">&amp;lt;/div&amp;gt;</span><br></pre></td></tr></table></figure>
+<div data-role="collapsible">
+
+<p>我是可折叠的内容。</p>
+<p></p></div><br>jMobile的列表使用非常有特色。可以在列表中添加图标。默认的列表用法如下：<p></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&amp;lt;ul data-role="listview"&amp;gt;</span><br><span class="line">&amp;lt;li&amp;gt;&amp;lt;a href="#"&amp;gt;列表项&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;</span><br><span class="line">&amp;lt;li&amp;gt;&amp;lt;a href="#"&amp;gt;列表项&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;</span><br><span class="line">&amp;lt;li&amp;gt;&amp;lt;a href="#"&amp;gt;列表项&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;</span><br><span class="line">&amp;lt;/ul&amp;gt;</span><br></pre></td></tr></table></figure>
+<p>列表样式的圆角和边缘，使用 data-inset=”true” 属性设置<br>列表项也可以转化为列表分割项，用来组织列表，使列表项成组。<br>指定列表分割，给列表项 li 元素添加 data-role=”list-divider” 属性即可。</p>
+<p>&nbsp;</p>
+<p>jquery Mobile提供一个非常简单的方法，实现客户端搜索功能，筛选列表的选项。只需添加 data-filter=”true” 属性即可:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&amp;lt;ul data-role="listview" data-filter="true"&amp;gt;&amp;lt;/ul&amp;gt;</span><br></pre></td></tr></table></figure>
+<p>以上的介绍时关于jMobile的最基础用法，我们在下一篇将着重介绍表单基础和事件处理。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -96,7 +117,7 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/php/">php</a>
+  <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/前端开发/">前端开发</a>
 </div>
 
 
@@ -131,18 +152,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2014/10/01/e6-96-87-e4-bb-b6-e4-b8-8a-e4-bc-a0-e6-8f-92-e4-bb-b6uploadify-e7-9a-84-e7-ae-80-e5-8d-95-e4-bb-8b-e7-bb-8d/" title="文件上传插件Uploadify的简单介绍">
+ <a href="/2015/01/29/jmobile-use-2/" title="移动前端框架jQuery Mobile 的介绍（二）">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  文件上传插件Uploadify的简单介绍</span>
+  移动前端框架jQuery Mobile 的介绍（二）</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2014/09/03/haskell-e5-88-9d-e6-8e-a5-e8-a7-a6-e6-84-9f-e6-82-9f/"  title="Haskell初接触感悟">
+<a href="/2014/11/21/bat-interview-css/"  title="BAT及各大互联网公司2014前端笔试面试题：CSS篇">
  <strong>NEXT:</strong><br/> 
- <span>Haskell初接触感悟
+ <span>BAT及各大互联网公司2014前端笔试面试题：CSS篇
 </span>
 </a>
 </div>
@@ -171,9 +192,9 @@
 	<p class="asidetitle">分类</p>
 		<ul>
 		
-			<li><a href="/categories/Nodejs/" title="Nodejs">Nodejs<sup>1</sup></a></li>
-		
 			<li><a href="/categories/javascript/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Nodejs/" title="Nodejs">Nodejs<sup>1</sup></a></li>
 		
 			<li><a href="/categories/javascript/" title="javascript">javascript<sup>7</sup></a></li>
 		
@@ -185,9 +206,9 @@
 		
 			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
 		
-			<li><a href="/categories/javascript/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
-		
 			<li><a href="/categories/javascript/php/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
+		
+			<li><a href="/categories/javascript/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
 		
 			<li><a href="/categories/Nodejs/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
 		

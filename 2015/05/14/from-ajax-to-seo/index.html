@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>BAT及各大互联网公司2014前端笔试面试题：CSS篇 | 香蕉船的博客</title>
+    <title>从AJAX的使用到爬虫友好到SEO优化 | 香蕉船的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Vince">
     
-    <meta name="description" content="1.有哪项方式可以对一个DOM设置它的CSS样式？外部样式表，引入一个外部css文件内部样式表，将css代码放在 &amp;lt;head&amp;gt; 标签内部内联样式，将css样式直接定义在 HTML 元素内部2.CSS都有哪些选择器？
-派生选择器（用HTML标签申明）id选择器（用DOM的ID申明）类选择器">
+    <meta name="description" content="&amp;nbsp;
+关于Ajax的使用注意最近做爬虫项目的时候发现一个比较值得探讨的问题：由于Ajax的无刷新加载特性，web开发者都比较喜欢使用ajax进行与服务器的数据交互。很多DOM元素都是在基本DOM文档加载完毕之后再进行加载的。这种做法虽然对用户非常友好，但是有时候对于程序（搜索引擎）来说，页面">
     
     
     
@@ -67,15 +67,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/11/21/bat-e5-8f-8a-e5-90-84-e5-a4-a7-e4-ba-92-e8-81-94-e7-bd-91-e5-85-ac-e5-8f-b82014-e5-89-8d-e7-ab-af-e7-ac-94-e8-af-95-e9-9d-a2-e8-af-95-e9-a2-98-ef-bc-9acss-e7-af-87/" title="BAT及各大互联网公司2014前端笔试面试题：CSS篇" itemprop="url">BAT及各大互联网公司2014前端笔试面试题：CSS篇</a>
+      <a href="/2015/05/14/from-ajax-to-seo/" title="从AJAX的使用到爬虫友好到SEO优化" itemprop="url">从AJAX的使用到爬虫友好到SEO优化</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://hugzh.github.io" title="Vince">Vince</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-11-20T16:00:00.000Z" itemprop="datePublished">2014-11-21</time>
-    更新日期:<time datetime="2015-08-11T06:22:19.803Z" itemprop="dateModified">2015-08-11</time>
+    <time datetime="2015-05-14T13:26:09.000Z" itemprop="datePublished">2015-05-14</time>
+    更新日期:<time datetime="2015-08-13T04:55:31.690Z" itemprop="dateModified">2015-08-13</time>
     
   </p>
 </header>
@@ -84,38 +84,32 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#xxx_li_优先级_100_+1"><span class="toc-number">1.</span> <span class="toc-text">xxx li 优先级 100 +1</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于Ajax的使用注意"><span class="toc-number">1.</span> <span class="toc-text">关于Ajax的使用注意</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-_关于异步加载"><span class="toc-number">1.1.</span> <span class="toc-text">1.  关于异步加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-搜索引擎优化(SEO)"><span class="toc-number">1.2.</span> <span class="toc-text">2.搜索引擎优化(SEO)</span></a></li></ol></li></ol>
 		</div>
 		
-		<p>1.有哪项方式可以对一个DOM设置它的CSS样式？<br>外部样式表，引入一个外部css文件<br>内部样式表，将css代码放在 &lt;head&gt; 标签内部<br>内联样式，将css样式直接定义在 HTML 元素内部<br>2.CSS都有哪些选择器？</p>
-<p>派生选择器（用HTML标签申明）<br>id选择器（用DOM的ID申明）<br>类选择器（用一个样式类名申明）<br>属性选择器（用DOM的属性申明，属于CSS2，IE6不支持，不常用，不知道就算了）</p>
-<p>除了前3种基本选择器，还有一些扩展选择器，包括</p>
-<p>后代选择器（利用空格间隔，比如div .a{ }）<br>群组选择器（利用逗号间隔，比如p,div,#a{ }）</p>
-<p>那么问题来了，CSS选择器的优先级是怎么样定义的？</p>
-<p>基本原则：</p>
-<p>一般而言，选择器越特殊，它的优先级越高。也就是选择器指向的越准确，它的优先级就越高。<br>复杂的计算方法：</p>
-<p>用1表示派生选择器的优先级<br>用10表示类选择器的优先级<br>用100标示ID选择器的优先级<br>div.test1 .span var 优先级 1+10 +10 +1<br>span#xxx .songs li 优先级1+100 + 10 + 1</p>
-<h1 id="xxx_li_优先级_100_+1">xxx li 优先级 100 +1</h1><p>3.CSS中可以通过哪些属性定义，使得一个DOM元素不显示在浏览器可视范围内？</p>
-<p>最基本的：<br>设置display属性为none，或者设置visibility属性为hidden</p>
-<p>技巧性：<br>设置宽高为0，设置透明度为0，设置z-index位置在-1000<br>4.超链接访问过后hover样式就不出现的问题是什么？如何解决？</p>
-<p>答案：被点击访问过的超链接样式不在具有hover和active了,解决方法是改变CSS属性的排列顺序: L-V-H-A（link,visited,hover,active）<br>5.什么是Css Hack？ie6,7,8的hack分别是什么？</p>
-<p>答案：针对不同的浏览器写不同的CSS code的过程，就是CSS hack。<br>7.行内元素和块级元素的具体区别是什么？行内元素的padding和margin可设置吗？</p>
-<p>块级元素(block)特性：</p>
-<p>总是独占一行，表现为另起一行开始，而且其后的元素也必须另起一行显示;<br>宽度(width)、高度(height)、内边距(padding)和外边距(margin)都可控制;<br>内联元素(inline)特性：<br>和相邻的内联元素在同一行;<br>宽度(width)、高度(height)、内边距的top/bottom(padding-top/padding-bottom)和外边距的top/bottom(margin-top/margin-bottom)都不可改变（也就是padding和margin的left和right是可以设置的），就是里面文字或图片的大小。<br>那么问题来了，浏览器还有默认的天生inline-block元素（拥有内在尺寸，可设置高宽，但不会自动换行），有哪些？</p>
-<p>答案：&lt;input&gt; 、&lt;img&gt; 、&lt;button&gt; 、&lt;textarea&gt; 、&lt;label&gt;。<br>8.什么是外边距重叠？重叠的结果是什么？<br>答案：<br>外边距重叠就是margin-collapse。<br>在CSS当中，相邻的两个盒子（可能是兄弟关系也可能是祖先关系）的外边距可以结合成一个单独的外边距。这种合并外边距的方式被称为折叠，并且因而所结合成的外边距称为折叠外边距。</p>
-<p>折叠结果遵循下列计算规则：</p>
-<p>两个相邻的外边距都是正数时，折叠结果是它们两者之间较大的值。<br>两个相邻的外边距都是负数时，折叠结果是两者绝对值的较大值。<br>两个外边距一正一负时，折叠结果是两者的相加的和。</p>
-<p>9.rgba()和opacity的透明效果有什么不同？<br>答案：<br>rgba()和opacity都能实现透明效果，但最大的不同是opacity作用于元素，以及元素内的所有内容的透明度，<br>而rgba()只作用于元素的颜色或其背景色。（设置rgba透明的元素的子元素不会继承透明效果！）</p>
-<p>10.css中可以让文字在垂直和水平方向上重叠的两个属性是什么？<br>答案：<br>垂直方向：line-height<br>水平方向：letter-spacing</p>
-<p>那么问题来了，关于letter-spacing的妙用知道有哪些么？<br>答案:可以用于消除inline-block元素间的换行符空格间隙问题。<br>11.如何垂直居中一个浮动元素？</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// 方法一：已知元素的高宽</span><br><span class="line"></span><br><span class="line">#div1&#123;</span><br><span class="line">background-color:#6699FF;</span><br><span class="line">width:200px;</span><br><span class="line">height:200px;</span><br><span class="line"></span><br><span class="line">position: absolute; //父元素需要相对定位</span><br><span class="line">top: 50%;</span><br><span class="line">left: 50%;</span><br><span class="line">margin-top:-100px ; //二分之一的height，width</span><br><span class="line">margin-left: -100px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//方法二:未知元素的高宽</span><br><span class="line"></span><br><span class="line">#div1&#123;</span><br><span class="line">width: 200px;</span><br><span class="line">height: 200px;</span><br><span class="line">background-color: #6699FF;</span><br><span class="line"></span><br><span class="line">margin:auto;</span><br><span class="line">position: absolute; //父元素需要相对定位</span><br><span class="line">left: 0;</span><br><span class="line">top: 0;</span><br><span class="line">right: 0;</span><br><span class="line">bottom: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>  
+		<p>&nbsp;</p>
+<h1 id="关于Ajax的使用注意">关于Ajax的使用注意</h1><p>最近做爬虫项目的时候发现一个比较值得探讨的问题：由于Ajax的无刷新加载特性，web开发者都比较喜欢使用ajax进行与服务器的数据交互。很多DOM元素都是在基本DOM文档加载完毕之后再进行加载的。这种做法虽然对用户非常友好，但是有时候对于程序（搜索引擎）来说，页面信息获取也会带来一些挑战。</p>
+<h2 id="1-_关于异步加载">1.  关于异步加载</h2><p>Ajax的使用是非常广泛的。作为前端开发者，我们往往喜欢JSON数据这种交互模式,所以在渲染页面的时候也倾向于使用ajax从服务器获取JSON数据，从而实现无刷新渲染。这么做对于用户体验肯定是加分的。但是大规模地使用Ajax有时候会使得爬虫很难去获得想要的数据，当然如果我们设计的网站本身就是不想要别人抓取到数据的那就另当别论（除此之外还要加上一些JS动态加载数据以及数据编码等开发方式）。</p>
+<p>我们知道，所谓的网络“爬虫” ，就是通过一些http的request模块获取某个URL对应的页面的整个html文档，然后根据一些XPath或者CSS路径语法提取出文档的DOM节点内容，从而获取想要的数据。因此，如果这个页面的重要数据是通过JS执行Ajax来实现的话，就要求爬虫自己去模拟JS事件的触发（这种情况出现最多的就是”load more“这种情景）。甚至有时候如果封装的函数和要传输的参数太过复杂的话，爬虫根本无法通过模拟事件获取最新数据。这样无形之中就会使得爬虫无法抓取更多的网页数据。也就是对爬虫不友好。当然，很多脚本语言已经实现了很多对于事件模拟的模块，但是如果在不是非常必要的情况下，我觉得还是不要滥用Ajax。 那么，爬虫在获取JSON数据的时候具体是怎样工作的呢？我这里举一个处理样例，这个例子是基于Nodejs的Osmosis插件做的爬虫处理。<br>首先  ，我们先来看看这个AJAX的访问url “<a href="http://russia.tv/video/json/menu_id/267?page=4" target="_blank" rel="external">http://russia.tv/video/json/menu_id/267?page=4</a>“ ,访问这个URL得到的数据格式如图：</p>
+<p><a href="http://bloghugzh-wordpress.stor.sinaapp.com/uploads/2015/05/捕获.jpg" target="_blank" rel="external"><img src="http://bloghugzh-wordpress.stor.sinaapp.com/uploads/2015/05/捕获-300x89.jpg" alt="" title="捕获JSON"></a></p>
+<p>我们需要的仅仅是里面的’url’键对应的值，所以爬虫可以这样去提取数据：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var json_text = JSON.parse(data.json);</span><br><span class="line">// get flower</span><br><span class="line">// &#123;<span class="string">"last_page"</span>:<span class="number">0</span>,<span class="string">"row_list"</span>:[&#123;<span class="string">"url"</span>:<span class="string">'xxxxx'</span>&#125;]&#125;</span><br><span class="line">var urls = [];</span><br><span class="line"> _.each(json_text.row_list, <span class="keyword">function</span>  (url) &#123;</span><br><span class="line"></span><br><span class="line">     urls.push(&#123;</span><br><span class="line">        url: url.url</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-搜索引擎优化(SEO)">2.搜索引擎优化(SEO)</h2><p>既然聊到了爬虫，那么第二个我想说的问题就是关于SEO。爬虫只是人工搜索数据的一种手段，但是更高级别的大规模数据搜索往往是谷歌百度等搜索引擎。这类的搜索引擎是使用robots来进行数据挖掘的。这就要求前端开发者需要做一些页面优化，使得自己的站点可以更好的被搜索引擎发现。这就是SEO的主要内容，比较简单的SEO方法就是添加meta标签。meta是用来在HTML文档中模拟HTTP协议的响应头报文。META标签是HTML语言HEAD区的一个辅助性标签，它位于HTML文档头部的&lt;HEAD&gt;标记和&lt;TITLE&gt;标记之间，它提供用户不可见的信息。以下是几种meta标签的用法：</p>
+<div align="left">1、&lt;meta name=”Generator” content=””&gt;用以说明生成工具（如Microsoft FrontPage 4.0）等；</div><br><div align="left">2、&lt;meta name=”KEYWords”  content=””&gt;向搜索引擎说明你的网页的关键词；</div><br><div align="left">3、&lt;meta name=”DEscription”  content=””&gt;告诉搜索引擎你的站点的主要内容；</div><br><div align="left">4、&lt;meta name=”Author”  content=”你的姓名”&gt;告诉搜索引擎你的站点的制作的作者；</div><br><div align="left">5、&lt;meta name=”Robots”  content= “all|none|index|noindex|follow|nofollow”&gt;</div><br><div align="left">　 其中的属性说明如下：</div><br><div align="left">　 设定为all：文件将被检索，且页面上的链接可以被查询；</div><br><div align="left">   设定为none：文件将不被检索，且页面上的链接不可以被查询；</div><br><div align="left">   设定为index：文件将被检索；</div><br><div align="left">   设定为follow：页面上的链接可以被查询；</div><br><div align="left">   设定为noindex：文件将不被检索，但页面上的链接可以被查询；</div><br><div align="left">   设定为nofollow：文件将不被检索，页面上的链接可以被查询。</div><br><div align="left"> 还有一种比较常见的meta标签是用户社交（<strong>Open Graph Protocol</strong>）。我们可以发现很多网页的head里面包含&lt;meta property=”og:title” content=”xxx”&gt;这样的标签。</div><br><div align="left">Meta Property=og标签是什么呢?og是一种新的HTTP头部标记，即Open Graph Protocol。即这种协议可以让网页成为一个“富媒体对象”。</div>
+
+<p>用了Meta Property=og标签，就是你同意了网页内容可以被其他社会化网站引用等，目前这种协议被SNS网站如Fackbook、renren采用。SNS已经成为网络上的一大热门应用，优质的内容通过分享在好友间迅速传播。为了提高站外内容的传播效率，2010年F8会议上Facebook公布 了一套开放内容协议(Open Graph Protocol)，任何网页只要遵守该协议，SNS就能从页面上提取最有效的信息并呈现给用户。</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/SEO/">SEO</a><a href="/tags/爬虫/">爬虫</a>
+  </div>
 
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
+  <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/Nodejs/">Nodejs</a>
 </div>
 
 
@@ -150,18 +144,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/01/28/e7-a7-bb-e5-8a-a8-e5-89-8d-e7-ab-af-e6-a1-86-e6-9e-b6jquery-mobile-e7-9a-84-e4-bb-8b-e7-bb-8d-ef-bc-88-e4-b8-80-ef-bc-89/" title="移动前端框架jQuery Mobile 的介绍（一）">
+ <a href="/2015/07/07/cleaver-make-ppt/" title="如何使用Cleaver制作html5幻灯">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  移动前端框架jQuery Mobile 的介绍（一）</span>
+  如何使用Cleaver制作html5幻灯</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2014/11/21/e4-bd-bf-e7-94-a8-e5-93-88-e5-b8-8c-e5-af-86-e7-a0-81-e7-9a-84-e5-ae-89-e5-85-a8-e6-80-a7-e9-97-ae-e9-a2-98/"  title="使用哈希密码的安全性问题">
+<a href="/2015/04/16/node-spider/"  title="使用nodejs做一个新闻网页爬虫——Nodejs初体验">
  <strong>NEXT:</strong><br/> 
- <span>使用哈希密码的安全性问题
+ <span>使用nodejs做一个新闻网页爬虫——Nodejs初体验
 </span>
 </a>
 </div>
@@ -178,7 +172,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#xxx_li_优先级_100_+1"><span class="toc-number">1.</span> <span class="toc-text">xxx li 优先级 100 +1</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于Ajax的使用注意"><span class="toc-number">1.</span> <span class="toc-text">关于Ajax的使用注意</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-_关于异步加载"><span class="toc-number">1.1.</span> <span class="toc-text">1.  关于异步加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-搜索引擎优化(SEO)"><span class="toc-number">1.2.</span> <span class="toc-text">2.搜索引擎优化(SEO)</span></a></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
@@ -190,9 +184,9 @@
 	<p class="asidetitle">分类</p>
 		<ul>
 		
-			<li><a href="/categories/Nodejs/" title="Nodejs">Nodejs<sup>1</sup></a></li>
-		
 			<li><a href="/categories/javascript/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Nodejs/" title="Nodejs">Nodejs<sup>1</sup></a></li>
 		
 			<li><a href="/categories/javascript/" title="javascript">javascript<sup>7</sup></a></li>
 		
@@ -204,9 +198,9 @@
 		
 			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
 		
-			<li><a href="/categories/javascript/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
-		
 			<li><a href="/categories/javascript/php/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
+		
+			<li><a href="/categories/javascript/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
 		
 			<li><a href="/categories/Nodejs/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
 		

@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>JavaScript操作符使用注意事项 | 香蕉船的博客</title>
+    <title>BAT及各大互联网公司2014前端笔试面试题：CSS篇 | 香蕉船的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Vince">
     
-    <meta name="description" content="javascript 的操作符运算中有很多是可以适用于不同类型的值，这是因为javascript本身是一门变量类型松散型的语言，在使用运算符的时候有很多容易出错的地方。加法和减法这两个运算符是各种开发语言中用得最多的运算符了，但是在ECMAScript中，这两个操作符却有一系列特殊行为。
-1、加法：">
+    <meta name="description" content="1.有哪项方式可以对一个DOM设置它的CSS样式？外部样式表，引入一个外部css文件内部样式表，将css代码放在 &amp;lt;head&amp;gt; 标签内部内联样式，将css样式直接定义在 HTML 元素内部2.CSS都有哪些选择器？
+派生选择器（用HTML标签申明）id选择器（用DOM的ID申明）类选择器">
     
     
     
@@ -67,15 +67,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/03/11/javascript-e6-93-8d-e4-bd-9c-e7-ac-a6-e4-bd-bf-e7-94-a8-e6-b3-a8-e6-84-8f-e4-ba-8b-e9-a1-b9/" title="JavaScript操作符使用注意事项" itemprop="url">JavaScript操作符使用注意事项</a>
+      <a href="/2014/11/21/bat-interview-css/" title="BAT及各大互联网公司2014前端笔试面试题：CSS篇" itemprop="url">BAT及各大互联网公司2014前端笔试面试题：CSS篇</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://hugzh.github.io" title="Vince">Vince</a>
     </p>
   <p class="article-time">
-    <time datetime="2015-03-10T16:00:00.000Z" itemprop="datePublished">2015-03-11</time>
-    更新日期:<time datetime="2015-08-10T06:00:47.812Z" itemprop="dateModified">2015-08-10</time>
+    <time datetime="2014-11-20T16:00:00.000Z" itemprop="datePublished">2014-11-21</time>
+    更新日期:<time datetime="2015-08-11T06:22:19.803Z" itemprop="dateModified">2015-08-11</time>
     
   </p>
 </header>
@@ -84,25 +84,38 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#xxx_li_优先级_100_+1"><span class="toc-number">1.</span> <span class="toc-text">xxx li 优先级 100 +1</span></a></li></ol>
 		</div>
 		
-		<p>javascript 的操作符运算中有很多是可以适用于不同类型的值，这是因为javascript本身是一门变量类型松散型的语言，在使用运算符的时候有很多容易出错的地方。加法和减法这两个运算符是各种开发语言中用得最多的运算符了，但是在ECMAScript中，这两个操作符却有一系列特殊行为。</p>
-<p>1、加法：<br>如果+号的两个操作数有一个是字符串，那么就有下面的规则：<br>两个操作数都是字符串的时候，那么结果就是两个字符串拼接；<br>只有一个是字符串，那么将另外一个操作数转化为字符串，然后两个字符串拼接<br>如果有一个操作数是对象、数值或者布尔值，则调用它们的toString()方法取得相应的字符串值，再按照上面的规则。</p>
-<p>比如:<br>var res = 5+5; //两个数值相加，结果为10<br>var res2 = 5+“5”; //一个数值和一个字符串相加，结果为”55”<br>编程中常犯的一个错误就是当我们想要得到相加结果，我们很容易这么写：<br>var num1 = 5;<br>var num2 = 10;<br>var msg = “The sum of 5 and 10 is “ + num1 +num2; //错误结果</p>
-<p>这样我们得到的结果竟然是“The sum of 5 and 10 is 510”。出现这样的情况就是因为运算规则是从左到右，前面一个加号是字符串和数值相加，根据上面的规则，结果为字符串，然后再进行下一步加法时，还是字符串和数值的相加，结果就会出现上面的错误，正确的写法是将后两个数值相加就和之后再与字符串合并，即：<br>var num1 = 5;<br>var num2 = 10;<br>var msg = “The sum of 5 and 10 is “ +（ num1 +num2）; // The sum of 5 and 10 is 15</p>
-<p>2、减法：<br>减法和加法类似，但是参数转换略有不同，减法的两个操作数其中一个是字符串、布尔值或者对象的时候，后台调用Number() 函数将其转换为数值再进行减法运算。比如：</p>
-<p>var res1 = 5 - true; //4，因为true被转换成1<br>var res2 = 5 - “”; //5，因为””被转化成0<br>var res3 = 5 - “2”; //3，因为”2”被转化成数值2</p>
-<p>3、相等操作符：<br>javascript中==和===不一样。前一个是相等操作符，在比较之前会进行类型强制转换，也就是说true==1、null==undefined是成立的。但是后一个操作符是全等操作符，比较之前不会进行类型转换，所以全等的前提是类型和值都相等，关系才成立。</p>
-<p>还有很多类似的小细节，使用者在开发过程中一定要注意这些可能造成致命错误的细节。</p>
-  
+		<p>1.有哪项方式可以对一个DOM设置它的CSS样式？<br>外部样式表，引入一个外部css文件<br>内部样式表，将css代码放在 &lt;head&gt; 标签内部<br>内联样式，将css样式直接定义在 HTML 元素内部<br>2.CSS都有哪些选择器？</p>
+<p>派生选择器（用HTML标签申明）<br>id选择器（用DOM的ID申明）<br>类选择器（用一个样式类名申明）<br>属性选择器（用DOM的属性申明，属于CSS2，IE6不支持，不常用，不知道就算了）</p>
+<p>除了前3种基本选择器，还有一些扩展选择器，包括</p>
+<p>后代选择器（利用空格间隔，比如div .a{ }）<br>群组选择器（利用逗号间隔，比如p,div,#a{ }）</p>
+<p>那么问题来了，CSS选择器的优先级是怎么样定义的？</p>
+<p>基本原则：</p>
+<p>一般而言，选择器越特殊，它的优先级越高。也就是选择器指向的越准确，它的优先级就越高。<br>复杂的计算方法：</p>
+<p>用1表示派生选择器的优先级<br>用10表示类选择器的优先级<br>用100标示ID选择器的优先级<br>div.test1 .span var 优先级 1+10 +10 +1<br>span#xxx .songs li 优先级1+100 + 10 + 1</p>
+<h1 id="xxx_li_优先级_100_+1">xxx li 优先级 100 +1</h1><p>3.CSS中可以通过哪些属性定义，使得一个DOM元素不显示在浏览器可视范围内？</p>
+<p>最基本的：<br>设置display属性为none，或者设置visibility属性为hidden</p>
+<p>技巧性：<br>设置宽高为0，设置透明度为0，设置z-index位置在-1000<br>4.超链接访问过后hover样式就不出现的问题是什么？如何解决？</p>
+<p>答案：被点击访问过的超链接样式不在具有hover和active了,解决方法是改变CSS属性的排列顺序: L-V-H-A（link,visited,hover,active）<br>5.什么是Css Hack？ie6,7,8的hack分别是什么？</p>
+<p>答案：针对不同的浏览器写不同的CSS code的过程，就是CSS hack。<br>7.行内元素和块级元素的具体区别是什么？行内元素的padding和margin可设置吗？</p>
+<p>块级元素(block)特性：</p>
+<p>总是独占一行，表现为另起一行开始，而且其后的元素也必须另起一行显示;<br>宽度(width)、高度(height)、内边距(padding)和外边距(margin)都可控制;<br>内联元素(inline)特性：<br>和相邻的内联元素在同一行;<br>宽度(width)、高度(height)、内边距的top/bottom(padding-top/padding-bottom)和外边距的top/bottom(margin-top/margin-bottom)都不可改变（也就是padding和margin的left和right是可以设置的），就是里面文字或图片的大小。<br>那么问题来了，浏览器还有默认的天生inline-block元素（拥有内在尺寸，可设置高宽，但不会自动换行），有哪些？</p>
+<p>答案：&lt;input&gt; 、&lt;img&gt; 、&lt;button&gt; 、&lt;textarea&gt; 、&lt;label&gt;。<br>8.什么是外边距重叠？重叠的结果是什么？<br>答案：<br>外边距重叠就是margin-collapse。<br>在CSS当中，相邻的两个盒子（可能是兄弟关系也可能是祖先关系）的外边距可以结合成一个单独的外边距。这种合并外边距的方式被称为折叠，并且因而所结合成的外边距称为折叠外边距。</p>
+<p>折叠结果遵循下列计算规则：</p>
+<p>两个相邻的外边距都是正数时，折叠结果是它们两者之间较大的值。<br>两个相邻的外边距都是负数时，折叠结果是两者绝对值的较大值。<br>两个外边距一正一负时，折叠结果是两者的相加的和。</p>
+<p>9.rgba()和opacity的透明效果有什么不同？<br>答案：<br>rgba()和opacity都能实现透明效果，但最大的不同是opacity作用于元素，以及元素内的所有内容的透明度，<br>而rgba()只作用于元素的颜色或其背景色。（设置rgba透明的元素的子元素不会继承透明效果！）</p>
+<p>10.css中可以让文字在垂直和水平方向上重叠的两个属性是什么？<br>答案：<br>垂直方向：line-height<br>水平方向：letter-spacing</p>
+<p>那么问题来了，关于letter-spacing的妙用知道有哪些么？<br>答案:可以用于消除inline-block元素间的换行符空格间隙问题。<br>11.如何垂直居中一个浮动元素？</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// 方法一：已知元素的高宽</span><br><span class="line"></span><br><span class="line">#div1&#123;</span><br><span class="line">background-color:#6699FF;</span><br><span class="line">width:200px;</span><br><span class="line">height:200px;</span><br><span class="line"></span><br><span class="line">position: absolute; //父元素需要相对定位</span><br><span class="line">top: 50%;</span><br><span class="line">left: 50%;</span><br><span class="line">margin-top:-100px ; //二分之一的height，width</span><br><span class="line">margin-left: -100px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//方法二:未知元素的高宽</span><br><span class="line"></span><br><span class="line">#div1&#123;</span><br><span class="line">width: 200px;</span><br><span class="line">height: 200px;</span><br><span class="line">background-color: #6699FF;</span><br><span class="line"></span><br><span class="line">margin:auto;</span><br><span class="line">position: absolute; //父元素需要相对定位</span><br><span class="line">left: 0;</span><br><span class="line">top: 0;</span><br><span class="line">right: 0;</span><br><span class="line">bottom: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
 </div>
 
 
@@ -137,18 +150,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/03/26/html5-e9-87-8c-e7-9a-84placeholder-e5-b1-9e-e6-80-a7/" title="HTML5里的placeholder属性">
+ <a href="/2015/01/28/jmobile-use-1/" title="移动前端框架jQuery Mobile 的介绍（一）">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  HTML5里的placeholder属性</span>
+  移动前端框架jQuery Mobile 的介绍（一）</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2015/01/29/e7-a7-bb-e5-8a-a8-e5-89-8d-e7-ab-af-e6-a1-86-e6-9e-b6jquery-mobile-e7-9a-84-e4-bb-8b-e7-bb-8d-ef-bc-88-e4-ba-8c-ef-bc-89/"  title="移动前端框架jQuery Mobile 的介绍（二）">
+<a href="/2014/11/21/problem-of-hash/"  title="使用哈希密码的安全性问题">
  <strong>NEXT:</strong><br/> 
- <span>移动前端框架jQuery Mobile 的介绍（二）
+ <span>使用哈希密码的安全性问题
 </span>
 </a>
 </div>
@@ -165,7 +178,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#xxx_li_优先级_100_+1"><span class="toc-number">1.</span> <span class="toc-text">xxx li 优先级 100 +1</span></a></li></ol>
   </div>
 
 <div id="asidepart">
@@ -177,9 +190,9 @@
 	<p class="asidetitle">分类</p>
 		<ul>
 		
-			<li><a href="/categories/Nodejs/" title="Nodejs">Nodejs<sup>1</sup></a></li>
-		
 			<li><a href="/categories/javascript/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Nodejs/" title="Nodejs">Nodejs<sup>1</sup></a></li>
 		
 			<li><a href="/categories/javascript/" title="javascript">javascript<sup>7</sup></a></li>
 		
@@ -191,9 +204,9 @@
 		
 			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
 		
-			<li><a href="/categories/javascript/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
-		
 			<li><a href="/categories/javascript/php/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
+		
+			<li><a href="/categories/javascript/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
 		
 			<li><a href="/categories/Nodejs/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
 		

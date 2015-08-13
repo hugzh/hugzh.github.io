@@ -4,15 +4,12 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>移动前端框架jQuery Mobile 的介绍（二） | 香蕉船的博客</title>
+    <title>Php验证码制作 | 香蕉船的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Vince">
     
-    <meta name="description" content="上一篇主要是介绍了jMobile框架的基础知识，在这一篇里，我们主要是介绍表单应用以及基于移动端的各种events。
-一、表单基础：
-在 jQuery Mobile 中，我们可以使用下列表单控件：1、文本输入框2、搜索输入框3、单选按钮4、复选框5、选择菜单6、滑动条7、翻转拨动开关
-1~5都是和P">
+    <meta name="description" content="关于网页制作中的验证码部分是一个比较有趣的知识点，验证码的制作主要是基于PHP的图片处理拓展功能。 验证码制作的一般流程是：1、创建验证码显示的底图2、列出所有可能用到的字符内容以及字体颜色3、随机截取部分（4或者5个）字符作为验证码输出4、确定验证码显示的角度以及坐标5、增加干扰元素（点和线条等）">
     
     
     
@@ -69,15 +66,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/01/29/e7-a7-bb-e5-8a-a8-e5-89-8d-e7-ab-af-e6-a1-86-e6-9e-b6jquery-mobile-e7-9a-84-e4-bb-8b-e7-bb-8d-ef-bc-88-e4-ba-8c-ef-bc-89/" title="移动前端框架jQuery Mobile 的介绍（二）" itemprop="url">移动前端框架jQuery Mobile 的介绍（二）</a>
+      <a href="/2014/09/17/yanzhengma-php/" title="Php验证码制作" itemprop="url">Php验证码制作</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://hugzh.github.io" title="Vince">Vince</a>
     </p>
   <p class="article-time">
-    <time datetime="2015-01-28T16:00:00.000Z" itemprop="datePublished">2015-01-29</time>
-    更新日期:<time datetime="2015-08-11T06:30:18.132Z" itemprop="dateModified">2015-08-11</time>
+    <time datetime="2014-09-16T16:00:00.000Z" itemprop="datePublished">2014-09-17</time>
+    更新日期:<time datetime="2015-08-11T06:32:11.429Z" itemprop="dateModified">2015-08-11</time>
     
   </p>
 </header>
@@ -89,31 +86,9 @@
 		
 		</div>
 		
-		<p>上一篇主要是介绍了jMobile框架的基础知识，在这一篇里，我们主要是介绍<br>表单应用以及基于移动端的各种events。</p>
-<p>一、表单基础：</p>
-<p>在 jQuery Mobile 中，我们可以使用下列表单控件：<br>1、文本输入框<br>2、搜索输入框<br>3、单选按钮<br>4、复选框<br>5、选择菜单<br>6、滑动条<br>7、翻转拨动开关</p>
-<p>1~5都是和PC前端的用法一样。其中，滑动条以及翻转拨动按钮是具有移动设备特色的表单。值得注意的是，由于<br>html5的使用，input标签的type值可以是mail、date、search，这是不同于PC端的使用，<br>非常方便。如需让标签和表单元素看起来更适应宽屏，可以用带有data-role=”fieldcontain”<br>属性的<br>div或<br>fieldset元素包围 label/form 元素：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&amp;lt;form method="post" action="demoform.html"&amp;gt;</span><br><span class="line">&amp;lt;div data-role="fieldcontain"&amp;gt;</span><br><span class="line">&amp;lt;label for="fname"&amp;gt;姓:&amp;lt;/label&amp;gt;</span><br><span class="line">&amp;lt;input type="text" name="fname" id="fname"&amp;gt;</span><br><span class="line">&amp;lt;label for="lname"&amp;gt;名:&amp;lt;/label&amp;gt;</span><br><span class="line">&amp;lt;input type="text" name="lname" id="lname"&amp;gt;</span><br><span class="line">&amp;lt;/div&amp;gt;</span><br><span class="line">&amp;lt;/form&amp;gt;</span><br></pre></td></tr></table></figure>
-<p>&nbsp;</p>
-<p>为了创建一个可以折叠的表单，可以将表单内容置于带有data-role=”collapsible”</p>
-<p>属性的fieldset中。<br>表单滑动条的使用如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&amp;lt;input type="range" name="points" id="points" value="50" min="0" max="100"/&amp;gt;</span><br></pre></td></tr></table></figure>
-<p>&nbsp;</p>
-<p>其中的value属性表示滑动条的默认值，min和max是滑动条的取值范围。如果想要高亮突出<br>显示滑动条的值，添加 data-highlight=”true”。</p>
-<p>至于拨动按钮开关，用法如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&amp;lt;select name="switch" id="switch" data-role="slider"&amp;gt;</span><br><span class="line">&amp;lt;option value="on"&amp;gt;On&amp;lt;/option&amp;gt;</span><br><span class="line">&amp;lt;option value="off"&amp;gt;Off&amp;lt;/option&amp;gt;</span><br><span class="line">&amp;lt;/select&amp;gt;</span><br></pre></td></tr></table></figure>
-<p>&nbsp;</p>
-<p>可以在option里面添加 “selected” 属性来设置选项中的一个为预选中状态（高亮突出显<br>示状态）。</p>
-<p>二、页面事件：</p>
-<p>在 jQuery Mobile 中, 使用pageinit 事件来设置代码脚本在DOM元素加载完成后开始<br>执行，所以要在任何新页面加载并创建是执行脚本，就需要绑定pageinit事件：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&amp;lt;script&amp;gt;</span><br><span class="line">$(<span class="built_in">document</span>).on(<span class="string">"pageinit"</span>,<span class="string">"#pageone"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;);</span><br><span class="line">&amp;lt;<span class="regexp">/script&amp;gt;</span></span><br></pre></td></tr></table></figure>
-<p>点击事件：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$(<span class="string">"p"</span>).on(<span class="string">"tap"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">$(<span class="keyword">this</span>).hide();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>长按事件：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$(<span class="string">"p"</span>).on(<span class="string">"taphold"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">$(<span class="keyword">this</span>).hide();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>滑动事件：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//简单滑动</span><br><span class="line">$("p").on("swipe",function()&#123;</span><br><span class="line">$("span").text("Swipe detected!");</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//向左滑动</span><br><span class="line">$("p").on("swipeleft",function()&#123;</span><br><span class="line">alert("You swiped left!");</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//向右滑动</span><br><span class="line">$("p").on("swiperight",function()&#123;</span><br><span class="line">alert("You swiped right!");</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">[/codesyntax]</span><br><span class="line"></span><br><span class="line">滚动屏幕事件：</span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line"></span><br><span class="line">//滚屏开始</span><br><span class="line">$(document).on("scrollstart",function()&#123;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//滚屏结束</span><br><span class="line">$(document).on("scrollstop",function()&#123;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>另外，还有页面加载完成、失败、页面切换等事件，如果需要更加详细地了解jMobile的<br>用法，可以登录官方网站(<a href="http://jquerymobile.com/)去了解更多用法。" target="_blank" rel="external">http://jquerymobile.com/)去了解更多用法。</a></p>
+		<p>关于网页制作中的验证码部分是一个比较有趣的知识点，验证码的制作主要是基于PHP的图片处理拓展功能。 验证码制作的一般流程是：<br>1、创建验证码显示的底图<br>2、列出所有可能用到的字符内容以及字体颜色<br>3、随机截取部分（4或者5个）字符作为验证码输出<br>4、确定验证码显示的角度以及坐标<br>5、增加干扰元素（点和线条等）<br>6、php输出图片，并在脚本及时地destroy掉图片<br>然后是一个值得注意的地方就是，一般来说验证码不应该出现容易混淆的字符，比如l和1,2和z,0和o等等，这是作为一个开发者从用户体验的角度来说需要注意的地方，另外就是干扰元素的颜色不应该使用鲜艳的颜色，一般来说颜色RGB值在50之后比较稳妥。<br>以下是我的php代码，命名为yanzhengma.php:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">`<span class="variable">$image</span> = imagecreatetruecolor(<span class="number">100</span>,<span class="number">30</span>);<span class="comment">//100x30的图片生成</span></span><br><span class="line"><span class="variable">$bgcolor</span> = imagecolorallocate(<span class="variable">$image</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>);<span class="comment">//白色底色</span></span><br><span class="line">imagefill(<span class="variable">$image</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="variable">$bgcolor</span>);`</span><br><span class="line"></span><br><span class="line"><span class="comment">//保存验证码内容便于服务器验证</span></span><br><span class="line"><span class="variable">$capchcode</span>=<span class="string">''</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="variable">$i</span> = <span class="number">0</span>;<span class="variable">$i</span>&amp;lt;<span class="number">4</span>;<span class="variable">$i</span>++)&#123;</span><br><span class="line"><span class="variable">$fontsize</span>=<span class="number">12</span>;</span><br><span class="line"><span class="variable">$fontcolor</span> = imagecolorallocate(<span class="variable">$image</span>,rand(<span class="number">0</span>,<span class="number">120</span>),rand(<span class="number">0</span>,<span class="number">120</span>),rand(<span class="number">0</span>,<span class="number">120</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//$fontcotent = rand(0,9);//产生随机数字</span></span><br><span class="line"><span class="variable">$data</span> = <span class="string">'ABCDEHJKYSWTRabcdefghjkmnpqstuwsy23456789'</span>;</span><br><span class="line"><span class="variable">$fontcotent</span> = substr(<span class="variable">$data</span>,rand(<span class="number">0</span>,strlen(<span class="variable">$data</span>)),<span class="number">1</span>);<span class="comment">//随机截取一个字符</span></span><br><span class="line"><span class="variable">$capchcode</span> .= <span class="variable">$fontcotent</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$x</span> = (<span class="variable">$i</span>*<span class="number">100</span>/<span class="number">4</span>)+rand(<span class="number">5</span>,<span class="number">10</span>);<span class="comment">//定义内容的x坐标、y坐标，随机</span></span><br><span class="line"><span class="variable">$y</span> = rand(<span class="number">5</span>,<span class="number">12</span>);</span><br><span class="line">imagestring(<span class="variable">$image</span>,<span class="variable">$fontsize</span>,<span class="variable">$x</span>,<span class="variable">$y</span>,<span class="variable">$fontcotent</span>,<span class="variable">$fontcolor</span>);<span class="comment">//产生字符送到图片</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$_SESSION</span>[<span class="string">'authcode'</span>] = <span class="variable">$capchcode</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//添加点干扰元素</span></span><br><span class="line"><span class="keyword">for</span>(<span class="variable">$i</span> = <span class="number">0</span>;<span class="variable">$i</span>&amp;lt;<span class="number">300</span>;<span class="variable">$i</span>++)&#123;</span><br><span class="line"><span class="variable">$pointcolor</span> = imagecolorallocate(<span class="variable">$image</span>,rand(<span class="number">50</span>,<span class="number">200</span>),rand(<span class="number">50</span>,<span class="number">200</span>),rand(<span class="number">50</span>,<span class="number">200</span>));</span><br><span class="line">imagesetpixel(<span class="variable">$image</span>,rand(<span class="number">1</span>,<span class="number">99</span>),rand(<span class="number">1</span>,<span class="number">29</span>),<span class="variable">$pointcolor</span>);<span class="comment">//点元素分布</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//添加线条干扰</span></span><br><span class="line"><span class="keyword">for</span>(<span class="variable">$i</span> = <span class="number">0</span>;<span class="variable">$i</span>&amp;lt;<span class="number">3</span>;<span class="variable">$i</span>++)&#123;</span><br><span class="line"><span class="variable">$linecolor</span> = imagecolorallocate(<span class="variable">$image</span>,rand(<span class="number">80</span>,<span class="number">220</span>),rand(<span class="number">80</span>,<span class="number">220</span>),rand(<span class="number">80</span>,<span class="number">220</span>));</span><br><span class="line">imageline(<span class="variable">$image</span>,rand(<span class="number">1</span>,<span class="number">99</span>),rand(<span class="number">1</span>,<span class="number">29</span>),rand(<span class="number">1</span>,<span class="number">99</span>),rand(<span class="number">1</span>,<span class="number">29</span>),<span class="variable">$linecolor</span>);<span class="comment">//线条元素分布,两点确定一条直线</span></span><br><span class="line">&#125;</span><br><span class="line">header(<span class="string">'content-type:image/png'</span>);</span><br><span class="line">imagepng(<span class="variable">$image</span>);</span><br><span class="line">imagedestroy(<span class="variable">$image</span>);</span><br></pre></td></tr></table></figure>
+<p>总的来说，简单验证码的制作并不难，如果要做一些gif类型的验证码或者一些更加个性化的验证码就需要多花费一些时间去查找相关资料了，这里不做介绍。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -121,7 +96,7 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/javascript/">javascript</a>►<a class="article-category-link" href="/categories/javascript/前端开发/">前端开发</a>
+  <a class="article-category-link" href="/categories/php/">php</a>
 </div>
 
 
@@ -156,18 +131,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/03/11/javascript-e6-93-8d-e4-bd-9c-e7-ac-a6-e4-bd-bf-e7-94-a8-e6-b3-a8-e6-84-8f-e4-ba-8b-e9-a1-b9/" title="JavaScript操作符使用注意事项">
+ <a href="/2014/10/01/uploadyfy-introduce/" title="文件上传插件Uploadify的简单介绍">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  JavaScript操作符使用注意事项</span>
+  文件上传插件Uploadify的简单介绍</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2015/01/28/e7-a7-bb-e5-8a-a8-e5-89-8d-e7-ab-af-e6-a1-86-e6-9e-b6jquery-mobile-e7-9a-84-e4-bb-8b-e7-bb-8d-ef-bc-88-e4-b8-80-ef-bc-89/"  title="移动前端框架jQuery Mobile 的介绍（一）">
+<a href="/2014/09/03/haskell-introduce/"  title="Haskell初接触感悟">
  <strong>NEXT:</strong><br/> 
- <span>移动前端框架jQuery Mobile 的介绍（一）
+ <span>Haskell初接触感悟
 </span>
 </a>
 </div>
@@ -196,9 +171,9 @@
 	<p class="asidetitle">分类</p>
 		<ul>
 		
-			<li><a href="/categories/Nodejs/" title="Nodejs">Nodejs<sup>1</sup></a></li>
-		
 			<li><a href="/categories/javascript/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Nodejs/" title="Nodejs">Nodejs<sup>1</sup></a></li>
 		
 			<li><a href="/categories/javascript/" title="javascript">javascript<sup>7</sup></a></li>
 		
@@ -210,9 +185,9 @@
 		
 			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
 		
-			<li><a href="/categories/javascript/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
-		
 			<li><a href="/categories/javascript/php/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
+		
+			<li><a href="/categories/javascript/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
 		
 			<li><a href="/categories/Nodejs/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
 		
