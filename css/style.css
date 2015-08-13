@@ -1040,6 +1040,9 @@ article .article-content .right {
   margin-left: 1em;
   float: right;
 }
+article .article-content pre {
+  background: #2d2d2d;
+}
 footer.article-footer {
   background: #fafafa;
   padding: 0 4%;

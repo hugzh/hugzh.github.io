@@ -29,7 +29,7 @@
       <div>
 		
 			<div id="imglogo">
-				<a href="/blog/"><img src="/blog/img/logo.svg" alt="香蕉船的博客" title="香蕉船的博客"/></a>
+				<a href="/blog/"><img src="/blog/img/logo.png" alt="香蕉船的博客" title="香蕉船的博客"/></a>
 			</div>
 			
 			<div id="textlogo">
@@ -41,11 +41,11 @@
 			<nav class="animated">
 				<ul>
 					
-						<li><a href="/">主页|Home</a></li>
+						<li><a href="/blog">主页|Home</a></li>
 					
-						<li><a href="/archive">归档|Archives</a></li>
+						<li><a href="/blog/archives">归档|Archives</a></li>
 					
-						<li><a href="/about">关于我|About</a></li>
+						<li><a href="/blog/about">关于我|About</a></li>
 					
 					<li>
 					
@@ -103,8 +103,26 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://hugzh.github.io/blog/2014/09/17/php-e9-aa-8c-e8-af-81-e7-a0-81-e5-88-b6-e4-bd-9c/" data-title="Php验证码制作 | 香蕉船的博客" data-tsina="null" class="share clearfix">
-  </div>
+  
+<div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a class="jiathis_button_twitter">Twitter</a>
+    <a class="jiathis_button_evernote">EverNote</a>
+    <a href="http://www.jiathis.com/share?uid=1501277" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+" charset="utf-8"></script>      
+
 
 </div>
 </footer>   	       
@@ -216,8 +234,8 @@
   <div class="linkslist">
   <p class="asidetitle">友情链接</p>
     <ul>
-      <li><a href="http://yangjian.me" target="_blank" title="YangJian">Alimon's Blog</a></li>
-      <li><a href="http://hexo.io" target="_blank" title="Hexo">Hexo</a></li>
+      <li><a href="http://www.w3cfuns.com/" target="_blank" title="YangJian">前端网</a></li>
+      <li><a href="https://github.com/fouber/blog" target="_blank" title="名家博客">精品博文</a></li>
     </ul>
 </div>
 
@@ -348,34 +366,6 @@ $(document).ready(function(){
 });
 </script>
 
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina');
-  var html = [
-  '<a href="#" class="overlay" id="qrcode"></a>',
-  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
-  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-  $('.article-share-qrcode').click(function(){
-    var imgSrc = $('#qrcode-pic').attr('data-src');
-    $('#qrcode-pic').attr('src', imgSrc);
-    $('#qrcode-pic').load(function(){
-        $('.qrcode strong').text(' ');
-    });
-  });
-});     
-</script>
 
 
 <script type="text/javascript">
