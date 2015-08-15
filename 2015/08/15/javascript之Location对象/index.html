@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>JavaScript操作符使用注意事项 | 香蕉船的博客</title>
+    <title>javascript之Location对象 | 香蕉船的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Vince">
     
-    <meta name="description" content="javascript 的操作符运算中有很多是可以适用于不同类型的值，这是因为javascript本身是一门变量类型松散型的语言，在使用运算符的时候有很多容易出错的地方。加法和减法这两个运算符是各种开发语言中用得最多的运算符了，但是在ECMAScript中，这两个操作符却有一系列特殊行为。
-1、加法：">
+    <meta name="description" content="Location对象location对象是最有用的BOM对象之一，它提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。location对象既是window对象的属性，也是document对象的属性，window.location和document.location是引用同一个对象。
+lo">
     
     
     
@@ -69,15 +69,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/03/11/javascript-op/" title="JavaScript操作符使用注意事项" itemprop="url">JavaScript操作符使用注意事项</a>
+      <a href="/2015/08/15/javascript之Location对象/" title="javascript之Location对象" itemprop="url">javascript之Location对象</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://hugzh.github.io" title="Vince">Vince</a>
     </p>
   <p class="article-time">
-    <time datetime="2015-03-10T16:00:00.000Z" itemprop="datePublished">2015-03-11</time>
-    更新日期:<time datetime="2015-08-13T15:33:05.259Z" itemprop="dateModified">2015-08-13</time>
+    <time datetime="2015-08-15T04:55:22.000Z" itemprop="datePublished">2015-08-15</time>
+    更新日期:<time datetime="2015-08-15T05:26:30.369Z" itemprop="dateModified">2015-08-15</time>
     
   </p>
 </header>
@@ -86,29 +86,41 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Location对象"><span class="toc-number">1.</span> <span class="toc-text">Location对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#location对象的所有属性"><span class="toc-number">1.1.</span> <span class="toc-text">location对象的所有属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于hash"><span class="toc-number">1.2.</span> <span class="toc-text">关于hash</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#“#”的含义"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">“#”的含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP请求不包括”#”"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">HTTP请求不包括”#”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#改变“#”后面的字符不触发网页重载"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">改变“#”后面的字符不触发网页重载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#改变“#”会改变浏览器的访问历史"><span class="toc-number">1.2.0.4.</span> <span class="toc-text">改变“#”会改变浏览器的访问历史</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#监听hash值变化的方法"><span class="toc-number">1.2.0.5.</span> <span class="toc-text">监听hash值变化的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Google抓取“#”的机制"><span class="toc-number">1.2.0.6.</span> <span class="toc-text">Google抓取“#”的机制</span></a></li></ol></li></ol></li></ol></li></ol>
 		</div>
 		
-		<p>javascript 的操作符运算中有很多是可以适用于不同类型的值，这是因为javascript本身是一门变量类型松散型的语言，在使用运算符的时候有很多容易出错的地方。加法和减法这两个运算符是各种开发语言中用得最多的运算符了，但是在ECMAScript中，这两个操作符却有一系列特殊行为。</p>
-<p>1、加法：<br>如果+号的两个操作数有一个是字符串，那么就有下面的规则：<br>两个操作数都是字符串的时候，那么结果就是两个字符串拼接；<br>只有一个是字符串，那么将另外一个操作数转化为字符串，然后两个字符串拼接<br>如果有一个操作数是对象、数值或者布尔值，则调用它们的toString()方法取得相应的字符串值，再按照上面的规则。</p>
-<p>比如:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> res = <span class="number">5</span>+<span class="number">5</span>; <span class="comment">//两个数值相加，结果为10</span></span><br><span class="line"><span class="keyword">var</span> res2 = <span class="number">5</span>+“<span class="number">5</span>”; <span class="comment">//一个数值和一个字符串相加，结果为"55"</span></span><br></pre></td></tr></table></figure>
-<p>编程中常犯的一个错误就是当我们想要得到相加结果，我们很容易这么写：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> msg = <span class="string">"The sum of 5 and 10 is "</span> + num1 +num2; <span class="comment">//错误结果</span></span><br></pre></td></tr></table></figure>
-<p>这样我们得到的结果竟然是“The sum of 5 and 10 is 510”。出现这样的情况就是因为运算规则是从左到右，前面一个加号是字符串和数值相加，根据上面的规则，结果为字符串，然后再进行下一步加法时，还是字符串和数值的相加，结果就会出现上面的错误，正确的写法是将后两个数值相加就和之后再与字符串合并，即：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> msg = <span class="string">"The sum of 5 and 10 is "</span> +（ num1 +num2）; <span class="comment">// The sum of 5 and 10 is 15</span></span><br></pre></td></tr></table></figure>
-<p>2、减法：<br>减法和加法类似，但是参数转换略有不同，减法的两个操作数其中一个是字符串、布尔值或者对象的时候，后台调用Number() 函数将其转换为数值再进行减法运算。比如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> res1 = <span class="number">5</span> - <span class="literal">true</span>; <span class="comment">//4，因为true被转换成1</span></span><br><span class="line"><span class="keyword">var</span> res2 = <span class="number">5</span> - <span class="string">""</span>; <span class="comment">//5，因为""被转化成0</span></span><br><span class="line"><span class="keyword">var</span> res3 = <span class="number">5</span> - <span class="string">"2"</span>; <span class="comment">//3，因为"2"被转化成数值2</span></span><br></pre></td></tr></table></figure>
-<p>3、相等操作符：<br>javascript中==和===不一样。前一个是相等操作符，在比较之前会进行类型强制转换，也就是说true==1、null==undefined是成立的。但是后一个操作符是全等操作符，比较之前不会进行类型转换，所以全等的前提是类型和值都相等，关系才成立。</p>
-<p>还有很多类似的小细节，使用者在开发过程中一定要注意这些可能造成致命错误的细节。</p>
+		<h1 id="Location对象">Location对象</h1><p>location对象是最有用的BOM对象之一，它提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。location对象既是window对象的属性，也是document对象的属性，window.location和document.location是引用同一个对象。</p>
+<h2 id="location对象的所有属性">location对象的所有属性</h2><ul>
+<li>hash          //返回URL中的hash(#后面跟的零个或者多个字符),如果URL中不包含散列，则返回空字符串</li>
+<li>host          //返回服务器的名称和端口（如果有）</li>
+<li>hostname      //返回不带端口的服务器名称</li>
+<li>href          //返回当前加载页面的完整URL，location对象的toString()方法也是返回这个值</li>
+<li>pathname      //返回URL中的路径</li>
+<li>port          //返回URL中指定的端口号，没有包含则为空</li>
+<li>ptotocol      //返回这个页面使用的协议</li>
+<li>search        //返回查询字符串，比如“?q=javascript”<br>我想在这里讨论的是location对象的hash属性及其用法</li>
+</ul>
+<h2 id="关于hash">关于hash</h2><h4 id="“#”的含义">“#”的含义</h4><p>“#”代表网页中的一个位置。其右面的字符，就是该位置的标识符。比如,”<a href="http://www.example.com/index.html#print" target="_blank" rel="external">http://www.example.com/index.html#print</a>“<br>就代表网页index.html的print位置。浏览器读取这个URL后，会自动将print位置滚动至可视区域。<br>为网页位置指定标识符，有两个方法。一是使用锚点，比如<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">name</span>=<span class="value">"print"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>二是使用id属性，比如<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"print"</span> &gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="HTTP请求不包括”#”">HTTP请求不包括”#”</h4><p>“#”是用来指导浏览器动作的，对服务器端完全无用。所以，HTTP请求中不包括“#”。在第一个“#”后面出现的任何字符，都会被浏览器解读为位置标识符。这意味着，这些字符都不会被发送到服务器端。</p>
+<h4 id="改变“#”后面的字符不触发网页重载">改变“#”后面的字符不触发网页重载</h4><p>单单改变“#”后的部分，浏览器只会滚动到相应位置，不会重新加载网</p>
+<h4 id="改变“#”会改变浏览器的访问历史">改变“#”会改变浏览器的访问历史</h4><p>每一次改变“#”后的部分，都会在浏览器的访问历史中增加一个记录，使用”后退”按钮，就可以回到上一个位置。<br>这对于ajax应用程序特别有用，可以用不同的“#”值，表示不同的访问状态，然后向用户给出可以访问某个状态的链接。<br>值得注意的是，上述规则对IE 6和IE 7不成立，它们不会因为#的改变而增加历史记录。</p>
+<h4 id="监听hash值变化的方法">监听hash值变化的方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onhashchange = func;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">body</span> <span class="attribute">onhashchange</span>=<span class="value">"func();"</span>&gt;</span></span><br><span class="line">window.addEventListener("hashchange", func, false);</span></span><br></pre></td></tr></table></figure>
+<p>其中，onhashchange是一个html5的事件。当“#”值发生变化时，就会触发这个事件。IE8+、Firefox 3.6+、Chrome 5+、Safari 4.0+支持该事件。对于不支持onhashchange的浏览器，可以用setInterval监控location.hash的变化。</p>
+<h4 id="Google抓取“#”的机制">Google抓取“#”的机制</h4><p>默认情况下，Google的网络蜘蛛忽视URL的#部分。<br>但是，Google还规定，如果你希望Ajax生成的内容被浏览引擎读取，那么URL中可以使用”#!”，Google会自动将其后面的内容转成查询字符串<em>escaped_fragment</em>的值。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/hash/">hash</a><a href="/tags/location/">location</a>
+  </div>
+
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="../../../../categories/index.html">javascript</a>
+  <a class="article-category-link" href="../../../../categories/index.html">javascript</a>►<a class="article-category-link" href="../../../../categories/javascript/index.html">前端开发</a>
 </div>
 
 
@@ -142,19 +154,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/03/26/html5-placeholder/" title="HTML5里的placeholder属性">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  HTML5里的placeholder属性</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/01/29/jmobile-use-2/"  title="移动前端框架jQuery Mobile 的介绍（二）">
+<a href="/2015/07/07/cleaver-make-ppt/"  title="如何使用Cleaver制作html5幻灯">
  <strong>NEXT:</strong><br/> 
- <span>移动前端框架jQuery Mobile 的介绍（二）
+ <span>如何使用Cleaver制作html5幻灯
 </span>
 </a>
 </div>
@@ -171,7 +175,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Location对象"><span class="toc-number">1.</span> <span class="toc-text">Location对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#location对象的所有属性"><span class="toc-number">1.1.</span> <span class="toc-text">location对象的所有属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于hash"><span class="toc-number">1.2.</span> <span class="toc-text">关于hash</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#“#”的含义"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">“#”的含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP请求不包括”#”"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">HTTP请求不包括”#”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#改变“#”后面的字符不触发网页重载"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">改变“#”后面的字符不触发网页重载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#改变“#”会改变浏览器的访问历史"><span class="toc-number">1.2.0.4.</span> <span class="toc-text">改变“#”会改变浏览器的访问历史</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#监听hash值变化的方法"><span class="toc-number">1.2.0.5.</span> <span class="toc-text">监听hash值变化的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Google抓取“#”的机制"><span class="toc-number">1.2.0.6.</span> <span class="toc-text">Google抓取“#”的机制</span></a></li></ol></li></ol></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
