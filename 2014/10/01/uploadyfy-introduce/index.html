@@ -17,7 +17,7 @@
     <link rel="alternate" href="/atom.xml" title="香蕉船的博客" type="application/atom+xml">
     
     
-    <link rel="icon" href="/img/my_favicon.ico">
+    <link rel="icon" href="/img/favicon.ico">
     
     
     <link rel="apple-touch-icon" href="/img/pacman.jpg">
@@ -109,26 +109,8 @@
 
 <div class="article-share" id="share">
 
-  
-<div class="jiathis_style">
-    <span class="jiathis_txt">分享到：</span>
-    <a class="jiathis_button_tsina">新浪微博</a>
-    <a class="jiathis_button_weixin">微信</a>
-    <a class="jiathis_button_twitter">Twitter</a>
-    <a class="jiathis_button_evernote">EverNote</a>
-    <a href="http://www.jiathis.com/share?uid=1501277" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-</div>
-<script type="text/javascript" >
-    var jiathis_config={
-    data_track_clickback:true,
-    sm:"copy,renren,cqq",
-    pic:"",
-    summary:"",
-    
-  </script> 
-<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
-" charset="utf-8"></script>      
-
+  <div data-url="http://hugzh.github.io/2014/10/01/uploadyfy-introduce/" data-title="文件上传插件Uploadify的简单介绍 | 香蕉船的博客" data-tsina="2076290857" class="share clearfix">
+  </div>
 
 </div>
 </footer>   	       
@@ -257,7 +239,7 @@
 </div>
 <!--多说js加载开始，一个页面只需要加载一次 -->
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"void_三国志"};
+  var duoshuoQuery = {short_name:"bloghugzh"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;
@@ -280,7 +262,14 @@
 	</div>
 	
 	
+	<section class="info">
+		<p> 梦想 <br/>
+			在成长中总结，在总结中成长</p>
+	</section>
+	 
 	<div class="social-font clearfix">
+		
+		<a href="http://weibo.com/2076290857" target="_blank" title="weibo"></a>
 		
 		
 		
@@ -377,9 +366,37 @@ $(document).ready(function(){
 </script>
 
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
 
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"void_三国志"};
+  var duoshuoQuery = {short_name:"bloghugzh"};
   (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;
@@ -391,27 +408,6 @@ $(document).ready(function(){
 </script> 
 
 
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.article-content').each(function(i){
-    $(this).find('img').each(function(){
-      if ($(this).parent().hasClass('fancybox')) return;
-      var alt = this.alt;
-      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
-    });
-    $(this).find('.fancybox').each(function(){
-      $(this).attr('rel', 'article' + i);
-    });
-  });
-  if($.fancybox){
-    $('.fancybox').fancybox();
-  }
-}); 
-</script>
 
 
 
