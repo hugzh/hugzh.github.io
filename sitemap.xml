@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://hugzh.github.io/2015/05/14/from-ajax-to-seo/</loc>
+    <lastmod>2015-08-22T13:37:05.223Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://hugzh.github.io/2015/08/15/javascript%E4%B9%8BLocation%E5%AF%B9%E8%B1%A1/</loc>
     <lastmod>2015-08-15T05:26:30.369Z</lastmod>
   </url>
@@ -34,11 +39,6 @@
   <url>
     <loc>http://hugzh.github.io/2014/09/03/haskell-introduce/</loc>
     <lastmod>2015-08-13T15:46:06.126Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://hugzh.github.io/2015/05/14/from-ajax-to-seo/</loc>
-    <lastmod>2015-08-13T15:45:51.603Z</lastmod>
   </url>
   
   <url>
