@@ -24,7 +24,7 @@ Ajax的使用是非常广泛的。作为前端开发者，我们往往喜欢JSON
 [![](http://bloghugzh-wordpress.stor.sinaapp.com/uploads/2015/05/捕获-300x89.jpg "捕获JSON")](http://bloghugzh-wordpress.stor.sinaapp.com/uploads/2015/05/捕获.jpg)
 
 我们需要的仅仅是里面的'url'键对应的值，所以爬虫可以这样去提取数据：
-```{bash}
+```bash
     var json_text = JSON.parse(data.json);
     // get flower
     // {"last_page":0,"row_list":[{"url":'xxxxx'}]}
@@ -35,7 +35,6 @@ Ajax的使用是非常广泛的。作为前端开发者，我们往往喜欢JSON
             url: url.url
         });
     });
-
 ```
 ## 2.搜索引擎优化(SEO)
 
