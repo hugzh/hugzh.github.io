@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title><![CDATA[果汁的随笔]]></title>
-  <subtitle><![CDATA[天赋不够，汗水来凑]]></subtitle>
+  <subtitle><![CDATA[代码不过百万行，不娶媳妇不见娘]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://hugzh.github.io/"/>
-  <updated>2015-09-02T05:26:39.832Z</updated>
+  <updated>2015-09-02T05:30:48.485Z</updated>
   <id>http://hugzh.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://hugzh.github.io/2015/09/02/Flexbox-%E5%B8%83%E5%B1%80/"/>
     <id>http://hugzh.github.io/2015/09/02/Flexbox-布局/</id>
     <published>2015-09-02T03:57:07.000Z</published>
-    <updated>2015-09-02T05:26:39.832Z</updated>
+    <updated>2015-09-02T05:30:48.485Z</updated>
     <content type="html"><![CDATA[<h1 id="1、简述">1、简述</h1><p>Flex布局也叫“弹性盒子布局”，用来为盒状模型提供最大的灵活性。弹性布局的主要思想是让容器有能力来改变项目的宽度和高度，以填满可用空间（主要是为了容纳所有类型的显示设备和屏幕尺寸）的能力。<br>最重要的是弹性盒子布局与方向无关，相对于常规的布局（块是垂直和内联水平为基础），很显然，这些工作以及网页设计缺乏灵活性，无法支持大型和复杂的应用程序（特别当它涉及到改变方向，缩放、拉伸和收缩等）。</p>
 <p>由于flexbox是一个整体模块，而不是单一的一个属性，它涉及到了很多东西，包括它的整个属性集。它们之中有一些是在父容器上设置，而有一些则是在子容器上设置。</p>
 <h2 id="2、flexbox属性详解">2、flexbox属性详解</h2><p>首先，需要看看整个弹性盒子的组成，先看下面一个图：<br><img src="http://img.caibaojian.com/uploads/2014/05/flexbox.png" alt="flexbox"></p>
