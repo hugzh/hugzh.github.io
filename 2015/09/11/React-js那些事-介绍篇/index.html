@@ -4,15 +4,17 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>使用哈希密码的安全性问题 | 果汁的随笔</title>
+    <title>React.js那些事(介绍篇) | 果汁的随笔</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     <meta name="robots" content= "all">
     <meta name="google-site-verification" content="j0iMLqmOjIqnuG-8zz6yPAscqiOVdaDdJ6hAeUl5QLE" />
     
     <meta name="author" content="果汁">
     
-    <meta name="description" content="一、 哈希密码哈希是一种散列函数，就是把任意长度的输入（又叫做预映射， pre-image），通过散列算法，变换成固定长度的输出，该输出就是散列值。这种转换是一种压缩映射，也就是，散列值的空间通常远小于输入的空间，不同的输入可能会散列成相同的输出，而不可能从散列值来唯一的确定输入值。在密码学当中，H">
-    <meta name="og:description" content="一、 哈希密码哈希是一种散列函数，就是把任意长度的输入（又叫做预映射， pre-image），通过散列算法，变换成固定长度的输出，该输出就是散列值。这种转换是一种压缩映射，也就是，散列值的空间通常远小于输入的空间，不同的输入可能会散列成相同的输出，而不可能从散列值来唯一的确定输入值。在密码学当中，H">
+    <meta name="description" content="引言WEB前端开发的发展历史大概经过了“原始时代——类库时代——工程构建时代——模块化时代”。目前前端领域的发展正处在一个空前繁荣的阶段——“模块化/组件化时代”。
+原始时代曾几何时，前端开发在软件工程的技术栈里面只被视为设计类岗位，甚至现在为止也有一些小企业依然把前端的职责视为简单的编写html+">
+    <meta name="og:description" content="引言WEB前端开发的发展历史大概经过了“原始时代——类库时代——工程构建时代——模块化时代”。目前前端领域的发展正处在一个空前繁荣的阶段——“模块化/组件化时代”。
+原始时代曾几何时，前端开发在软件工程的技术栈里面只被视为设计类岗位，甚至现在为止也有一些小企业依然把前端的职责视为简单的编写html+">
     
     
     
@@ -71,15 +73,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/11/21/problem-of-hash/" title="使用哈希密码的安全性问题" itemprop="url">使用哈希密码的安全性问题</a>
+      <a href="/2015/09/11/React-js那些事-介绍篇/" title="React.js那些事(介绍篇)" itemprop="url">React.js那些事(介绍篇)</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://hugzh.github.io" title="果汁">果汁</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-11-20T16:00:00.000Z" itemprop="datePublished">2014-11-21</time>
-    更新日期:<time datetime="2015-08-10T06:00:47.812Z" itemprop="dateModified">2015-08-10</time>
+    <time datetime="2015-09-11T05:28:05.000Z" itemprop="datePublished">2015-09-11</time>
+    更新日期:<time datetime="2015-09-11T06:38:43.233Z" itemprop="dateModified">2015-09-11</time>
     
   </p>
 </header>
@@ -88,28 +90,46 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原始时代"><span class="toc-number">1.1.</span> <span class="toc-text">原始时代</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类库时代"><span class="toc-number">1.2.</span> <span class="toc-text">类库时代</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工程构建时代"><span class="toc-number">1.3.</span> <span class="toc-text">工程构建时代</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块化时代"><span class="toc-number">1.4.</span> <span class="toc-text">模块化时代</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React-js"><span class="toc-number">2.</span> <span class="toc-text">React.js</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#React是什么东西？"><span class="toc-number">2.1.</span> <span class="toc-text">React是什么东西？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟DOM"><span class="toc-number">2.2.</span> <span class="toc-text">虚拟DOM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JSX"><span class="toc-number">2.3.</span> <span class="toc-text">JSX</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#本节结语"><span class="toc-number">3.</span> <span class="toc-text">本节结语</span></a></li></ol>
 		</div>
 		
-		<p>一、 哈希密码<br>哈希是一种散列函数，就是把任意长度的输入（又叫做预映射， pre-image），通过散列算法，变换成固定长度的输出，该输出就是散列值。这种转换是一种压缩映射，也就是，散列值的空间通常远小于输入的空间，不同的输入可能会散列成相同的输出，而不可能从散列值来唯一的确定输入值。<br>在密码学当中，HASH主要用于信息安全领域中加密算法，它把一些不同长度的信息转化成杂乱的128位的编码里,叫做HASH值. 也可以说，hash就是找到一种数据内容和数据存放地址之间的映射关系。MD4和MD5是哈希密码的主要算法。</p>
-<p>二、 哈希密码的安全隐患<br>哈希函数本来是不可逆的函数，也就是说知道了哈希值也不能使用算法把原文推算出来。但是由于常见字符串的哈希值，可以通过查表的方式找到原文，比如彩虹表等等。所以目前还是存在一些数据库可以查到简单字符串的哈希值的，这样就造成了用哈希函数加密的密文安全性不可靠。</p>
-<p>三、 哈希盐值<br>盐值就是程序随机产生的随机字符串组合。<br>加盐后的散列值，可以极大的降低由于用户数据被盗而带来的密码泄漏风险，即使通过彩虹表寻找到了散列后的数值所对应的原始内容，但是由于经过了加盐，插入的字符串扰乱了真正的密码，使得获得真实密码的概率大大降低。那么它的原理是什么呢？<br>查表法和彩虹表只有在所有密码都以相同方式进行哈希加密时才有效。如果两个用户密码相同，那么他们密码的哈希值也是相同的。我们可以通过“随机化”哈希来阻止这类攻击，于是当相同的密码被哈希两次之后，得到的值就不相同了。为了校验密码是否正确，我们需要储存盐值。通常和密码哈希值一起存放在账户数据库中，或者直接存为哈希字符串的一部分。<br>加盐值的时候需要注意以下几点：<br>1、 盐值不能重复。两个相同的密码会得到相同的哈希值。攻击者可以使用反向查表法对每个值进行字典攻击，只需要把盐值应用到每个猜测的密码上再进行哈希即可。如果盐值被硬编码到某个流行的软件里，可以专门为这个软件制作查询表和彩虹表，那么破解它生成的哈希值就变得很简单了。用户创建账户或每次修改密码时，都应该重新生成新的盐值进行加密。<br>2、 盐值不能太短。如果盐值太短，攻击者可以构造一个查询表包含所有可能的盐值。以只有3个ASCII字符的盐值为例，一共有95x95x95=857,375种可能。同样地，用户名也不应该被用作盐值。尽管在一个网站中用户名是唯一的，但是它们是可预测的，并且经常重复用于其他服务中。攻击者可以针对常见用户名构建查询表，然后对用户名盐值哈希发起进攻。<br>为了使攻击者无法构造包含所有可能盐值的查询表，盐值必须足够长。一个好的做法是使用和哈希函数输出的字符串等长的盐值，比如SHA256算法的输出是256bits(32 bytes)，那么盐值也至少应该是32个随机字节。<br>3、 不使用组合哈希。人们经常不由自主地认为将不同的哈希函数组合起来，结果会更加安全。实际上这样做几乎没有好处，仅仅造成了函数之间互相影响的问题，甚至有时候会变得更加不安全。<br>四、哈希加盐存储密码的步骤</p>
-<p>存储密码的步骤<br>1. 使用CSPRNG（伪随机数生成器）生成一个长度足够的盐值<br>2. 将盐值混入密码，并使用标准的加密哈希函数进行加密，如MD5<br>3. 把哈希值和盐值一起存入数据库中对应此用户的那条记录<br>校验密码的步骤<br>1. 从数据库取出用户的密码哈希值和对应盐值<br>2. 将盐值混入用户输入的密码，并且使用同样的哈希函数进行加密<br>3. 比较上一步的结果和数据库储存的哈希值是否相同，如果相同那么密码正确，反之密码错误</p>
+		<h1 id="引言">引言</h1><p>WEB前端开发的发展历史大概经过了“原始时代——类库时代——工程构建时代——模块化时代”。目前前端领域的发展正处在一个空前繁荣的阶段——“模块化/组件化时代”。</p>
+<h2 id="原始时代">原始时代</h2><p>曾几何时，前端开发在软件工程的技术栈里面只被视为设计类岗位，甚至现在为止也有一些小企业依然把前端的职责视为简单的编写html+css页面。早期的前端开发完全依赖于后端技术，所有的数据渲染都由后端开发者进行，界面源码和后台逻辑代码混在一起。这个时代的前端无疑是非常薄的，薄到“网页开发人员”的入门门槛几乎低至为零。</p>
+<h2 id="类库时代">类库时代</h2><p>这一阶段出现了对js封装的各种类库，代表作当然就是前端领域从业者无所不知的jquery库啦。类库时代的开发者承担了很大一部分数据交互的工作。借鉴于AJAX，开发过程可以实现很好的前后端分离，MVC开发框架日益盛行。这个时代，前端开发者在一定程度上摆脱了对后端的严重依赖，使得前后端开发依赖于接口，大大加快了开发效率。</p>
+<h2 id="工程构建时代">工程构建时代</h2><p>基于各种自动化构建工具部署前端代码是这一时代的基本特征，前端发展到今天，自动化构建依然是当前的技术主流，Grunt,gulp.js以及国内的Fis等都是自动化代码优化和部署的热门工具。</p>
+<h2 id="模块化时代">模块化时代</h2><p>模块化时代标志着前端开发正式进入工程化阶段，“前端工程师”正式成为名副其实的“工程师”。我之所以这样认为是因为这一阶段前端开发可以完全实现代码的重用，实现模块化开发，系统化、规范化的软件开发就是“软件工程”。所以前端工程师也就是在这一阶段日渐活跃，需求量也迅猛增长。前端模块时代的技术代表就是Require.js以及国内的sea.js这样的模块加载器。在MVC开发模式的基础上实现了对视图层的模块化开发，MVC框架至此达到一个鼎盛阶段。<br>然而前端之所以迷人在于新的开发模式和技术不会停止出现，不同的应用需求催生了新的开发技术的诞生。最近几年，组件化开发正成为前端领域的潮流，组件开发减少了代码的耦合，非常适合大型网站应用的开发（这类大型网站的特点就是大量的模块类似或者重复）。可实现代码高度重用的MVVM框架开发进入开发者眼中——这就是React.js的诞生背景</p>
+<h1 id="React-js">React.js</h1><h2 id="React是什么东西？">React是什么东西？</h2><p>来自官网的介绍：</p>
+<ul>
+<li>仅仅是UI<br>许多人使用React作为MVC架构的V层。尽管React并没有假设过你的其余技术栈，但它仍可以作为一个小特征轻易地在已有项目中使用。</li>
+<li>虚拟DOM<br>React为了更高超的性能而使用虚拟DOM作为其不同的实现。它同时也可以由服务端Node.js渲染而不需要过重的浏览器DOM支持。</li>
+<li>数据流<br>React实现了单向响应的数据流，从而减少了重复代码，这也是它为什么比传统数据绑定更简单。</li>
+</ul>
+<p>也就是说，React是一个视图层的应用，并且是一个高效的视图。React提供了和以往不一样的方式来看待视图，它以组件开发为基础。对React应用而言，你需要分割你的页面，使其成为一个个的组件。也就是说，你的应用是由这些组件组合而成的。组件本身可以实现数据流的的单向流动，实现独立开发。这就是我们所说的“组件驱动开发”。</p>
+<h2 id="虚拟DOM">虚拟DOM</h2><p>React的一大特点是其所拥有的虚拟DOM，它让页面渲染变得非常的高效，并且比直接操纵DOM变得更为可控。由于虚拟DOM的绘制是在内存里面进行的，高效是它的特征。这两大特点的组合使得React具有强大的自上而下的页面渲染能力。</p>
+<p>React提供了一个观察者模型用于替代传统的脏检查（dirty checking）， 也就是持续的检查模型的变化。这也就是解释了为什么React不需要计算哪些发生了改变的原因，因为它根据state的变化会立即知道。这个过程减少了DOM操作，并让应用程序变得更平滑。我们知道DOM操作是非常耗性能的，更少的DOM操作意味着更高效的渲染。React在底层实现了一个diffing算法，该算法使用DOM的树形表示法，当某个 节点发生变化（标记为dirty）时它会重新计算整个子树，你会注意到你的模型发生了改变，因为整个子树在之后会被重新渲染。</p>
+<h2 id="JSX">JSX</h2><p>JSX是什么鬼？？？JSX是一个看起来很像XML的JavaScript语法扩展。React可以用来做简单的JSX句法转换。React提供了（也是建议使用）JSX代替JS进行组件绘制，然后运行的时候使用一个JSX编译器进行转换。JSX的使用还是比较简单的：<br>要渲染 HTML 标签，只需在 JSX 里使用小写字母开头的标签名。<br><figure class="highlight"><table><tr><td class="code"><pre><span class="line">var myDivElement = &#60;div className=&#34;foo&#34; /&#62;;&#10;React.render(myDivElement, document.body);</span><br></pre></td></tr></table></figure></p>
+<p>要渲染 React 组件，只需创建一个大写字母开头的本地变量。<br><figure class="highlight"><table><tr><td class="code"><pre><span class="line">var MyComponent = React.createClass(&#123;/*&#19968;&#20123;&#20195;&#30721;*/&#125;);&#10;var myElement = &#60;MyComponent someProperty=&#123;true&#125; /&#62;;&#10;React.render(myElement, document.body);</span><br></pre></td></tr></table></figure></p>
+<h1 id="本节结语">本节结语</h1><p>关于React.js的入门介绍暂时到这里，想要更多地了解React.js的朋友可以进入<a href="http://reactjs.cn/" target="_blank" rel="external">官方文档</a>进行学习。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/React/">React</a><a href="/tags/virtual-dom/">virtual dom</a>
+  </div>
+
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="../../../../categories/index.html">其它</a>
+  <a class="article-category-link" href="../../../../categories/index.html">前端开发</a>
 </div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://hugzh.github.io/2014/11/21/problem-of-hash/" data-title="使用哈希密码的安全性问题 | 果汁的随笔" data-tsina="2076290857" class="share clearfix">
+  <div data-url="http://hugzh.github.io/2015/09/11/React-js那些事-介绍篇/" data-title="React.js那些事(介绍篇) | 果汁的随笔" data-tsina="2076290857" class="share clearfix">
   </div>
 
 </div>
@@ -118,19 +138,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/01/28/jmobile-use-1/" title="移动前端框架jQuery Mobile 的介绍（一）">
-  <strong>上一篇:</strong><br/>
-  <span>
-  移动前端框架jQuery Mobile 的介绍（一）</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2014/11/21/bat-interview-css/"  title="BAT及各大互联网公司2014前端笔试面试题：CSS篇">
+<a href="/2015/09/02/Flexbox-布局/"  title="Flexbox 布局">
  <strong>下一篇:</strong><br/> 
- <span>BAT及各大互联网公司2014前端笔试面试题：CSS篇
+ <span>Flexbox 布局
 </span>
 </a>
 </div>
@@ -147,7 +159,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原始时代"><span class="toc-number">1.1.</span> <span class="toc-text">原始时代</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类库时代"><span class="toc-number">1.2.</span> <span class="toc-text">类库时代</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工程构建时代"><span class="toc-number">1.3.</span> <span class="toc-text">工程构建时代</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块化时代"><span class="toc-number">1.4.</span> <span class="toc-text">模块化时代</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React-js"><span class="toc-number">2.</span> <span class="toc-text">React.js</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#React是什么东西？"><span class="toc-number">2.1.</span> <span class="toc-text">React是什么东西？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟DOM"><span class="toc-number">2.2.</span> <span class="toc-text">虚拟DOM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JSX"><span class="toc-number">2.3.</span> <span class="toc-text">JSX</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#本节结语"><span class="toc-number">3.</span> <span class="toc-text">本节结语</span></a></li></ol>
   </div>
 
 <div id="asidepart">

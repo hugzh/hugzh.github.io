@@ -96,13 +96,13 @@
 		<p>javascript 的操作符运算中有很多是可以适用于不同类型的值，这是因为javascript本身是一门变量类型松散型的语言，在使用运算符的时候有很多容易出错的地方。加法和减法这两个运算符是各种开发语言中用得最多的运算符了，但是在ECMAScript中，这两个操作符却有一系列特殊行为。</p>
 <p>1、加法：<br>如果+号的两个操作数有一个是字符串，那么就有下面的规则：<br>两个操作数都是字符串的时候，那么结果就是两个字符串拼接；<br>只有一个是字符串，那么将另外一个操作数转化为字符串，然后两个字符串拼接<br>如果有一个操作数是对象、数值或者布尔值，则调用它们的toString()方法取得相应的字符串值，再按照上面的规则。</p>
 <p>比如:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> res = <span class="number">5</span>+<span class="number">5</span>; <span class="comment">//两个数值相加，结果为10</span></span><br><span class="line"><span class="keyword">var</span> res2 = <span class="number">5</span>+“<span class="number">5</span>”; <span class="comment">//一个数值和一个字符串相加，结果为"55"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> res = <span class="number">5</span>+<span class="number">5</span>; <span class="comment">//两个数值相加，结果为10</span></span><br><span class="line"><span class="keyword">var</span> res2 = <span class="number">5</span>+“<span class="number">5</span>”; <span class="comment">//一个数值和一个字符串相加，结果为"55"</span></span><br></pre></td></tr></table></figure>
 <p>编程中常犯的一个错误就是当我们想要得到相加结果，我们很容易这么写：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> msg = <span class="string">"The sum of 5 and 10 is "</span> + num1 +num2; <span class="comment">//错误结果</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> msg = <span class="string">"The sum of 5 and 10 is "</span> + num1 +num2; <span class="comment">//错误结果</span></span><br></pre></td></tr></table></figure>
 <p>这样我们得到的结果竟然是“The sum of 5 and 10 is 510”。出现这样的情况就是因为运算规则是从左到右，前面一个加号是字符串和数值相加，根据上面的规则，结果为字符串，然后再进行下一步加法时，还是字符串和数值的相加，结果就会出现上面的错误，正确的写法是将后两个数值相加就和之后再与字符串合并，即：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> msg = <span class="string">"The sum of 5 and 10 is "</span> +（ num1 +num2）; <span class="comment">// The sum of 5 and 10 is 15</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> msg = <span class="string">"The sum of 5 and 10 is "</span> +（ num1 +num2）; <span class="comment">// The sum of 5 and 10 is 15</span></span><br></pre></td></tr></table></figure>
 <p>2、减法：<br>减法和加法类似，但是参数转换略有不同，减法的两个操作数其中一个是字符串、布尔值或者对象的时候，后台调用Number() 函数将其转换为数值再进行减法运算。比如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> res1 = <span class="number">5</span> - <span class="literal">true</span>; <span class="comment">//4，因为true被转换成1</span></span><br><span class="line"><span class="keyword">var</span> res2 = <span class="number">5</span> - <span class="string">""</span>; <span class="comment">//5，因为""被转化成0</span></span><br><span class="line"><span class="keyword">var</span> res3 = <span class="number">5</span> - <span class="string">"2"</span>; <span class="comment">//3，因为"2"被转化成数值2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> res1 = <span class="number">5</span> - <span class="literal">true</span>; <span class="comment">//4，因为true被转换成1</span></span><br><span class="line"><span class="keyword">var</span> res2 = <span class="number">5</span> - <span class="string">""</span>; <span class="comment">//5，因为""被转化成0</span></span><br><span class="line"><span class="keyword">var</span> res3 = <span class="number">5</span> - <span class="string">"2"</span>; <span class="comment">//3，因为"2"被转化成数值2</span></span><br></pre></td></tr></table></figure>
 <p>3、相等操作符：<br>javascript中==和===不一样。前一个是相等操作符，在比较之前会进行类型强制转换，也就是说true==1、null==undefined是成立的。但是后一个操作符是全等操作符，比较之前不会进行类型转换，所以全等的前提是类型和值都相等，关系才成立。</p>
 <p>还有很多类似的小细节，使用者在开发过程中一定要注意这些可能造成致命错误的细节。</p>
   
@@ -187,7 +187,7 @@
 		
 			<li><a href="/categories/javascript/前端开发/" title="前端开发">前端开发<sup>4</sup></a></li>
 		
-			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
+			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>4</sup></a></li>
 		
 			<li><a href="/categories/Nodejs/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
 		
@@ -201,6 +201,8 @@
 <div class="tagslist">
 	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
+		
+			<li><a href="/tags/React/" title="React">React<sup>1</sup></a></li>
 		
 			<li><a href="/tags/SEO/" title="SEO">SEO<sup>1</sup></a></li>
 		
@@ -218,6 +220,8 @@
 		
 			<li><a href="/tags/location/" title="location">location<sup>1</sup></a></li>
 		
+			<li><a href="/tags/virtual-dom/" title="virtual dom">virtual dom<sup>1</sup></a></li>
+		
 			<li><a href="/tags/幻灯/" title="幻灯">幻灯<sup>1</sup></a></li>
 		
 			<li><a href="/tags/爬虫/" title="爬虫">爬虫<sup>1</sup></a></li>
@@ -234,7 +238,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="../../../../tags/index.html" style="font-size: 10px;">SEO</a> <a href="../../../../tags/index.html" style="font-size: 10px;">cleaver</a> <a href="../../../../tags/index.html" style="font-size: 20px;">css</a> <a href="../../../../tags/index.html" style="font-size: 10px;">flexbox</a> <a href="../../../../tags/index.html" style="font-size: 10px;">hash</a> <a href="../../../../tags/index.html" style="font-size: 10px;">html5</a> <a href="../../../../tags/index.html" style="font-size: 10px;">js</a> <a href="../../../../tags/index.html" style="font-size: 10px;">location</a> <a href="../../../../tags/index.html" style="font-size: 10px;">幻灯</a> <a href="../../../../tags/index.html" style="font-size: 10px;">爬虫</a>
+       <a href="../../../../tags/index.html" style="font-size: 10px;">React</a> <a href="../../../../tags/index.html" style="font-size: 10px;">SEO</a> <a href="../../../../tags/index.html" style="font-size: 10px;">cleaver</a> <a href="../../../../tags/index.html" style="font-size: 20px;">css</a> <a href="../../../../tags/index.html" style="font-size: 10px;">flexbox</a> <a href="../../../../tags/index.html" style="font-size: 10px;">hash</a> <a href="../../../../tags/index.html" style="font-size: 10px;">html5</a> <a href="../../../../tags/index.html" style="font-size: 10px;">js</a> <a href="../../../../tags/index.html" style="font-size: 10px;">location</a> <a href="../../../../tags/index.html" style="font-size: 10px;">virtual dom</a> <a href="../../../../tags/index.html" style="font-size: 10px;">幻灯</a> <a href="../../../../tags/index.html" style="font-size: 10px;">爬虫</a>
     </div>
   </div>
 
@@ -244,6 +248,7 @@
     <ul>
       <li><a href="http://www.w3cfuns.com/" target="_blank" title="YangJian">前端网</a></li>
       <li><a href="https://github.com/fouber/blog" target="_blank" title="名家博客">精品博文</a></li>
+      <li><a href="http://www.jobbole.com/" target="_blank" title="伯乐在线">伯乐在线</li>
     </ul>
 </div>
 

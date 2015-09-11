@@ -96,7 +96,7 @@
 <h2 id="2、flexbox属性详解">2、flexbox属性详解</h2><p>首先，需要看看整个弹性盒子的组成，先看下面一个图：<br><img src="http://img.caibaojian.com/uploads/2014/05/flexbox.png" alt="flexbox"></p>
 <p>采用Flex布局的元素，称为Flex容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称”项目”。<br>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；交叉轴的开始位置叫做cross start，结束位置叫做cross end。</p>
 <h2 id="3、容器的flex属性">3、容器的flex属性</h2><p>首先，定义一个flex容器的方法:</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.container</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">display</span>:<span class="value"> -webkit-flex</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">display</span>:<span class="value"> flex</span></span>; <span class="comment">/* or inline-flex */</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="class">.container</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">display</span>:<span class="value"> -webkit-flex</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">display</span>:<span class="value"> flex</span></span>; <span class="comment">/* or inline-flex */</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
 <p>容器的属性包括6个：</p>
 <ul>
 <li>flex-direction</li>
@@ -110,23 +110,23 @@
 <li>column：主轴为垂直方向，起点在上沿。</li>
 <li>column-reverse：主轴为垂直方向，起点在下沿。<br><img src="https://cdn.css-tricks.com/wp-content/uploads/2014/05/flex-direction1.svg" alt="flex-direction"></li>
 </ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.container</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">flex-direction</span>:<span class="value"> row | row-reverse | column | column-reverse</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="class">.container</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">flex-direction</span>:<span class="value"> row | row-reverse | column | column-reverse</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
 <h3 id="3-2、flex-wrap属性">3.2、flex-wrap属性</h3><p>默认情况下，项目都排在一条线（又称”轴线”）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。<br>一共3个值，</p>
 <ul>
 <li>nowrap:(默认)不换行</li>
 <li>wrap：换行</li>
-<li>wrap-reverse：按照从左往右，换行之后从右到左，再换行从左到右这样的顺序排列<br><img src="https://cdn.css-tricks.com/wp-content/uploads/2014/05/flex-wrap.svg" alt="flex-wrap"><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.container</span><span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">flex-wrap</span>:<span class="value"> nowrap | wrap | wrap-reverse</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<li>wrap-reverse：按照从左往右，换行之后从右到左，再换行从左到右这样的顺序排列<br><img src="https://cdn.css-tricks.com/wp-content/uploads/2014/05/flex-wrap.svg" alt="flex-wrap"><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="class">.container</span><span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">flex-wrap</span>:<span class="value"> nowrap | wrap | wrap-reverse</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="3-3、flex-flow属性">3.3、flex-flow属性</h3><p>flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.container</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">flex-flow</span>:<span class="value"> &lt;‘flex-direction’&gt; || &lt;‘flex-wrap’&gt;</span><br><span class="line">&#125;</span></span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="class">.container</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">flex-flow</span>:<span class="value"> &lt;‘flex-direction’&gt; || &lt;‘flex-wrap’&gt;</span><br><span class="line">&#125;</span></span></span></span><br></pre></td></tr></table></figure>
 <h3 id="3-4、justify-content属性">3.4、justify-content属性</h3><p>定义主轴上面的对齐方式，帮助灵活或者不灵活的元素在未占满整行的时候分布多余的空间。包括5个值：</p>
 <ul>
 <li>flex-start（默认值）：主轴开始方向对齐</li>
 <li>flex-end：主轴结束方向对齐</li>
 <li>center： 居中</li>
 <li>space-between：两端对齐，项目之间的间隔都相等。</li>
-<li>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。<br><img src="https://cdn.css-tricks.com/wp-content/uploads/2014/05/align-items.svg" alt="justify-content"><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.container</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">justify-content</span>:<span class="value"> flex-start | flex-end | center | space-between | space-around</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<li>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。<br><img src="https://cdn.css-tricks.com/wp-content/uploads/2014/05/align-items.svg" alt="justify-content"><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="class">.container</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">justify-content</span>:<span class="value"> flex-start | flex-end | center | space-between | space-around</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="3-5、align-items属性">3.5、align-items属性</h3><p>align-items属性定义项目在交叉轴上如何对齐。包括5个值：</p>
@@ -138,7 +138,7 @@
 <li>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
 </ul>
 <p><img src="https://cdn.css-tricks.com/wp-content/uploads/2014/05/align-items.svg" alt="align-items"></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.container</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">align-items</span>:<span class="value"> flex-start | flex-end | center | baseline | stretch</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="class">.container</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">align-items</span>:<span class="value"> flex-start | flex-end | center | baseline | stretch</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
 <h3 id="3-6、align-content属性">3.6、align-content属性</h3><p>定义交叉抽上面有多余空间时的对齐方式。类似于主轴上面对齐的justify-content属性。如果项目只有一根轴线，该属性不起作用。<br>该属性可以取6个值：</p>
 <ul>
 <li>flex-start：与交叉轴的起点对齐。</li>
@@ -148,7 +148,7 @@
 <li>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</li>
 <li>stretch（默认值）：轴线占满整个交叉轴。<br><img src="https://cdn.css-tricks.com/wp-content/uploads/2013/04/align-content.svg" alt="align-content"></li>
 </ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.container</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">align-content</span>:<span class="value"> flex-start | flex-end | center | space-between | space-around | stretch</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="class">.container</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">align-content</span>:<span class="value"> flex-start | flex-end | center | space-between | space-around | stretch</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
 <h2 id="4、子元素（项目）的属性">4、子元素（项目）的属性</h2><p>弹性布局元素的子元素的属性包括6个：</p>
 <ul>
 <li>order</li>
@@ -159,17 +159,17 @@
 <li>align-self</li>
 </ul>
 <h3 id="4-1、order属性">4.1、order属性</h3><p>子元素默认是按照代码声明的顺序铺层的，可以通过order值指定某个子元素的排序。order的取值为整数（可以是负数，默认0）<br><img src="https://cdn.css-tricks.com/wp-content/uploads/2013/04/order-2.svg" alt="order"></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.item</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">order</span>:<span class="value"> &lt;integer&gt;</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="class">.item</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">order</span>:<span class="value"> &lt;integer&gt;</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
 <h3 id="4-2、flex-grow属性">4.2、flex-grow属性</h3><p>该属性定义弹性布局子元素的“生长”能力。</p>
 <p>如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。<br><img src="https://cdn.css-tricks.com/wp-content/uploads/2014/05/flex-grow.svg" alt="flex-grow"></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.item</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">flex-grow</span>:<span class="value"> &lt;number&gt;</span></span>; <span class="comment">/* default 0 */</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="class">.item</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">flex-grow</span>:<span class="value"> &lt;number&gt;</span></span>; <span class="comment">/* default 0 */</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
 <h3 id="4-3、flex-shrink属性">4.3、flex-shrink属性</h3><p>flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。不允许为负数。</p>
 <p>如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.item</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">flex-shrink</span>:<span class="value"> &lt;number&gt;</span></span>; <span class="comment">/* default 1 */</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="4-4、flex-basis属性">4.4、flex-basis属性</h3><p>定义剩余空间未分配之前的元素默认尺寸。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.item</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">flex-basis</span>:<span class="value"> &lt;length&gt; | auto</span></span>; <span class="comment">/* default auto */</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="4-5、flex属性">4.5、flex属性</h3><p>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。<br>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会自动推算其它相关值。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.item</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">flex</span>:<span class="value"> none | [ &lt;<span class="string">'flex-grow'</span>&gt; &lt;<span class="string">'flex-shrink'</span>&gt;? || &lt;<span class="string">'flex-basis'</span>&gt; ]</span><br><span class="line">&#125;</span></span></span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="class">.item</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">flex-shrink</span>:<span class="value"> &lt;number&gt;</span></span>; <span class="comment">/* default 1 */</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-4、flex-basis属性">4.4、flex-basis属性</h3><p>定义剩余空间未分配之前的元素默认尺寸。<br><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="class">.item</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">flex-basis</span>:<span class="value"> &lt;length&gt; | auto</span></span>; <span class="comment">/* default auto */</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="4-5、flex属性">4.5、flex属性</h3><p>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。<br>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会自动推算其它相关值。<br><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="class">.item</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">flex</span>:<span class="value"> none | [ &lt;<span class="string">'flex-grow'</span>&gt; &lt;<span class="string">'flex-shrink'</span>&gt;? || &lt;<span class="string">'flex-basis'</span>&gt; ]</span><br><span class="line">&#125;</span></span></span></span><br></pre></td></tr></table></figure></p>
 <h3 id="4-6、align-self属性">4.6、align-self属性</h3><p>align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。该元素包括6个值。<br><img src="https://cdn.css-tricks.com/wp-content/uploads/2014/05/align-self.svg" alt="align-self"></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.item</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">align-self</span>:<span class="value"> auto | flex-start | flex-end | center | baseline | stretch</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="class">.item</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">align-self</span>:<span class="value"> auto | flex-start | flex-end | center | baseline | stretch</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
 <p>本文参考CSS-TRICKS上的文章<a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="external">A Complete Guide to Flexbox</a></p>
   
 	</div>
@@ -199,6 +199,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/09/11/React-js那些事-介绍篇/" title="React.js那些事(介绍篇)">
+  <strong>上一篇:</strong><br/>
+  <span>
+  React.js那些事(介绍篇)</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2015/08/15/javascript之Location对象/"  title="javascript之Location对象">
@@ -250,7 +258,7 @@
 		
 			<li><a href="/categories/javascript/前端开发/" title="前端开发">前端开发<sup>4</sup></a></li>
 		
-			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
+			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>4</sup></a></li>
 		
 			<li><a href="/categories/Nodejs/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
 		
@@ -264,6 +272,8 @@
 <div class="tagslist">
 	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
+		
+			<li><a href="/tags/React/" title="React">React<sup>1</sup></a></li>
 		
 			<li><a href="/tags/SEO/" title="SEO">SEO<sup>1</sup></a></li>
 		
@@ -281,6 +291,8 @@
 		
 			<li><a href="/tags/location/" title="location">location<sup>1</sup></a></li>
 		
+			<li><a href="/tags/virtual-dom/" title="virtual dom">virtual dom<sup>1</sup></a></li>
+		
 			<li><a href="/tags/幻灯/" title="幻灯">幻灯<sup>1</sup></a></li>
 		
 			<li><a href="/tags/爬虫/" title="爬虫">爬虫<sup>1</sup></a></li>
@@ -297,7 +309,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="../../../../tags/index.html" style="font-size: 10px;">SEO</a> <a href="../../../../tags/index.html" style="font-size: 10px;">cleaver</a> <a href="../../../../tags/index.html" style="font-size: 20px;">css</a> <a href="../../../../tags/index.html" style="font-size: 10px;">flexbox</a> <a href="../../../../tags/index.html" style="font-size: 10px;">hash</a> <a href="../../../../tags/index.html" style="font-size: 10px;">html5</a> <a href="../../../../tags/index.html" style="font-size: 10px;">js</a> <a href="../../../../tags/index.html" style="font-size: 10px;">location</a> <a href="../../../../tags/index.html" style="font-size: 10px;">幻灯</a> <a href="../../../../tags/index.html" style="font-size: 10px;">爬虫</a>
+       <a href="../../../../tags/index.html" style="font-size: 10px;">React</a> <a href="../../../../tags/index.html" style="font-size: 10px;">SEO</a> <a href="../../../../tags/index.html" style="font-size: 10px;">cleaver</a> <a href="../../../../tags/index.html" style="font-size: 20px;">css</a> <a href="../../../../tags/index.html" style="font-size: 10px;">flexbox</a> <a href="../../../../tags/index.html" style="font-size: 10px;">hash</a> <a href="../../../../tags/index.html" style="font-size: 10px;">html5</a> <a href="../../../../tags/index.html" style="font-size: 10px;">js</a> <a href="../../../../tags/index.html" style="font-size: 10px;">location</a> <a href="../../../../tags/index.html" style="font-size: 10px;">virtual dom</a> <a href="../../../../tags/index.html" style="font-size: 10px;">幻灯</a> <a href="../../../../tags/index.html" style="font-size: 10px;">爬虫</a>
     </div>
   </div>
 
@@ -307,6 +319,7 @@
     <ul>
       <li><a href="http://www.w3cfuns.com/" target="_blank" title="YangJian">前端网</a></li>
       <li><a href="https://github.com/fouber/blog" target="_blank" title="名家博客">精品博文</a></li>
+      <li><a href="http://www.jobbole.com/" target="_blank" title="伯乐在线">伯乐在线</li>
     </ul>
 </div>
 

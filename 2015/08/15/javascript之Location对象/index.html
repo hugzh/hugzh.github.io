@@ -104,12 +104,12 @@ lo">
 <li>ptotocol      //返回这个页面使用的协议</li>
 <li>search        //返回查询字符串，比如“?q=javascript”<br>我想在这里讨论的是location对象的hash属性及其用法</li>
 </ul>
-<h2 id="关于hash">关于hash</h2><h4 id="“#”的含义">“#”的含义</h4><p>“#”代表网页中的一个位置。其右面的字符，就是该位置的标识符。比如,”<a href="http://www.example.com/index.html#print" target="_blank" rel="external">http://www.example.com/index.html#print</a>“<br>就代表网页index.html的print位置。浏览器读取这个URL后，会自动将print位置滚动至可视区域。<br>为网页位置指定标识符，有两个方法。一是使用锚点，比如<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">name</span>=<span class="value">"print"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>二是使用id属性，比如<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"print"</span> &gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="关于hash">关于hash</h2><h4 id="“#”的含义">“#”的含义</h4><p>“#”代表网页中的一个位置。其右面的字符，就是该位置的标识符。比如,”<a href="http://www.example.com/index.html#print" target="_blank" rel="external">http://www.example.com/index.html#print</a>“<br>就代表网页index.html的print位置。浏览器读取这个URL后，会自动将print位置滚动至可视区域。<br>为网页位置指定标识符，有两个方法。一是使用锚点，比如<br><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">name</span>=<span class="value">"print"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>二是使用id属性，比如<br><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"print"</span> &gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <h4 id="HTTP请求不包括”#”">HTTP请求不包括”#”</h4><p>“#”是用来指导浏览器动作的，对服务器端完全无用。所以，HTTP请求中不包括“#”。在第一个“#”后面出现的任何字符，都会被浏览器解读为位置标识符。这意味着，这些字符都不会被发送到服务器端。</p>
 <h4 id="改变“#”后面的字符不触发网页重载">改变“#”后面的字符不触发网页重载</h4><p>单单改变“#”后的部分，浏览器只会滚动到相应位置，不会重新加载网</p>
 <h4 id="改变“#”会改变浏览器的访问历史">改变“#”会改变浏览器的访问历史</h4><p>每一次改变“#”后的部分，都会在浏览器的访问历史中增加一个记录，使用”后退”按钮，就可以回到上一个位置。<br>这对于ajax应用程序特别有用，可以用不同的“#”值，表示不同的访问状态，然后向用户给出可以访问某个状态的链接。<br>值得注意的是，上述规则对IE 6和IE 7不成立，它们不会因为#的改变而增加历史记录。</p>
-<h4 id="监听hash值变化的方法">监听hash值变化的方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onhashchange = func;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">body</span> <span class="attribute">onhashchange</span>=<span class="value">"func();"</span>&gt;</span></span><br><span class="line">window.addEventListener("hashchange", func, false);</span></span><br></pre></td></tr></table></figure>
+<h4 id="监听hash值变化的方法">监听hash值变化的方法</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.onhashchange = func;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">body</span> <span class="attribute">onhashchange</span>=<span class="value">"func();"</span>&gt;</span></span><br><span class="line">window.addEventListener("hashchange", func, false);</span></span><br></pre></td></tr></table></figure>
 <p>其中，onhashchange是一个html5的事件。当“#”值发生变化时，就会触发这个事件。IE8+、Firefox 3.6+、Chrome 5+、Safari 4.0+支持该事件。对于不支持onhashchange的浏览器，可以用setInterval监控location.hash的变化。</p>
 <h4 id="Google抓取“#”的机制">Google抓取“#”的机制</h4><p>默认情况下，Google的网络蜘蛛忽视URL的#部分。<br>但是，Google还规定，如果你希望Ajax生成的内容被浏览引擎读取，那么URL中可以使用”#!”，Google会自动将其后面的内容转成查询字符串<em>escaped_fragment</em>的值。</p>
   
@@ -199,7 +199,7 @@ lo">
 		
 			<li><a href="/categories/javascript/前端开发/" title="前端开发">前端开发<sup>4</sup></a></li>
 		
-			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
+			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>4</sup></a></li>
 		
 			<li><a href="/categories/Nodejs/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
 		
@@ -213,6 +213,8 @@ lo">
 <div class="tagslist">
 	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
+		
+			<li><a href="/tags/React/" title="React">React<sup>1</sup></a></li>
 		
 			<li><a href="/tags/SEO/" title="SEO">SEO<sup>1</sup></a></li>
 		
@@ -230,6 +232,8 @@ lo">
 		
 			<li><a href="/tags/location/" title="location">location<sup>1</sup></a></li>
 		
+			<li><a href="/tags/virtual-dom/" title="virtual dom">virtual dom<sup>1</sup></a></li>
+		
 			<li><a href="/tags/幻灯/" title="幻灯">幻灯<sup>1</sup></a></li>
 		
 			<li><a href="/tags/爬虫/" title="爬虫">爬虫<sup>1</sup></a></li>
@@ -246,7 +250,7 @@ lo">
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="../../../../tags/index.html" style="font-size: 10px;">SEO</a> <a href="../../../../tags/index.html" style="font-size: 10px;">cleaver</a> <a href="../../../../tags/index.html" style="font-size: 20px;">css</a> <a href="../../../../tags/index.html" style="font-size: 10px;">flexbox</a> <a href="../../../../tags/index.html" style="font-size: 10px;">hash</a> <a href="../../../../tags/index.html" style="font-size: 10px;">html5</a> <a href="../../../../tags/index.html" style="font-size: 10px;">js</a> <a href="../../../../tags/index.html" style="font-size: 10px;">location</a> <a href="../../../../tags/index.html" style="font-size: 10px;">幻灯</a> <a href="../../../../tags/index.html" style="font-size: 10px;">爬虫</a>
+       <a href="../../../../tags/index.html" style="font-size: 10px;">React</a> <a href="../../../../tags/index.html" style="font-size: 10px;">SEO</a> <a href="../../../../tags/index.html" style="font-size: 10px;">cleaver</a> <a href="../../../../tags/index.html" style="font-size: 20px;">css</a> <a href="../../../../tags/index.html" style="font-size: 10px;">flexbox</a> <a href="../../../../tags/index.html" style="font-size: 10px;">hash</a> <a href="../../../../tags/index.html" style="font-size: 10px;">html5</a> <a href="../../../../tags/index.html" style="font-size: 10px;">js</a> <a href="../../../../tags/index.html" style="font-size: 10px;">location</a> <a href="../../../../tags/index.html" style="font-size: 10px;">virtual dom</a> <a href="../../../../tags/index.html" style="font-size: 10px;">幻灯</a> <a href="../../../../tags/index.html" style="font-size: 10px;">爬虫</a>
     </div>
   </div>
 
@@ -256,6 +260,7 @@ lo">
     <ul>
       <li><a href="http://www.w3cfuns.com/" target="_blank" title="YangJian">前端网</a></li>
       <li><a href="https://github.com/fouber/blog" target="_blank" title="名家博客">精品博文</a></li>
+      <li><a href="http://www.jobbole.com/" target="_blank" title="伯乐在线">伯乐在线</li>
     </ul>
 </div>
 

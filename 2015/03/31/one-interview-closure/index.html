@@ -13,10 +13,10 @@
     
     <meta name="description" content="先前一直以为自己学了点javascript的DOM操作就以为自己“学会”了JS这门博大精深的语言，其实是自己图样图森破了！！！其实javascript的真正精髓（难点）在于作用域、原型以及闭包这三个方面。这是成为前端高手之前必须要迈过的一道坎。
 首先我们来看看这样一道题：
-1234567891011">
+var a=0;funct">
     <meta name="og:description" content="先前一直以为自己学了点javascript的DOM操作就以为自己“学会”了JS这门博大精深的语言，其实是自己图样图森破了！！！其实javascript的真正精髓（难点）在于作用域、原型以及闭包这三个方面。这是成为前端高手之前必须要迈过的一道坎。
 首先我们来看看这样一道题：
-1234567891011">
+var a=0;funct">
     
     
     
@@ -97,12 +97,12 @@
 		
 		<p><strong>    先前一直以为自己学了点javascript的DOM操作就以为自己“学会”了JS这门博大精深的语言，其实是自己图样图森破了！！！其实javascript的真正精髓（难点）在于作用域、原型以及闭包这三个方面。这是成为前端高手之前必须要迈过的一道坎</strong>。</p>
 <p>首先我们来看看这样一道题：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&amp;lt;<span class="number">10</span>;i++)</span><br><span class="line">&#123;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">a+=i;&#125;,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&amp;lt;<span class="number">10</span>;i++)</span><br><span class="line">&#123;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">a+=i;&#125;,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这个函数咋一看，没什么了不起的嘛。不就是实现从0加到9的和嘛！很简单，就是45。</p>
 <p>显然，世界上大多数的事情总是不能按照我们自己编造的剧本发展滴。实际上，这个main函数的返回结果是100！！！Why?这就涉及到我想要讲的闭包问题。</p>
 <p>JS的闭包是比较难理解的一个知识点，我到现在也没有完全理解。实际上，在循环内部的每一个函数中都保留着它的外部函数的活动对象，它们都是指向同一个变量i。当外部函数fn()返回后，变量i的值是10，此时每一个函数都保存着变量i的同一个变量对象，所以在每个函数内部的i的值都是10，所以a+=i实际上是等价于a+=10。循环10次之后的结果显然就变成100了！这其实是因为作用域链的配置机制引发的一个副作用，即闭包只能取得包含函数中任何变量的最后一个值。因为闭包所保存的是整个变量对象，而不是某一个特殊值。</p>
 <p>那如果我非要实现从0到9相加怎么办呢？咱们可以这样写：[codesyntax lang=”javascript”]</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&amp;lt;<span class="number">10</span>;i++)</span><br><span class="line">&#123;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">a+=num;</span><br><span class="line">&#125;</span><br><span class="line">&#125;(i),<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//45</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&amp;lt;<span class="number">10</span>;i++)</span><br><span class="line">&#123;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">a+=num;</span><br><span class="line">&#125;</span><br><span class="line">&#125;(i),<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//45</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这样，我们没有直接把闭包放进setTimeout函数，而是定义一个匿名函数，并立即执行该匿名函数的结果返回。匿名函数的参数num也就是最终要返回的值。在调用每个匿名函数的时候，我们传入了变量i。由于变量参数是传值的，所以i会复制一个副本给num参数，这样在匿名函数的内部又返回了一个访问num的闭包。所以，每一个内部函数中都有一个自己的num副本，算出来的结果就是0到9相加了，最后结果为45。</p>
 <p>我们再来看一道著名互联网公司的实习招聘题目：</p>
 <p><a href="http://bloghugzh-wordpress.stor.sinaapp.com/uploads/2015/03/2.jpg" target="_blank" rel="external"><img src="http://bloghugzh-wordpress.stor.sinaapp.com/uploads/2015/03/2-300x189.jpg" alt="" title="2"></a></p>
@@ -194,7 +194,7 @@
 		
 			<li><a href="/categories/javascript/前端开发/" title="前端开发">前端开发<sup>4</sup></a></li>
 		
-			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
+			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>4</sup></a></li>
 		
 			<li><a href="/categories/Nodejs/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
 		
@@ -208,6 +208,8 @@
 <div class="tagslist">
 	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
+		
+			<li><a href="/tags/React/" title="React">React<sup>1</sup></a></li>
 		
 			<li><a href="/tags/SEO/" title="SEO">SEO<sup>1</sup></a></li>
 		
@@ -225,6 +227,8 @@
 		
 			<li><a href="/tags/location/" title="location">location<sup>1</sup></a></li>
 		
+			<li><a href="/tags/virtual-dom/" title="virtual dom">virtual dom<sup>1</sup></a></li>
+		
 			<li><a href="/tags/幻灯/" title="幻灯">幻灯<sup>1</sup></a></li>
 		
 			<li><a href="/tags/爬虫/" title="爬虫">爬虫<sup>1</sup></a></li>
@@ -241,7 +245,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="../../../../tags/index.html" style="font-size: 10px;">SEO</a> <a href="../../../../tags/index.html" style="font-size: 10px;">cleaver</a> <a href="../../../../tags/index.html" style="font-size: 20px;">css</a> <a href="../../../../tags/index.html" style="font-size: 10px;">flexbox</a> <a href="../../../../tags/index.html" style="font-size: 10px;">hash</a> <a href="../../../../tags/index.html" style="font-size: 10px;">html5</a> <a href="../../../../tags/index.html" style="font-size: 10px;">js</a> <a href="../../../../tags/index.html" style="font-size: 10px;">location</a> <a href="../../../../tags/index.html" style="font-size: 10px;">幻灯</a> <a href="../../../../tags/index.html" style="font-size: 10px;">爬虫</a>
+       <a href="../../../../tags/index.html" style="font-size: 10px;">React</a> <a href="../../../../tags/index.html" style="font-size: 10px;">SEO</a> <a href="../../../../tags/index.html" style="font-size: 10px;">cleaver</a> <a href="../../../../tags/index.html" style="font-size: 20px;">css</a> <a href="../../../../tags/index.html" style="font-size: 10px;">flexbox</a> <a href="../../../../tags/index.html" style="font-size: 10px;">hash</a> <a href="../../../../tags/index.html" style="font-size: 10px;">html5</a> <a href="../../../../tags/index.html" style="font-size: 10px;">js</a> <a href="../../../../tags/index.html" style="font-size: 10px;">location</a> <a href="../../../../tags/index.html" style="font-size: 10px;">virtual dom</a> <a href="../../../../tags/index.html" style="font-size: 10px;">幻灯</a> <a href="../../../../tags/index.html" style="font-size: 10px;">爬虫</a>
     </div>
   </div>
 
@@ -251,6 +255,7 @@
     <ul>
       <li><a href="http://www.w3cfuns.com/" target="_blank" title="YangJian">前端网</a></li>
       <li><a href="https://github.com/fouber/blog" target="_blank" title="名家博客">精品博文</a></li>
+      <li><a href="http://www.jobbole.com/" target="_blank" title="伯乐在线">伯乐在线</li>
     </ul>
 </div>
 

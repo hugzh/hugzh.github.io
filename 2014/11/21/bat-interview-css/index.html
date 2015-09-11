@@ -114,7 +114,7 @@
 <p>9.rgba()和opacity的透明效果有什么不同？<br>答案：<br>rgba()和opacity都能实现透明效果，但最大的不同是opacity作用于元素，以及元素内的所有内容的透明度，<br>而rgba()只作用于元素的颜色或其背景色。（设置rgba透明的元素的子元素不会继承透明效果！）</p>
 <p>10.css中可以让文字在垂直和水平方向上重叠的两个属性是什么？<br>答案：<br>垂直方向：line-height<br>水平方向：letter-spacing</p>
 <p>那么问题来了，关于letter-spacing的妙用知道有哪些么？<br>答案:可以用于消除inline-block元素间的换行符空格间隙问题。<br>11.如何垂直居中一个浮动元素？</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// 方法一：已知元素的高宽</span><br><span class="line"></span><br><span class="line">#div1&#123;</span><br><span class="line">background-color:#6699FF;</span><br><span class="line">width:200px;</span><br><span class="line">height:200px;</span><br><span class="line"></span><br><span class="line">position: absolute; //父元素需要相对定位</span><br><span class="line">top: 50%;</span><br><span class="line">left: 50%;</span><br><span class="line">margin-top:-100px ; //二分之一的height，width</span><br><span class="line">margin-left: -100px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//方法二:未知元素的高宽</span><br><span class="line"></span><br><span class="line">#div1&#123;</span><br><span class="line">width: 200px;</span><br><span class="line">height: 200px;</span><br><span class="line">background-color: #6699FF;</span><br><span class="line"></span><br><span class="line">margin:auto;</span><br><span class="line">position: absolute; //父元素需要相对定位</span><br><span class="line">left: 0;</span><br><span class="line">top: 0;</span><br><span class="line">right: 0;</span><br><span class="line">bottom: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>  
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">// 方法一：已知元素的高宽</span><br><span class="line"></span><br><span class="line">#div1&#123;</span><br><span class="line">background-color:#6699FF;</span><br><span class="line">width:200px;</span><br><span class="line">height:200px;</span><br><span class="line"></span><br><span class="line">position: absolute; //父元素需要相对定位</span><br><span class="line">top: 50%;</span><br><span class="line">left: 50%;</span><br><span class="line">margin-top:-100px ; //二分之一的height，width</span><br><span class="line">margin-left: -100px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//方法二:未知元素的高宽</span><br><span class="line"></span><br><span class="line">#div1&#123;</span><br><span class="line">width: 200px;</span><br><span class="line">height: 200px;</span><br><span class="line">background-color: #6699FF;</span><br><span class="line"></span><br><span class="line">margin:auto;</span><br><span class="line">position: absolute; //父元素需要相对定位</span><br><span class="line">left: 0;</span><br><span class="line">top: 0;</span><br><span class="line">right: 0;</span><br><span class="line">bottom: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 
@@ -196,7 +196,7 @@
 		
 			<li><a href="/categories/javascript/前端开发/" title="前端开发">前端开发<sup>4</sup></a></li>
 		
-			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>3</sup></a></li>
+			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>4</sup></a></li>
 		
 			<li><a href="/categories/Nodejs/前端开发/" title="前端开发">前端开发<sup>1</sup></a></li>
 		
@@ -210,6 +210,8 @@
 <div class="tagslist">
 	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
+		
+			<li><a href="/tags/React/" title="React">React<sup>1</sup></a></li>
 		
 			<li><a href="/tags/SEO/" title="SEO">SEO<sup>1</sup></a></li>
 		
@@ -227,6 +229,8 @@
 		
 			<li><a href="/tags/location/" title="location">location<sup>1</sup></a></li>
 		
+			<li><a href="/tags/virtual-dom/" title="virtual dom">virtual dom<sup>1</sup></a></li>
+		
 			<li><a href="/tags/幻灯/" title="幻灯">幻灯<sup>1</sup></a></li>
 		
 			<li><a href="/tags/爬虫/" title="爬虫">爬虫<sup>1</sup></a></li>
@@ -243,7 +247,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="../../../../tags/index.html" style="font-size: 10px;">SEO</a> <a href="../../../../tags/index.html" style="font-size: 10px;">cleaver</a> <a href="../../../../tags/index.html" style="font-size: 20px;">css</a> <a href="../../../../tags/index.html" style="font-size: 10px;">flexbox</a> <a href="../../../../tags/index.html" style="font-size: 10px;">hash</a> <a href="../../../../tags/index.html" style="font-size: 10px;">html5</a> <a href="../../../../tags/index.html" style="font-size: 10px;">js</a> <a href="../../../../tags/index.html" style="font-size: 10px;">location</a> <a href="../../../../tags/index.html" style="font-size: 10px;">幻灯</a> <a href="../../../../tags/index.html" style="font-size: 10px;">爬虫</a>
+       <a href="../../../../tags/index.html" style="font-size: 10px;">React</a> <a href="../../../../tags/index.html" style="font-size: 10px;">SEO</a> <a href="../../../../tags/index.html" style="font-size: 10px;">cleaver</a> <a href="../../../../tags/index.html" style="font-size: 20px;">css</a> <a href="../../../../tags/index.html" style="font-size: 10px;">flexbox</a> <a href="../../../../tags/index.html" style="font-size: 10px;">hash</a> <a href="../../../../tags/index.html" style="font-size: 10px;">html5</a> <a href="../../../../tags/index.html" style="font-size: 10px;">js</a> <a href="../../../../tags/index.html" style="font-size: 10px;">location</a> <a href="../../../../tags/index.html" style="font-size: 10px;">virtual dom</a> <a href="../../../../tags/index.html" style="font-size: 10px;">幻灯</a> <a href="../../../../tags/index.html" style="font-size: 10px;">爬虫</a>
     </div>
   </div>
 
@@ -253,6 +257,7 @@
     <ul>
       <li><a href="http://www.w3cfuns.com/" target="_blank" title="YangJian">前端网</a></li>
       <li><a href="https://github.com/fouber/blog" target="_blank" title="名家博客">精品博文</a></li>
+      <li><a href="http://www.jobbole.com/" target="_blank" title="伯乐在线">伯乐在线</li>
     </ul>
 </div>
 
