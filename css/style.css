@@ -1042,6 +1042,8 @@ article .article-content .right {
 }
 article .article-content pre {
   background: #2d2d2d;
+  width: 80%;
+  overflow: scroll;
 }
 footer.article-footer {
   background: #fafafa;
