@@ -1,7 +1,6 @@
 title: 移动前端框架jQuery Mobile 的介绍（一）
 id: 48
 categories:
-  - javascript
   - 前端开发
 date: 2015-01-28 00:00:00
 tags:
@@ -10,7 +9,7 @@ tags:
 简介：
 jQuery Mobile 是用于创建移动 Web应用的前端开发框架，可以应用于智能手机与平板电脑。是一个比较好用的前端框架。
 jMobile适用于ios，android，black berry，windows phone等主流移动终端操作系统。
-
+<!--more-->
 jQuery Mobile 的安装：
 安装非常简单，就像jQuery的安装一样，可以直接把文件下载到本地，然后再html文件的head标签内引用，也可以直接通过
 CDN 中加载。需要包含三个文件jquery.mobile.min.css、jquery.js以及jquery.mobile.min.js。由于jMobile是自带一套UI的框架，
@@ -18,7 +17,7 @@ CDN 中加载。需要包含三个文件jquery.mobile.min.css、jquery.js以及j
 
 一个简单的jMobile页面包括三个部分——header、content和footer。通过data-role来实现，比如:
 
-```html
+```
 
 <div data-role="header">
 <h1>头</h1>
@@ -26,7 +25,7 @@ CDN 中加载。需要包含三个文件jquery.mobile.min.css、jquery.js以及j
 
 ```
 
-```html
+```
 
 <div data-role="content">
 <p>主体</p>
@@ -34,7 +33,7 @@ CDN 中加载。需要包含三个文件jquery.mobile.min.css、jquery.js以及j
 
 ```
 
-```html
+```
 
 <div data-role="footer">
 <h1>底部</h1>
@@ -57,7 +56,7 @@ data-role="footer" 用于创建页面底部工具条。
 
 一个默认展开的折叠板：
 
-```html
+```
 <div data-role="collapsible" data-collapsed="false">
 <h1>点击我 - 我可以折叠!</h1>
 <p>I'm 现在我默认是展开的。</p>
@@ -67,20 +66,15 @@ data-role="footer" 用于创建页面底部工具条。
 
 一个默认折叠的折叠版：
 
-```html
+```
 <div data-role="collapsible">
 <h1>点击我 - 我可以折叠!</h1>
 <p>我是可折叠的内容。</p>
 </div>
 ```
-<div data-role="collapsible">
-
-我是可折叠的内容。
-
-</div>
 jMobile的列表使用非常有特色。可以在列表中添加图标。默认的列表用法如下：
 
-```html
+```
 <ul data-role="listview">
 <li><a href="#">列表项</a></li>
 <li><a href="#">列表项</a></li>
@@ -95,7 +89,7 @@ jMobile的列表使用非常有特色。可以在列表中添加图标。默认�
 
 jquery Mobile提供一个非常简单的方法，实现客户端搜索功能，筛选列表的选项。只需添加 data-filter="true" 属性即可:
 
-```html
+```
 <ul data-role="listview" data-filter="true"></ul>
 ```
 

@@ -1,7 +1,6 @@
 title: 移动前端框架jQuery Mobile 的介绍（二）
 id: 51
 categories:
-  - javascript
   - 前端开发
 date: 2015-01-29 00:00:00
 tags:
@@ -9,8 +8,8 @@ tags:
 
 上一篇主要是介绍了jMobile框架的基础知识，在这一篇里，我们主要是介绍
 表单应用以及基于移动端的各种events。
-
-一、表单基础：
+<!--more-->
+## 一、表单基础：
 
 在 jQuery Mobile 中，我们可以使用下列表单控件：
 1、文本输入框
@@ -40,7 +39,6 @@ fieldset元素包围 label/form 元素：
 
 ```
 
-&nbsp;
 
 为了创建一个可以折叠的表单，可以将表单内容置于带有data-role="collapsible"
 
@@ -52,7 +50,6 @@ fieldset元素包围 label/form 元素：
 <input type="range" name="points" id="points" value="50" min="0" max="100"/>
 ```
 
-&nbsp;
 
 其中的value属性表示滑动条的默认值，min和max是滑动条的取值范围。如果想要高亮突出
 显示滑动条的值，添加 data-highlight="true"。
@@ -70,7 +67,7 @@ fieldset元素包围 label/form 元素：
 可以在option里面添加 "selected" 属性来设置选项中的一个为预选中状态（高亮突出显
 示状态）。
 
-二、页面事件：
+## 二、页面事件：
 
 在 jQuery Mobile 中, 使用pageinit 事件来设置代码脚本在DOM元素加载完成后开始
 执行，所以要在任何新页面加载并创建是执行脚本，就需要绑定pageinit事件：

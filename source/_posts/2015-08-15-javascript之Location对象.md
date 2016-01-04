@@ -4,14 +4,13 @@ tags:
     - hash
     - location
 categories:
-    - javascript
     - 前端开发
 ---
 
 #  Location对象
 
 location对象是最有用的BOM对象之一，它提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。location对象既是window对象的属性，也是document对象的属性，window.location和document.location是引用同一个对象。
-
+<!--more-->
 ## location对象的所有属性
 * hash          //返回URL中的hash(#后面跟的零个或者多个字符),如果URL中不包含散列，则返回空字符串
 * host          //返回服务器的名称和端口（如果有）

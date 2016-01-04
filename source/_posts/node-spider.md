@@ -1,18 +1,16 @@
 title: 使用nodejs做一个新闻网页爬虫——Nodejs初体验
 id: 71
 categories:
-  - javascript
   - Nodejs
 date: 2015-04-16 20:45:12
 tags:
 ---
 
-昨天在leader的要求下做了一个小小的作业，作为近期项目的一个入门练习。要写的是一个网页爬虫，使用node来爬取网易新闻页 http://news.163.com的首页所有的新闻连接，存入urls.txt文件。然后从urls.txt文件中选取一条url进行新闻内容的爬取，存入news.txt文件中。
-
+昨天在leader的要求下做了一个小小的作业，作为近期项目的一个入门练习。要写的是一个网页爬虫，使用node来爬取网易新闻页 http://news.163.com 的首页所有的新闻连接，存入urls.txt文件。然后从urls.txt文件中选取一条url进行新闻内容的爬取，存入news.txt文件中。
+<!--more-->
 本来对nodejs的了解仅仅停留在“hello world”的水平，虽然很早就曾打算学习这们传说中无比流弊的语言，无奈最近因为找实习各种事务缠身，始终没时间深入研究node。好在leader给我们的任务恰恰成为我学习node的推动力，哈哈。
 
 回到刚才说的任务，网页爬虫。既然是对网页内容的提取，首先必须得搭建好一个良好的架构。主要是两个方面：一个是对整个页面的爬取，另一个就是对页面关键词的提取。爬取页面肯定要用到node的http模块，在这里我是用了http.get的方法。对于页面元素的提取，我是用了最近刚刚接触过的cheerio这样一个库，这是一个非常轻量型的第三方插件，它的使用语法和jQuery几乎完全一样。比如选择器的语法：
-
 $(selectior,[context],[root])
 
 选择器在 Context 范围内搜索，Context又在Root范围内搜索。selector 和context可是一个字符串表达式，DOM元素，和DOM元素的数组，或者chreeio对象。root 是通常是HTML 文档字符串。
@@ -106,4 +104,4 @@ fs.readFile('urls.txt','utf-8',function (err,data) {
 
 ```
 
-这就是整个项目的核心代码所在。如果要想查看app.js是如何写的，可以查看我的github地址，https://github.com/hugzh/node。这里就不贴代码了。
+这就是整个项目的核心代码所在。如果要想查看app.js是如何写的，可以查看我的github地址，https://github.com/hugzh/node。 这里就不贴代码了。

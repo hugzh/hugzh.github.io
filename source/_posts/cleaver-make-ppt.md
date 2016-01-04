@@ -2,15 +2,13 @@ title: 如何使用Cleaver制作html5幻灯
 tags:
   - cleaver
   - 幻灯
-id: 87
 categories:
-  - Nodejs
   - 前端开发
 date: 2015-07-07 23:24:02
 ---
 
 Cleaver是一款基于html5的插件，依赖于Markdown文档格式，可以用来快速地制作幻灯片。这里主要是讲一讲如何安装和使用Cleaver制作炫酷幻灯片。
-
+<!--more-->
 ### **1.Cleaver安装**
 
 通过nodejs来安装Cleaver，而且只支持Linux系统，windows下暂时不支持。

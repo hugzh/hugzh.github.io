@@ -4,7 +4,6 @@ tags:
   - 爬虫
 id: 81
 categories:
-  - javascript
   - Nodejs
 date: 2015-05-14 21:26:09
 ---
@@ -14,7 +13,7 @@ date: 2015-05-14 21:26:09
 #  关于Ajax的使用注意
 
 最近做爬虫项目的时候发现一个比较值得探讨的问题：由于Ajax的无刷新加载特性，web开发者都比较喜欢使用ajax进行与服务器的数据交互。很多DOM元素都是在基本DOM文档加载完毕之后再进行加载的。这种做法虽然对用户非常友好，但是有时候对于程序（搜索引擎）来说，页面信息获取也会带来一些挑战。
-
+<!--more-->
 ## 1.  关于异步加载
 Ajax的使用是非常广泛的。作为前端开发者，我们往往喜欢JSON数据这种交互模式,所以在渲染页面的时候也倾向于使用ajax从服务器获取JSON数据，从而实现无刷新渲染。这么做对于用户体验肯定是加分的。但是大规模地使用Ajax有时候会使得爬虫很难去获得想要的数据，当然如果我们设计的网站本身就是不想要别人抓取到数据的那就另当别论（除此之外还要加上一些JS动态加载数据以及数据编码等开发方式）。
 
@@ -24,7 +23,7 @@ Ajax的使用是非常广泛的。作为前端开发者，我们往往喜欢JSON
 [![](http://bloghugzh-wordpress.stor.sinaapp.com/uploads/2015/05/捕获-300x89.jpg "捕获JSON")](http://bloghugzh-wordpress.stor.sinaapp.com/uploads/2015/05/捕获.jpg)
 
 我们需要的仅仅是里面的'url'键对应的值，所以爬虫可以这样去提取数据：
-```bash
+```
     var json_text = JSON.parse(data.json);
     // get flower
     // {"last_page":0,"row_list":[{"url":'xxxxx'}]}
