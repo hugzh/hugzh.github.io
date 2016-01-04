@@ -4,20 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>React.js那些事(core篇) | 果汁的随笔</title>
+  <title>React.js那些事(介绍篇) | 果汁的随笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这一篇主要讲讲React.js虚拟DOM的底层相关，主要是自己学习官方文档的Reconciliation部分的一些总结。我们都知道，React的虚拟DOM是非常高效的。那么，React底层是使用什么样的算法实现DOM的高效渲染呢？">
+  <meta name="description" content="引言WEB前端开发的发展历史大概经过了“原始时代——类库时代——工程构建时代——模块化时代”。目前前端领域的发展正处在一个空前繁荣的阶段——“模块化/组件化时代”。
+原始时代曾几何时，前端开发在软件工程的技术栈里面只被视为设计类岗位，甚至现在为止也有一些小企业依然把前端的职责视为简单的编写html+css页面。早期的前端开发完全依赖于后端技术，所有的数据渲染都由后端开发者进行，界面源码和后台逻辑代">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React.js那些事(core篇)">
-<meta property="og:url" content="http://hugzh.github.io/2015/10/07/2015-10-07-React-js那些事-core篇/index.html">
+<meta property="og:title" content="React.js那些事(介绍篇)">
+<meta property="og:url" content="http://hugzh.github.io/2015/09/11/React-js那些事-介绍篇/index.html">
 <meta property="og:site_name" content="果汁的随笔">
-<meta property="og:description" content="这一篇主要讲讲React.js虚拟DOM的底层相关，主要是自己学习官方文档的Reconciliation部分的一些总结。我们都知道，React的虚拟DOM是非常高效的。那么，React底层是使用什么样的算法实现DOM的高效渲染呢？">
-<meta property="og:image" content="http://huguozhi-media.stor.sinaapp.com/mygitio%2F1.png">
-<meta property="og:image" content="http://huguozhi-media.stor.sinaapp.com/mygitio%2F2.png">
-<meta property="og:updated_time" content="2016-01-04T05:57:16.528Z">
+<meta property="og:description" content="引言WEB前端开发的发展历史大概经过了“原始时代——类库时代——工程构建时代——模块化时代”。目前前端领域的发展正处在一个空前繁荣的阶段——“模块化/组件化时代”。
+原始时代曾几何时，前端开发在软件工程的技术栈里面只被视为设计类岗位，甚至现在为止也有一些小企业依然把前端的职责视为简单的编写html+css页面。早期的前端开发完全依赖于后端技术，所有的数据渲染都由后端开发者进行，界面源码和后台逻辑代">
+<meta property="og:updated_time" content="2016-01-04T05:56:45.868Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React.js那些事(core篇)">
-<meta name="twitter:description" content="这一篇主要讲讲React.js虚拟DOM的底层相关，主要是自己学习官方文档的Reconciliation部分的一些总结。我们都知道，React的虚拟DOM是非常高效的。那么，React底层是使用什么样的算法实现DOM的高效渲染呢？">
+<meta name="twitter:title" content="React.js那些事(介绍篇)">
+<meta name="twitter:description" content="引言WEB前端开发的发展历史大概经过了“原始时代——类库时代——工程构建时代——模块化时代”。目前前端领域的发展正处在一个空前繁荣的阶段——“模块化/组件化时代”。
+原始时代曾几何时，前端开发在软件工程的技术栈里面只被视为设计类岗位，甚至现在为止也有一些小企业依然把前端的职责视为简单的编写html+css页面。早期的前端开发完全依赖于后端技术，所有的数据渲染都由后端开发者进行，界面源码和后台逻辑代">
   
     <link rel="alternative" href="/atom.xml" title="果汁的随笔" type="application/atom+xml">
   
@@ -197,11 +198,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-2015-10-07-React-js那些事-core篇" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-React-js那些事-介绍篇" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/10/07/2015-10-07-React-js那些事-core篇/" class="article-date">
-  	<time datetime="2015-10-07T08:03:42.000Z" itemprop="datePublished">2015-10-07</time>
+      <a href="/2015/09/11/React-js那些事-介绍篇/" class="article-date">
+  	<time datetime="2015-09-11T05:28:05.000Z" itemprop="datePublished">2015-09-11</time>
 </a>
     </div>
   
@@ -214,7 +215,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      React.js那些事(core篇)
+      React.js那些事(介绍篇)
     </h1>
   
 
@@ -238,14 +239,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这一篇主要讲讲React.js虚拟DOM的底层相关，主要是自己学习官方文档的Reconciliation部分的一些总结。我们都知道，React的虚拟DOM是非常高效的。那么，React底层是使用什么样的算法实现DOM的高效渲染呢？<br><a id="more"></a></p>
-<h1 id="机制">机制</h1><p>React.js在内存里的DOM树操作是子树的替换，也就是用变化之后的子树整个代替原来的子树，而不是在内存里面调整子树。从算法的角度来说，生成最少的将一颗树形结构转换成另一颗树形结构的操作，其最优算法的复杂度是 O(n3)，n是树中节点的总数。所以React尝试从另一个方面入手，使用试探的方法。首先需要达成两点假设：<br>1、拥有相同类的两个组件将会生成相似的树形结构，拥有不同类的两个组件将会生成不同的树形结构。<br>2、可以为元素提供一个唯一的标志，该元素在不同的渲染过程中保持不变。实际上，这些假设会使在几乎所有的应用场景下，应用变得出奇地快。</p>
-<h1 id="详细">详细</h1><h2 id="diffing算法">diffing算法</h2><p>为了实现子树的替换，首先必须要检查两棵树的差异。React的处理机制分三种类型处理。<br><img src="http://huguozhi-media.stor.sinaapp.com/mygitio%2F1.png" alt="示例1"></p>
-<h3 id="不同的节点类型">不同的节点类型</h3><p>节点类型不同，React 将会把它们当做两个不同的子树，移除之前的那棵子树，然后创建并插入第二棵子树。React不会尝试计算出该渲染什么，仅会从 DOM中移除之前的节点，然后插入新的节点。碰到不一样的组件结构，React将重新创建树形结构，而不是耗费时间去尝试匹配这两个树形结构。所以，React的虚拟DOM是非常高效的。</p>
-<h3 id="DOM节点">DOM节点</h3><p>DOM节点是相同类型的，比较两个DOM节点的时候，首先查看属性。对随着时间发生了变化的属性进行更新，然后递归检查所有子级的属性。</p>
-<h3 id="自定义组件">自定义组件</h3><p>我们决定两个自定义组件是相同的。因为组件是状态化的，不可能每次状态改变都要创建一个新的组件实例。React 利用新组件上的所有属性，然后在之前的组件实例上调用 component[Will/Did]ReceiveProps()。现在，之前的组件就是可操作了的。它的 render() 方法被调用，然后差异算法重新比较新的状态和上一次的状态。</p>
-<h2 id="子级优化差异">子级优化差异</h2><p>React采用的方法是同时遍历两个子级列表，当发现差异的时候，就产生一次 DOM 修改。例如我们如果需要在组件末尾添加一个元素，那么如果两个子级（原有的和新添加的）是相同元素，则直接修改已有子级元素的文本内容，然后在后面插入一个新的子级节点。<br>另外，React引入一个唯一的key属性，给每一个子级一个键值，用于和以后变化的组件进行比较。这样，React就能够检测出节点插入、移除和替换，并且借助哈希表使节点移动复杂度为 O(n)。<br><img src="http://huguozhi-media.stor.sinaapp.com/mygitio%2F2.png" alt="示例1"></p>
-<h1 id="本篇结语">本篇结语</h1><p>这一篇主要是介绍React的渲染机制，虚拟dom是React.js的核心。想要更多地了解React.js的朋友可以进入<a href="http://reactjs.cn/" target="_blank" rel="external">官方文档</a>进行深入学习。</p>
+        <h1 id="引言">引言</h1><p>WEB前端开发的发展历史大概经过了“原始时代——类库时代——工程构建时代——模块化时代”。目前前端领域的发展正处在一个空前繁荣的阶段——“模块化/组件化时代”。</p>
+<h2 id="原始时代">原始时代</h2><p>曾几何时，前端开发在软件工程的技术栈里面只被视为设计类岗位，甚至现在为止也有一些小企业依然把前端的职责视为简单的编写html+css页面。早期的前端开发完全依赖于后端技术，所有的数据渲染都由后端开发者进行，界面源码和后台逻辑代码混在一起。这个时代的前端无疑是非常薄的，薄到“网页开发人员”的入门门槛几乎低至为零。<br><a id="more"></a></p>
+<h2 id="类库时代">类库时代</h2><p>这一阶段出现了对js封装的各种类库，代表作当然就是前端领域从业者无所不知的jquery库啦。类库时代的开发者承担了很大一部分数据交互的工作。借鉴于AJAX，开发过程可以实现很好的前后端分离，MVC开发框架日益盛行。这个时代，前端开发者在一定程度上摆脱了对后端的严重依赖，使得前后端开发依赖于接口，大大加快了开发效率。</p>
+<h2 id="工程构建时代">工程构建时代</h2><p>基于各种自动化构建工具部署前端代码是这一时代的基本特征，前端发展到今天，自动化构建依然是当前的技术主流，Grunt,gulp.js以及国内的Fis等都是自动化代码优化和部署的热门工具。</p>
+<h2 id="模块化时代">模块化时代</h2><p>模块化时代标志着前端开发正式进入工程化阶段，“前端工程师”正式成为名副其实的“工程师”。我之所以这样认为是因为这一阶段前端开发可以完全实现代码的重用，实现模块化开发，系统化、规范化的软件开发就是“软件工程”。所以前端工程师也就是在这一阶段日渐活跃，需求量也迅猛增长。前端模块时代的技术代表就是Require.js以及国内的sea.js这样的模块加载器。在MVC开发模式的基础上实现了对视图层的模块化开发，MVC框架至此达到一个鼎盛阶段。<br>然而前端之所以迷人在于新的开发模式和技术不会停止出现，不同的应用需求催生了新的开发技术的诞生。最近几年，组件化开发正成为前端领域的潮流，组件开发减少了代码的耦合，非常适合大型网站应用的开发（这类大型网站的特点就是大量的模块类似或者重复）。可实现代码高度重用的MVVM框架开发进入开发者眼中——这就是React.js的诞生背景</p>
+<h1 id="React-js">React.js</h1><h2 id="React是什么东西？">React是什么东西？</h2><p>来自官网的介绍：</p>
+<ul>
+<li>仅仅是UI<br>许多人使用React作为MVC架构的V层。尽管React并没有假设过你的其余技术栈，但它仍可以作为一个小特征轻易地在已有项目中使用。</li>
+<li>虚拟DOM<br>React为了更高超的性能而使用虚拟DOM作为其不同的实现。它同时也可以由服务端Node.js渲染而不需要过重的浏览器DOM支持。</li>
+<li>数据流<br>React实现了单向响应的数据流，从而减少了重复代码，这也是它为什么比传统数据绑定更简单。</li>
+</ul>
+<p>也就是说，React是一个视图层的应用，并且是一个高效的视图。React提供了和以往不一样的方式来看待视图，它以组件开发为基础。对React应用而言，你需要分割你的页面，使其成为一个个的组件。也就是说，你的应用是由这些组件组合而成的。组件本身可以实现数据流的的单向流动，实现独立开发。这就是我们所说的“组件驱动开发”。</p>
+<h2 id="虚拟DOM">虚拟DOM</h2><p>React的一大特点是其所拥有的虚拟DOM，它让页面渲染变得非常的高效，并且比直接操纵DOM变得更为可控。由于虚拟DOM的绘制是在内存里面进行的，高效是它的特征。这两大特点的组合使得React具有强大的自上而下的页面渲染能力。</p>
+<p>React提供了一个观察者模型用于替代传统的脏检查（dirty checking）， 也就是持续的检查模型的变化。这也就是解释了为什么React不需要计算哪些发生了改变的原因，因为它根据state的变化会立即知道。这个过程减少了DOM操作，并让应用程序变得更平滑。我们知道DOM操作是非常耗性能的，更少的DOM操作意味着更高效的渲染。React在底层实现了一个diffing算法，该算法使用DOM的树形表示法，当某个 节点发生变化（标记为dirty）时它会重新计算整个子树，你会注意到你的模型发生了改变，因为整个子树在之后会被重新渲染。</p>
+<h2 id="JSX">JSX</h2><p>JSX是什么鬼？？？JSX是一个看起来很像XML的JavaScript语法扩展。React可以用来做简单的JSX句法转换。React提供了（也是建议使用）JSX代替JS进行组件绘制，然后运行的时候使用一个JSX编译器进行转换。JSX的使用还是比较简单的：<br>要渲染 HTML 标签，只需在 JSX 里使用小写字母开头的标签名。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var myDivElement = &#60;div className=&#34;foo&#34; /&#62;;&#10;React.render(myDivElement, document.body);</span><br></pre></td></tr></table></figure></p>
+<p>要渲染 React 组件，只需创建一个大写字母开头的本地变量。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var MyComponent = React.createClass(&#123;/*&#19968;&#20123;&#20195;&#30721;*/&#125;);&#10;var myElement = &#60;MyComponent someProperty=&#123;true&#125; /&#62;;&#10;React.render(myElement, document.body);</span><br></pre></td></tr></table></figure></p>
+<h1 id="本节结语">本节结语</h1><p>关于React.js的入门介绍暂时到这里，想要更多地了解React.js的朋友可以进入<a href="http://reactjs.cn/" target="_blank" rel="external">官方文档</a>进行学习。</p>
 
       
     </div>
@@ -255,18 +265,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/12/08/2015-12-09-单元测试工具Mocha和SuperTest组合/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/09/14/React-js那些事-入门篇/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          单元测试工具Mocha和SuperTest组合
+          React.js那些事(入门篇)
         
       </div>
     </a>
   
   
-    <a href="/2015/09/14/2015-09-14-React-js那些事-入门篇/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">React.js那些事(入门篇)</div>
+    <a href="/2015/09/02/Flexbox-布局/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Flexbox 布局</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -301,7 +311,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2015-10-07-React-js那些事-core篇" data-title="React.js那些事(core篇)" data-url="http://hugzh.github.io/2015/10/07/2015-10-07-React-js那些事-core篇/"></div>
+	<div class="ds-thread" data-thread-key="React-js那些事-介绍篇" data-title="React.js那些事(介绍篇)" data-url="http://hugzh.github.io/2015/09/11/React-js那些事-介绍篇/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

@@ -2,6 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://hugzh.github.io/2015/03/26/html5-placeholder/</loc>
+    <lastmod>2016-01-04T13:07:31.710Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://hugzh.github.io/2014/10/01/uploadyfy-introduce/</loc>
+    <lastmod>2016-01-04T13:07:18.270Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://hugzh.github.io/2015/04/16/node-spider/</loc>
     <lastmod>2016-01-04T08:52:21.147Z</lastmod>
   </url>
@@ -14,11 +24,6 @@
   <url>
     <loc>http://hugzh.github.io/2014/09/17/yanzhengma-php/</loc>
     <lastmod>2016-01-04T06:26:46.615Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://hugzh.github.io/2014/10/01/uploadyfy-introduce/</loc>
-    <lastmod>2016-01-04T06:26:40.558Z</lastmod>
   </url>
   
   <url>
@@ -42,17 +47,12 @@
   </url>
   
   <url>
-    <loc>http://hugzh.github.io/2015/03/26/html5-placeholder/</loc>
-    <lastmod>2016-01-04T06:25:47.919Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://hugzh.github.io/2014/09/03/haskell-introduce/</loc>
     <lastmod>2016-01-04T06:25:39.586Z</lastmod>
   </url>
   
   <url>
-    <loc>http://hugzh.github.io/2015/12/08/2015-12-09-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7Mocha%E5%92%8CSuperTest%E7%BB%84%E5%90%88/</loc>
+    <loc>http://hugzh.github.io/2015/12/08/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7Mocha%E5%92%8CSuperTest%E7%BB%84%E5%90%88/</loc>
     <lastmod>2016-01-04T06:25:21.909Z</lastmod>
   </url>
   
@@ -67,27 +67,27 @@
   </url>
   
   <url>
-    <loc>http://hugzh.github.io/2015/09/02/2015-09-02-Flexbox-%E5%B8%83%E5%B1%80/</loc>
+    <loc>http://hugzh.github.io/2015/09/02/Flexbox-%E5%B8%83%E5%B1%80/</loc>
     <lastmod>2016-01-04T06:23:25.240Z</lastmod>
   </url>
   
   <url>
-    <loc>http://hugzh.github.io/2015/08/15/2015-08-15-javascript%E4%B9%8BLocation%E5%AF%B9%E8%B1%A1/</loc>
+    <loc>http://hugzh.github.io/2015/08/15/javascript%E4%B9%8BLocation%E5%AF%B9%E8%B1%A1/</loc>
     <lastmod>2016-01-04T06:23:14.584Z</lastmod>
   </url>
   
   <url>
-    <loc>http://hugzh.github.io/2015/10/07/2015-10-07-React-js%E9%82%A3%E4%BA%9B%E4%BA%8B-core%E7%AF%87/</loc>
+    <loc>http://hugzh.github.io/2015/10/07/React-js%E9%82%A3%E4%BA%9B%E4%BA%8B-core%E7%AF%87/</loc>
     <lastmod>2016-01-04T05:57:16.528Z</lastmod>
   </url>
   
   <url>
-    <loc>http://hugzh.github.io/2015/09/14/2015-09-14-React-js%E9%82%A3%E4%BA%9B%E4%BA%8B-%E5%85%A5%E9%97%A8%E7%AF%87/</loc>
+    <loc>http://hugzh.github.io/2015/09/14/React-js%E9%82%A3%E4%BA%9B%E4%BA%8B-%E5%85%A5%E9%97%A8%E7%AF%87/</loc>
     <lastmod>2016-01-04T05:57:05.278Z</lastmod>
   </url>
   
   <url>
-    <loc>http://hugzh.github.io/2015/09/11/2015-09-11-React-js%E9%82%A3%E4%BA%9B%E4%BA%8B-%E4%BB%8B%E7%BB%8D%E7%AF%87/</loc>
+    <loc>http://hugzh.github.io/2015/09/11/React-js%E9%82%A3%E4%BA%9B%E4%BA%8B-%E4%BB%8B%E7%BB%8D%E7%AF%87/</loc>
     <lastmod>2016-01-04T05:56:45.868Z</lastmod>
   </url>
   
