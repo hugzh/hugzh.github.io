@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="果汁的随笔">
 <meta property="og:description" content="在前端开发领域，CSS是比较特殊的一种存在。理论上说，它是一种属性大杂烩，并不属于编程语言的范畴，当然SASS和LESS这两种预编译机制除外。所以CSS的学习是需要不断地去记忆和积累的。在前端笔试和面试过程中，CSS的考察是比较琐碎的，而且往往考察点比较偏，需要我们平时养成做笔记的习惯。这篇文章是我之前发布在慕课社区的一篇小笔记，原文前端笔试面试中的常用知识点总结(CSS)，主要记录的是自己在校招">
 <meta property="og:image" content="http://img.mukewang.com/5649f2ab0001b95904640464.png">
-<meta property="og:updated_time" content="2016-01-04T15:24:42.144Z">
+<meta property="og:updated_time" content="2016-01-04T15:27:35.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端笔试面试中的常用到的CSS知识点总结">
 <meta name="twitter:description" content="在前端开发领域，CSS是比较特殊的一种存在。理论上说，它是一种属性大杂烩，并不属于编程语言的范畴，当然SASS和LESS这两种预编译机制除外。所以CSS的学习是需要不断地去记忆和积累的。在前端笔试和面试过程中，CSS的考察是比较琐碎的，而且往往考察点比较偏，需要我们平时养成做笔记的习惯。这篇文章是我之前发布在慕课社区的一篇小笔记，原文前端笔试面试中的常用知识点总结(CSS)，主要记录的是自己在校招">
@@ -237,7 +237,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在前端开发领域，CSS是比较特殊的一种存在。理论上说，它是一种属性大杂烩，并不属于编程语言的范畴，当然SASS和LESS这两种预编译机制除外。所以CSS的学习是需要不断地去记忆和积累的。在前端笔试和面试过程中，CSS的考察是比较琐碎的，而且往往考察点比较偏，需要我们平时养成做笔记的习惯。这篇文章是我之前发布在慕课社区的一篇小笔记，原文<a href="http://www.imooc.com/article/2181" target="_blank" rel="external">前端笔试面试中的常用知识点总结(CSS)</a>，主要记录的是自己在校招过程当中关于CSS知识的总结。</p>
+        <p><em>在前端开发领域，CSS是比较特殊的一种存在。理论上说，它是一种属性大杂烩，并不属于编程语言的范畴，当然SASS和LESS这两种预编译机制除外。所以CSS的学习是需要不断地去记忆和积累的。在前端笔试和面试过程中，CSS的考察是比较琐碎的，而且往往考察点比较偏，需要我们平时养成做笔记的习惯。这篇文章是我之前发布在慕课社区的一篇小笔记，原文<a href="http://www.imooc.com/article/2181" target="_blank" rel="external">前端笔试面试中的常用知识点总结(CSS)</a>，主要记录的是自己在校招过程当中关于CSS知识的总结。</em><br><a id="more"></a></p>
 <h3 id="1、CSS选择器的优先级">1、CSS选择器的优先级</h3><p>!important  &gt; 内联 &gt; id选择器 &gt; 类选择器 &gt; 标签选择器<br>多个类选择器叠加（256）之后的优先级大于一个id选择器<br>!important 用于强调CSS属性具有最高的优先级。IE6不支持这种用法。<br>CSS选择器的种类：<br>1.id选择器(# myid)<br>2.类选择器(.myclassname)<br>3.标签选择器(div, h1, p)<br>4.相邻选择器(h1 + p)<br>5.子选择器(ul &gt; li)<br>6.后代选择器(li a)<br>7.通配符选择器( * )<br>8.属性选择器(a[rel = “external”])<br>9.伪类选择器(a: hover, li:nth-child)</p>
 <h3 id="2、CSS优先级权重计算法">2、CSS优先级权重计算法</h3><p>CSS优先级的计算规则如下：<br>元素标签中定义的样式（Style属性）,加1,0,0,0<br>每个ID选择符(如 #id),加0,1,0,0<br>每个Class选择符、每个属性选择符、每个伪类（:hover）加0,0,1,0<br>每个元素选择符（如p）或伪元素选择符(如 :firstchild)等，加0,0,0,1<br>然后，将这四个数字分别累加，就得到每个CSS定义的优先级的值<br>然后从左到右逐位比较大小，数字大的CSS样式的优先级就高。</p>
 <h3 id="3、超链接访问过后hover样式就不出现的问题是什么？如何解决？">3、超链接访问过后hover样式就不出现的问题是什么？如何解决？</h3><p>被点击访问过的超链接样式不在具有hover和active了,解决方法是改变CSS属性的排列顺序: L-V-H-A（link,visited,hover,active）</p>
