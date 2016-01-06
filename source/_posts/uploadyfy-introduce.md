@@ -8,7 +8,7 @@ tags:
 
 熟悉使用php的人一定会对php文件上传不陌生，多文件上传以及重命名等都是文件上传的重要应用，我在这里介绍一个ajax+jQuery的插件，这个插件比较好的地方就是前端的效果比较炫酷，使用比较简单，大大简化了代码复杂度。uploadify.swf是插件的核心部分，（下载地址:http://www.uploadify.com/download/） 前端的效果主要由jquery.uploadify.js实现，所以这两个文件要包含进前端的源代码。我在这里主要是想介绍前端的接口函数以及php后台里面的文件重命名的技巧。
 前端比较简单，主要是文件包含以及文件上传表单和接口函数。需要包含这几个js文件
-
+<!--more-->
 ```
 <script src="jquery.min.js" type="text/javascript"></script>
 <script src="jquery.uploadify.min.js" type="text/javascript"></script>
