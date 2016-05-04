@@ -6,13 +6,13 @@ tags:
     - 构建工具
     - 前端工程
 ---
-Webpack是伴随着React出现的一个名词，近两年Webpack正在越来越受到前端开发者们的热捧。如果你已经使用过诸如Grunt、Gulp这样的工具，那么你对“构建”这个词肯定不会陌生。没错，Webpack就是当今最火的前端构建工具之一，配合Gulp使用可以搭建出非常强大的构建工具。<!--more-->趁着五一小假期，打算把最近自己折腾过的知识做个总结。这是上篇，主要是单纯的webpack使用，[下篇]()主要内容是结合Gulp尝试搭建更加强大的前端构建工具。
+Webpack是伴随着React出现的一个名词，近两年Webpack越来越受到前端开发者们的热捧。如果你已经使用过诸如Grunt、Gulp这样的工具，那么你对“构建”这个词肯定不会陌生。没错，Webpack就是当今最火的前端构建工具之一，配合Gulp使用可以搭建出非常强大的构建工具。<!--more-->趁着五一小假期，打算把最近自己折腾过的知识做个总结。这是上篇，主要是单纯的webpack使用，[下篇]()主要内容是结合Gulp尝试搭建更加强大的前端构建工具。
 
 # 什么是Webpack？
 按照[官方文档](http://webpack.github.io/docs/what-is-webpack.html)的解释，Webpack就是个模块打包工具，将模块及其依赖打包生成静态资源。在Webpack的机制里，所有的资源都是模块(js,css,图片等)，而且可以通过代码分隔([Code Splitting](http://webpack.github.io/docs/code-splitting.html))的方法异步加载，实现性能上的优化。
 
 ## Chunk的概念
-chunk是使用Webpack过程中最重要的几个概念之一。在Webpack打包机制中，编译输出的文件包括entry（入口，可以是一个或者多个资源合并而成，由html通过script标签引入）和chunk（被entry所依赖的额外的代码块，同样可以包含一个或者多个文件）。从页面加速的角度来讲，我们应该尽可能将所有的js打包到一个bundle.js之中，但是总会有一些功能是使用过程中才会用到的。出于性能优化的需要，对于这部分资源我们可以做成按需加载，通过require.ensure方法实现:
+chunk是使用Webpack过程中最重要的几个概念之一。在Webpack打包机制中，编译的文件包括entry（入口，可以是一个或者多个资源合并而成，由html通过script标签引入）和chunk（被entry所依赖的额外的代码块，同样可以包含一个或者多个文件）。从页面加速的角度来讲，我们应该尽可能将所有的js打包到一个bundle.js之中，但是总会有一些功能是使用过程中才会用到的。出于性能优化的需要，对于这部分资源我们可以做成按需加载，通过require.ensure方法实现:
 ```
 require.ensure([], function(require) {
         var dialog = require('./components/dialog');
@@ -58,7 +58,7 @@ loaders: [{
 * 将js模块暴露到全局，使用expose-loader
 
 ## Plugin 
-插件的引入和loader差不多，只是插件是以对象的形式引入。像静态资源路径的替换这种功能就能通过插件来处理。比如公用模块打包到trunk的插件：
+插件的引入和loader差不多，只是插件是以对象的形式引入。像静态资源路径的替换这种功能就能通过插件来处理。比如公用模块打包到chunk的插件：
 ```
 var chunks = Object.keys(entries);
 plugins: [
@@ -77,11 +77,11 @@ plugins: [
 * 代码丑化，UglifyJsPlugin，开发过程中不建议打开
 * 多个 html共用一个js文件(chunk)，可用CommonsChunkPlugin
 * 清理文件夹，Clean
-* 调用模块的别名ProvidePlugin，例如想在js中用$，如果通过webpack加载，需要将$与jQuery对应起来
+* 调用模块的别名ProvidePlugin，例如想在js中用"$"，如果通过webpack加载，需要将$与jQuery对应起来
 
 # 搭建自己的构建集成环境
 介绍完上面几个概念，我们就可以进入动手搭建脚手架的阶段了。
-网上关于webpack的介绍文章不少，但是这些文章大多数是简略性的介绍或者是仅仅面向有一定webpack基础的开发者，对于完全从零开始的开发者来说理解起来有点吃力。这篇文章是完全面向webpack零基础的同学，根据我自己的填坑经历一步一步描述如何搭建一个简单的构建工具。
+网上关于webpack的介绍文章不少，但是这些文章大多数是简略性的介绍或者是仅仅面向有一定webpack基础的开发者，对于完全从零开始的开发者来说理解起来有点吃力。这篇文章是完全面向webpack零基础的同学，根据我自己的填坑经历一步一步描述如何搭建一个简单的构建工具。由于是新手，中间难免会存在一些错误，欢迎留言指正。
 ## 项目目录
 假设我们要搭建的demo项目的目录结构是这样的：
 ```
@@ -90,9 +90,9 @@ plugins: [
   - src/                # 开发目录
     - index             # index模块
       + images/         # webapp图片资源目录
-      index.html        # 模板   
-      index.js          # 模块entry
-      style.less        # 样式表
+        index.html      # 模板   
+        index.js        # 模块entry
+        style.less      # 样式表
   webpack.config.js     # webpack配置文件
   package.json          # 项目依赖文件
   config.js             # 项目配置文件
@@ -106,8 +106,8 @@ plugins: [
 ### 安装依赖
 这一步也非常简单，根据项目需要用到的依赖 npm i xxx--save-dev，也可以在配置webpack.config.js的过程中根据需要安装。
 ### 配置webpack
-这一步基本是webpack配置的全部内容。由于webpack会默认读取根目录下的webpack.config.js文件，所以我们需要在根目录手动创建。
-看看我们的webpack配置文件：
+这一步基本是webpack配置的全部内容。由于webpack默认读取根目录下的webpack.config.js文件，所以我们需要在根目录手动创建。
+看看我们的webpack.config.js配置文件：
 #### 1、首先，引入我们需要用到的npm模块
 ```
 var path = require('path'); //node 原生path模块
@@ -137,15 +137,16 @@ var getEntry = function() {
     return entry;
 };
 ```
-然后将配置封装module.exports，定义入口entry，entry可以为字符串、对象或者数组，对应单页面和多页面应用：
+然后将配置封装在module.exports，定义入口entry字段，entry可以为字符串、对象或者数组，对应单页面和多页面应用：
 ```
+...
 module.exports = {
     entry: getEntry(),
     ...
 }
 ```
 #### 3、定义资源输出
-资源打包输出的配置在output内，主要包括path、filename、chunkFilename以及publicPath。path是资源输出路径，filename是资源命名规则，chunkFilename是公共js打包后输出的命名，publicPath是静态资源的公共路径，比如线上CDN地址等，也可以不设置，这样CSS中的相对路径就不会包括publicPath。在output输出的时候可以根据开发环境或者生产环境选择不同的文件命名方法，因为一般来说，线上的资源都是要经过压缩的。比如我们定义一个prod变量判断当前编译环境:
+资源打包输出的配置在output内，主要包括path、filename、chunkFilename以及publicPath。path是资源输出路径，filename是资源命名规则，chunkFilename是公共js打包后输出的命名，publicPath是静态资源的公共路径，比如线上CDN地址等，开发环境可以不设置，这样CSS中的相对路径就不会包括publicPath。在output输出的时候可以根据开发环境或者生产环境选择不同的文件命名方法，因为一般来说，线上的资源都是要经过压缩的。比如我们定义一个"prod"变量判断当前编译环境:
 ```
     ...
     output: {
@@ -167,7 +168,7 @@ resolve: {
 }
 
 ```
-那么，当我们在代码中require('xyz')的时候，实际上我们是引入'/absolute/path/to/file.js'这个文件。还可以配置extensions对象，使得开发过程中模块的处理可以忽略后缀。在我们的demo中，是这样配置的:
+那么，当我们在代码中require('xyz')的时候，实际上我们是引入'/absolute/path/to/file.js'这个文件。还可以配置extensions对象，使得开发过程中文件资源的处理可以忽略后缀。在我们的demo中，是这样配置的:
 ```
     ...
     resolve: {
@@ -180,7 +181,7 @@ resolve: {
     ...
 ```
 #### 5、配置loaders
-loader的配置是在module对像中。根据文章开头部分的介绍，loader就是定义一个个资源处理器，demo项目主要用到下面几个loader：
+loader的配置是在module中定义。根据文章开头部分的介绍，loaders就是定义一个个资源处理器，demo项目主要用到下面几个loader：
 ```
     ...
     module: {
@@ -201,7 +202,7 @@ loader的配置是在module对像中。根据文章开头部分的介绍，loade
     },
     ...
 ```
-ExtractTextPlugin.extract是用来提取出单独的CSS文件的插件，如果不使用这个插件处理样式文件，CSS会内联在页面中，不利于做样式表维护。babel用来做es6转换。
+ExtractTextPlugin.extract是用来提取出单独的CSS文件的插件，如果不使用这个插件处理样式文件，CSS会内联在页面中，不利于做样式表维护;而babel则是用来做es6转换。
 #### 6、定义Plugins
 ```
     ...
@@ -228,9 +229,9 @@ ExtractTextPlugin.extract是用来提取出单独的CSS文件的插件，如果�
     ]
     ...
 ```
-HtmlWebpackPlugin插件用来自动在页面中注入chunk；HotModuleReplacementPlugin插件是用来做热替换的，每次开发环境下的资源发生变更之后都会自动重新打包输出，不需要重新构建；配置OpenBrowserPlugin插件可以在构建完成之后自动打开浏览器的localhost:8080路由；CommonsChunkPlugin插件定义chunk名字，文章开始部分已做详细介绍。
+HtmlWebpackPlugin插件用来自动在页面中注入chunk；HotModuleReplacementPlugin插件是用来做热替换的，每次开发环境下的资源发生变更之后都会自动重新打包输出，不需要重新构建；配置OpenBrowserPlugin插件可以在构建完成之后自动打开浏览器的"localhost:8080"这个路径；CommonsChunkPlugin插件定义chunk名字，文章开始部分已做详细介绍。
 #### 7、定义webpack-dev-server
-webpack-dev-server是webpack提供的静态资源服务器，它的存在使得开发可以脱离代理服务器。本地调试静态资源不再需要搭建本地服务器，简直是解救万民于水火呀！webpack-dev-server有多种配置形式，这里采用的是写死在config的方式，这种方式的特点是方便开发但是不灵活。
+webpack-dev-server是webpack提供的静态资源服务器，它的存在使得开发可以脱离代理服务器工作。开发调试静态资源不再需要搭建本地服务器，这魔法简直是解救万民于水火呀！webpack-dev-server有多种配置形式，这里采用的是写死在config的方式，这种方式的特点是方便开发，缺点是不灵活。
 ```
     ...
     devServer = {
@@ -250,7 +251,7 @@ webpack-dev-server是webpack提供的静态资源服务器，它的存在使得�
 ```
 
 #### 8、编译环境判断
-在步骤3我们需要根据当前的编译环境来选择不同的资源输出方式。编译环境的判断可以通过定义node的script来设置。在我们项目根目录的package.json文件中，定义：
+在“步骤3”我们需要根据当前的编译环境来选择不同的资源输出方式。编译环境的判断可以通过定义node的script来设置环境变量。在我们项目根目录的package.json文件中，定义：
 ```
 "scripts": {
     "dev": "webpack-dev-server",
@@ -262,7 +263,7 @@ webpack-dev-server是webpack提供的静态资源服务器，它的存在使得�
 ```
 var prod = process.env.NODE_ENV === 'production' ? true : false;
 ```
-之后在配置文件的最后，根据当前的编译环境，如果是生产环境就配置压缩丑化插件"UglifyJsPlugin"，如果是开发环境就配置webpack-dev-server：
+之后在配置文件的最后，根据当前的编译环境，如果是生产环境就配置引用压缩丑化插件"UglifyJsPlugin"，如果是开发环境就配置webpack-dev-server：
 ```
 // 判断开发环境还是生产环境,添加uglify等插件
 if (process.env.NODE_ENV === 'production') {
