@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>前端笔试面试中的常用到的CSS知识点总结 | 果汁的随笔</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在前端开发领域，CSS是比较特殊的一种存在。理论上说，它是一种属性大杂烩，并不属于编程语言的范畴，当然SASS和LESS这两种预编译机制除外。所以CSS的学习是需要不断地去记忆和积累的。在前端笔试和面试过程中，CSS的考察是比较琐碎的，而且往往考察点比较偏，需要我们平时养成做笔记的习惯。这篇文章是我之前发布在慕课社区的一篇小笔记，原文前端笔试面试中的常用知识点总结(CSS)，主要记录的是自己在校招">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端笔试面试中的常用到的CSS知识点总结">
+<meta property="og:url" content="http://blog.hugzh.com/2015/12/15/前端笔试面试中的常用到的CSS知识点总结/index.html">
+<meta property="og:site_name" content="果汁的随笔">
+<meta property="og:description" content="在前端开发领域，CSS是比较特殊的一种存在。理论上说，它是一种属性大杂烩，并不属于编程语言的范畴，当然SASS和LESS这两种预编译机制除外。所以CSS的学习是需要不断地去记忆和积累的。在前端笔试和面试过程中，CSS的考察是比较琐碎的，而且往往考察点比较偏，需要我们平时养成做笔记的习惯。这篇文章是我之前发布在慕课社区的一篇小笔记，原文前端笔试面试中的常用知识点总结(CSS)，主要记录的是自己在校招">
+<meta property="og:image" content="http://img.mukewang.com/5649f2ab0001b95904640464.png">
+<meta property="og:updated_time" content="2016-08-13T03:08:44.569Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端笔试面试中的常用到的CSS知识点总结">
+<meta name="twitter:description" content="在前端开发领域，CSS是比较特殊的一种存在。理论上说，它是一种属性大杂烩，并不属于编程语言的范畴，当然SASS和LESS这两种预编译机制除外。所以CSS的学习是需要不断地去记忆和积累的。在前端笔试和面试过程中，CSS的考察是比较琐碎的，而且往往考察点比较偏，需要我们平时养成做笔记的习惯。这篇文章是我之前发布在慕课社区的一篇小笔记，原文前端笔试面试中的常用知识点总结(CSS)，主要记录的是自己在校招">
+<meta name="twitter:image" content="http://img.mukewang.com/5649f2ab0001b95904640464.png">
+  
+    <link rel="alternative" href="/atom.xml" title="果汁的随笔" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/author.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">橙乡果汁</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">代码不过百万行，不娶媳妇不见娘</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">归档</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/hugzh/" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/2076290857" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="/sehuguozhi@163.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Vuex/" style="font-size: 10px;">Vuex</a> <a href="/tags/cleaver/" style="font-size: 10px;">cleaver</a> <a href="/tags/css/" style="font-size: 17.5px;">css</a> <a href="/tags/curring/" style="font-size: 10px;">curring</a> <a href="/tags/flexbox/" style="font-size: 10px;">flexbox</a> <a href="/tags/hash/" style="font-size: 12.5px;">hash</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/js/" style="font-size: 12.5px;">js</a> <a href="/tags/location/" style="font-size: 12.5px;">location</a> <a href="/tags/mocha/" style="font-size: 12.5px;">mocha</a> <a href="/tags/node/" style="font-size: 15px;">node</a> <a href="/tags/uncurrying/" style="font-size: 10px;">uncurrying</a> <a href="/tags/virtual-dom/" style="font-size: 17.5px;">virtual dom</a> <a href="/tags/前端工程/" style="font-size: 10px;">前端工程</a> <a href="/tags/前端杂谈/" style="font-size: 12.5px;">前端杂谈</a> <a href="/tags/幻灯/" style="font-size: 10px;">幻灯</a> <a href="/tags/构建工具/" style="font-size: 10px;">构建工具</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件化开发/" style="font-size: 12.5px;">组件化开发</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.jobbole.com/">伯乐在线</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.imooc.com/">慕课网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.barretlee.com/">小胡子歌的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://gold.xitu.io/">稀土掘金</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">梦想做一枚天天向上的前端攻城狮</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">橙乡果汁</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/author.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">橙乡果汁</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">代码不过百万行，不娶媳妇不见娘</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">归档</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/hugzh/" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2076290857" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="/sehuguozhi@163.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-前端笔试面试中的常用到的CSS知识点总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/15/前端笔试面试中的常用到的CSS知识点总结/" class="article-date">
+  	<time datetime="2015-12-15T14:41:23.000Z" itemprop="datePublished">2015-12-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端笔试面试中的常用到的CSS知识点总结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端开发/">前端开发</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在前端开发领域，CSS是比较特殊的一种存在。理论上说，它是一种属性大杂烩，并不属于编程语言的范畴，当然SASS和LESS这两种预编译机制除外。所以CSS的学习是需要不断地去记忆和积累的。在前端笔试和面试过程中，CSS的考察是比较琐碎的，而且往往考察点比较偏，需要我们平时养成做笔记的习惯。这篇文章是我之前发布在慕课社区的一篇小笔记，原文<a href="http://www.imooc.com/article/2181" target="_blank" rel="external">前端笔试面试中的常用知识点总结(CSS)</a>，主要记录的是自己在校招过程当中关于CSS知识的总结。<br><a id="more"></a></p>
+<h3 id="1、CSS选择器的优先级"><a href="#1、CSS选择器的优先级" class="headerlink" title="1、CSS选择器的优先级"></a>1、CSS选择器的优先级</h3><p>!important  &gt; 内联 &gt; id选择器 &gt; 类选择器 &gt; 标签选择器<br>多个类选择器叠加（256）之后的优先级大于一个id选择器<br>!important 用于强调CSS属性具有最高的优先级。IE6不支持这种用法。<br>CSS选择器的种类：<br>1.id选择器(# myid)<br>2.类选择器(.myclassname)<br>3.标签选择器(div, h1, p)<br>4.相邻选择器(h1 + p)<br>5.子选择器(ul &gt; li)<br>6.后代选择器(li a)<br>7.通配符选择器( * )<br>8.属性选择器(a[rel = “external”])<br>9.伪类选择器(a: hover, li:nth-child)</p>
+<h3 id="2、CSS优先级权重计算法"><a href="#2、CSS优先级权重计算法" class="headerlink" title="2、CSS优先级权重计算法"></a>2、CSS优先级权重计算法</h3><p>CSS优先级的计算规则如下：<br>元素标签中定义的样式（Style属性）,加1,0,0,0<br>每个ID选择符(如 #id),加0,1,0,0<br>每个Class选择符、每个属性选择符、每个伪类（:hover）加0,0,1,0<br>每个元素选择符（如p）或伪元素选择符(如 :firstchild)等，加0,0,0,1<br>然后，将这四个数字分别累加，就得到每个CSS定义的优先级的值<br>然后从左到右逐位比较大小，数字大的CSS样式的优先级就高。</p>
+<h3 id="3、超链接访问过后hover样式就不出现的问题是什么？如何解决？"><a href="#3、超链接访问过后hover样式就不出现的问题是什么？如何解决？" class="headerlink" title="3、超链接访问过后hover样式就不出现的问题是什么？如何解决？"></a>3、超链接访问过后hover样式就不出现的问题是什么？如何解决？</h3><p>被点击访问过的超链接样式不在具有hover和active了,解决方法是改变CSS属性的排列顺序: L-V-H-A（link,visited,hover,active）</p>
+<h3 id="4、什么是Css-Hack？ie6-7-8的hack分别是什么？"><a href="#4、什么是Css-Hack？ie6-7-8的hack分别是什么？" class="headerlink" title="4、什么是Css Hack？ie6,7,8的hack分别是什么？"></a>4、什么是Css Hack？ie6,7,8的hack分别是什么？</h3><p>针对不同的浏览器写不同的CSS code的过程，就是CSS hack。常见的hack手法：<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#test</span>       &#123;   </div><div class="line">        <span class="attribute">width</span>:<span class="number">300px</span>;   </div><div class="line">        <span class="attribute">height</span>:<span class="number">300px</span>;   </div><div class="line">        <span class="attribute">background-color</span>:blue;      <span class="comment">/*firefox*/</span></div><div class="line">        <span class="attribute">background-color</span>:red\<span class="number">9</span>;      <span class="comment">/*all ie*/</span></div><div class="line">        <span class="attribute">background-color</span>:yellow\<span class="number">0</span>;    <span class="comment">/*ie8*/</span></div><div class="line">        +<span class="attribute">background-color</span>:pink;        <span class="comment">/*ie7*/</span></div><div class="line">        _background-<span class="attribute">color</span>:orange;       <span class="comment">/*ie6*/</span>    &#125;  </div><div class="line">        :root <span class="selector-id">#test</span> &#123; <span class="attribute">background-color</span>:purple\<span class="number">9</span>; &#125;  <span class="comment">/*ie9*/</span></div><div class="line">    @<span class="keyword">media</span> all and (min-width:<span class="number">0px</span>)&#123; </div><div class="line">          <span class="selector-id">#test</span> &#123;<span class="attribute">background-color</span>:black\<span class="number">0</span>;&#125; </div><div class="line">     &#125;  <span class="comment">/*opera*/</span></div><div class="line">    @<span class="keyword">media</span> screen and (-webkit-min-device-pixel-ratio:<span class="number">0</span>)&#123; </div><div class="line"><span class="selector-id">#test</span> &#123;<span class="attribute">background-color</span>:gray;&#125; </div><div class="line">&#125;       <span class="comment">/*chrome and safari*/</span></div></pre></td></tr></table></figure></p>
+<h3 id="5、描述一个”reset”的CSS文件并如何使用它。知道normalize-css吗？你了解他们的不同之处？"><a href="#5、描述一个”reset”的CSS文件并如何使用它。知道normalize-css吗？你了解他们的不同之处？" class="headerlink" title="5、描述一个”reset”的CSS文件并如何使用它。知道normalize.css吗？你了解他们的不同之处？"></a>5、描述一个”reset”的CSS文件并如何使用它。知道normalize.css吗？你了解他们的不同之处？</h3><p>不同的浏览器对一些元素有不同的默认样式，如果你不处理，在不同的浏览器下会存在必要的风险，或者更有戏剧性的性发生。<br>　　你可能会用Normalize来代替你的重置样式文件。它没有重置所有的样式风格，但仅提供了一套合理的默认样式值。既能让众多浏览器达到一致和合理，但又不扰乱其他的东西（如粗体的标题）。</p>
+<h3 id="6、display-none与visibility-hidden的区别是什么？"><a href="#6、display-none与visibility-hidden的区别是什么？" class="headerlink" title="6、display:none与visibility:hidden的区别是什么？"></a>6、display:none与visibility:hidden的区别是什么？</h3><p>display : 隐藏对应的元素但不挤占该元素原来的空间。<br>visibility: 隐藏对应的元素并且挤占该元素原来的空间。<br> 　　即是，使用CSS display:none属性后，HTML元素（对象）的宽度、高度等各种属性值都将“丢失”;而使用visibility:hidden属性后，HTML元素（对象）仅仅是在视觉上看不见（完全透明），而它所占据的空间位置仍然存在。</p>
+<h3 id="7、CSS盒子模型"><a href="#7、CSS盒子模型" class="headerlink" title="7、CSS盒子模型"></a>7、CSS盒子模型</h3><p>Box Model规定了元素框处理元素内容（element content）、内边距（padding）、边框（border） 和 外边距（margin） 的方式。盒子模型有 block,inline-block,inline,flex,table-cell等几种显示方式。<br><img src="http://img.mukewang.com/5649f2ab0001b95904640464.png" alt="CSS盒模型"><br>如图所示，元素的高度和宽度指的是盒子模型的content区域的高度和宽度，不包括内边距以外的部分。(IE的content则是包含border、内边距和content)。盒子模型有两种，W3C标准盒子模型（content-box）以及IE盒子模型（border-box）。</p>
+<h3 id="8、相对定位relative、浮动float以及绝对定位absolute的区别？"><a href="#8、相对定位relative、浮动float以及绝对定位absolute的区别？" class="headerlink" title="8、相对定位relative、浮动float以及绝对定位absolute的区别？"></a>8、相对定位relative、浮动float以及绝对定位absolute的区别？</h3><p>1）相对定位是在常规流中的定位。一旦一个框按照常规流或者是浮动得到定位，它还可以相对该位置而偏移， 这就是相对定位。偏移后，在常规流中依然占据原有位置，偏移量并不会对后续的block产生挤占，后续的块就好像没有感知到偏移，依然按照常规流位置排位。<br>2）绝对定位（Absolute positioning）元素定位的参照物是其包含块（第一个relative定位的祖先元素）进行定位，不一定是其父元素。绝对定位元素完全脱离了常规流，每个绝对定位的框都可以看做一个单独的图层，不会对其他层框的定位产生影响。绝对元素定位的 top 和 left 值跟绝对元素未脱离常规流之前在常规流中位置有关。<br>3）浮动框就是一个框在当前行被向左或向右挪动(偏移)，它不在常规流中。在该浮动框之前或之后创建的非定位框垂直排列，就好象浮动框并不存在一样。当前行里浮动框前的任何内容，都将被重新排列到该浮动另一侧的第一个可用行里。</p>
+<h3 id="9、清除浮动的用法？"><a href="#9、清除浮动的用法？" class="headerlink" title="9、清除浮动的用法？"></a>9、清除浮动的用法？</h3><p>在非IE浏览器（如Firefox）下，当容器的高度为auto，且容器的内容中有浮动（float为left或right）的元素，在这种情况下，容器的高度不能自动伸长以适应内容的高度，使得内容溢出到容器外面而影响（甚至破坏）布局的现象。这个现象叫浮动溢出，为了防止这个现象的出现而进行的CSS处理，就叫CSS清除浮动。<br>使用方法：<br>1、在浮动元素后使用一个空元素如<div class="clear"></div>，并在CSS中赋予.clear{clear:both;}属性即可清理浮动。<br>2、给浮动元素的容器添加overflow:hidden;或overflow:auto;可以清除浮动<br>3、什么都不做，给浮动元素后面的元素添加clear属性。<br>4、利用伪类清除浮动，给浮动元素的容器添加一个clearfix的class，然 后给这个class添加一个:after伪元素实现元素末尾添加一个看不见的块元素（Block element）清理浮动。<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//一种常见利用伪类清除浮动的代码</span></div><div class="line"> <span class="selector-class">.clearfix</span>:after &#123;</div><div class="line">    <span class="attribute">content</span>:<span class="string">"."</span>;       <span class="comment">//这里利用到了content属性</span></div><div class="line">    <span class="attribute">display</span>:block; </div><div class="line">    <span class="attribute">height</span>:<span class="number">0</span>;</div><div class="line">    <span class="attribute">visibility</span>:hidden; </div><div class="line">    <span class="attribute">clear</span>:both; </div><div class="line">&#125;</div><div class="line"><span class="selector-class">.clearfix</span> &#123; </div><div class="line">    *zoom:<span class="number">1</span>; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="10、BOX模型的margin在IE比在其他浏览器大2px的解决办法"><a href="#10、BOX模型的margin在IE比在其他浏览器大2px的解决办法" class="headerlink" title="10、BOX模型的margin在IE比在其他浏览器大2px的解决办法"></a>10、BOX模型的margin在IE比在其他浏览器大2px的解决办法</h3><p>div{margin:30px!important;margin:28px;}<br>注意这两个margin的顺序一定不能写反，据阿捷的说法!important这个 属性IE不能识别，但别的浏览器可以识别。所以在IE下其实解释成这样：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span>&#123;<span class="attribute">maring</span>:<span class="number">30px</span>;<span class="attribute">margin</span>:<span class="number">28px</span>&#125;</div></pre></td></tr></table></figure></p>
+<p>重复定义的话按照最后一个来执行，所以不可以只写<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">margin</span>:XXpx<span class="meta">!important</span>;</div></pre></td></tr></table></figure></p>
+<p>也可以这样子hack<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">_margin</span>:<span class="number">28px</span>;<span class="attribute">margin</span>:<span class="number">28px</span>\<span class="number">9</span>;<span class="attribute">margin</span>:<span class="number">30px</span>;&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="11、IE-3像素Bug的产生原因及解决办法"><a href="#11、IE-3像素Bug的产生原因及解决办法" class="headerlink" title="11、IE 3像素Bug的产生原因及解决办法"></a>11、IE 3像素Bug的产生原因及解决办法</h3><p>当在同一行相邻出现一个浮动的块元素和一个非浮动的块元素时，两块元素之间就会出现3px的裂痕。<br>解决办法就是：对其中一个元素添加“_margin-*:-3px”的CSS属性，或者将另外一个非浮动的元素设为浮动。</p>
+<h3 id="12、IE6-双边距Bug的产生原因及解决办法"><a href="#12、IE6-双边距Bug的产生原因及解决办法" class="headerlink" title="12、IE6 双边距Bug的产生原因及解决办法"></a>12、IE6 双边距Bug的产生原因及解决办法</h3><p>当我们在浮动元素上面添加margin-*的属性的时候，比如在float:left的元素CSS添加margin-left:50px，那么最终在IE6下面的显示就是该元素的margin-left最终变为100px，边距翻倍。<br>解决办法：添加_display:inline</p>
+<h3 id="13、FOUC-Flash-Of-Unstyled-Content-文档样式闪烁"><a href="#13、FOUC-Flash-Of-Unstyled-Content-文档样式闪烁" class="headerlink" title="13、FOUC - Flash Of Unstyled Content 文档样式闪烁"></a>13、FOUC - Flash Of Unstyled Content 文档样式闪烁</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">media</span>=<span class="string">"all"</span>&gt;</span><span class="css">@<span class="keyword">import</span> <span class="string">"../fouc.css"</span>;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>而引用CSS文件的@import就是造成这个问题的罪魁祸首。IE会先加载整个HTML文档的DOM，然后再去导入外部的CSS文件，因此，在页面DOM加载完成到CSS导入完成中间会有一段时间页面上的内容是没有样式的，这段时间的长短跟网速，电脑速度都有关系。<br>解决方法简单的出奇，只要在 head 之间加入一个 link 或者 script 元素就可以了。</p>
+<h3 id="14、文本溢出省略的处理方法"><a href="#14、文本溢出省略的处理方法" class="headerlink" title="14、文本溢出省略的处理方法"></a>14、文本溢出省略的处理方法</h3><p>1)单行文本溢出<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.inline</span>&#123;</div><div class="line">  <span class="attribute">overflow</span>:hidden;</div><div class="line">         <span class="attribute">white-space</span>:nowrap;</div><div class="line">         <span class="attribute">text-overflow</span>:ellipsis; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2)多行文本溢出<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.foo</span>&#123;</div><div class="line">  <span class="attribute">display</span>:-webkit-box<span class="meta">!important</span>;</div><div class="line">  <span class="attribute">overflow</span>:hidden;</div><div class="line">  <span class="attribute">text-overflow</span>:ellipsis;</div><div class="line">  <span class="attribute">work-break</span>:break-all;</div><div class="line">  <span class="attribute">-webkit-box-orient</span>:vertical; <span class="comment">/*方向*/</span></div><div class="line">  <span class="attribute">-webkit-line-clamp</span>:<span class="number">4</span>; <span class="comment">/*显示多少行文本*/</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>但是这里只适用于webkit内核浏览器，不兼容IE和其他非webkit浏览器。</p>
+<h3 id="15、CSS实现垂直水平居中"><a href="#15、CSS实现垂直水平居中" class="headerlink" title="15、CSS实现垂直水平居中"></a>15、CSS实现垂直水平居中</h3><p>方法1：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span> &#123;</div><div class="line">          <span class="attribute">width</span>:<span class="number">800px</span>;</div><div class="line">          <span class="attribute">height</span>:<span class="number">500px</span>;</div><div class="line">          <span class="attribute">border</span>:<span class="number">2px</span> solid <span class="number">#000</span>;</div><div class="line">          <span class="attribute">position</span>:relative;</div><div class="line">&#125;</div><div class="line"> <span class="selector-class">.child</span> &#123;</div><div class="line">        <span class="attribute">width</span>:<span class="number">200px</span>;</div><div class="line">        <span class="attribute">height</span>:<span class="number">200px</span>;</div><div class="line">        <span class="attribute">margin</span>: auto;  </div><div class="line">        <span class="attribute">position</span>: absolute;  </div><div class="line">        <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0</span>; <span class="attribute">bottom</span>: <span class="number">0</span>; <span class="attribute">right</span>: <span class="number">0</span>; </div><div class="line">        <span class="attribute">background-color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>方法2：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span> &#123;</div><div class="line">    <span class="attribute">width</span>:<span class="number">800px</span>;</div><div class="line">    <span class="attribute">height</span>:<span class="number">500px</span>;</div><div class="line">    <span class="attribute">border</span>:<span class="number">2px</span> solid <span class="number">#000</span>;</div><div class="line">    <span class="attribute">display</span>:table-cell;</div><div class="line">    <span class="attribute">vertical-align</span>:middle;</div><div class="line">    <span class="attribute">text-align</span>: center;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.child</span> &#123;</div><div class="line">    <span class="attribute">width</span>:<span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>:<span class="number">200px</span>;</div><div class="line">    <span class="attribute">display</span>:inline-block;</div><div class="line">    <span class="attribute">background-color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>方法3：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span> &#123;</div><div class="line">    <span class="attribute">width</span>:<span class="number">800px</span>;</div><div class="line">    <span class="attribute">height</span>:<span class="number">500px</span>;</div><div class="line">    <span class="attribute">border</span>:<span class="number">2px</span> solid <span class="number">#000</span>;</div><div class="line">    <span class="attribute">display</span>:flex;</div><div class="line">    <span class="attribute">justify-content</span>:center;</div><div class="line">    <span class="attribute">align-items</span>:center;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.child</span> &#123;</div><div class="line">    <span class="attribute">width</span>:<span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>:<span class="number">200px</span>;</div><div class="line">    <span class="attribute">background-color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>方法4：<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span> &#123;</div><div class="line">        <span class="attribute">width</span>:<span class="number">800px</span>;</div><div class="line">        <span class="attribute">height</span>:<span class="number">500px</span>;</div><div class="line">        <span class="attribute">border</span>:<span class="number">2px</span> solid <span class="number">#000</span>;</div><div class="line">        <span class="attribute">position</span>:relative;</div><div class="line">    &#125;</div><div class="line"><span class="selector-class">.child</span> &#123;</div><div class="line">    <span class="attribute">width</span>:<span class="number">300px</span>;</div><div class="line">    <span class="attribute">height</span>:<span class="number">200px</span>;</div><div class="line">    <span class="attribute">margin</span>:auto;</div><div class="line">    <span class="attribute">position</span>:absolute;</div><div class="line"><span class="comment">//设定水平和垂直偏移父元素的50%，</span></div><div class="line"><span class="comment">//再根据实际长度将子元素上左挪回一半大小</span></div><div class="line">    <span class="attribute">left</span>:<span class="number">50%</span>;</div><div class="line">    <span class="attribute">top</span>:<span class="number">50%</span>;</div><div class="line">    <span class="attribute">margin-left</span>: -<span class="number">150px</span>;</div><div class="line">    <span class="attribute">margin-top</span>:-<span class="number">100px</span>;</div><div class="line">    <span class="attribute">background-color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="16、BFC"><a href="#16、BFC" class="headerlink" title="16、BFC"></a>16、BFC</h3><p>块格式上下文是页面CSS 视觉渲染的一部分，用于决定块盒子的布局及浮动相互影响范围的一个区域。</p>
+<p>BFC的创建方法：<br>根元素或其它包含它的元素；<br>浮动 (元素的float不为none)；<br>绝对定位元素 (元素的position为absolute或fixed)；<br>行内块inline-blocks(元素的 display: inline-block)；<br>表格单元格(元素的display: table-cell，HTML表格单元格默认属性)；<br>overflow的值不为visible的元素；<br>弹性盒 flex boxes (元素的display: flex或inline-flex)；</p>
+<h3 id="17、响应式图片的CSS"><a href="#17、响应式图片的CSS" class="headerlink" title="17、响应式图片的CSS"></a>17、响应式图片的CSS</h3><p>所谓响应式图片，就是根据图片所在容器的大小来实时地按比例缩放。实现的办法非常简单，只需要设置img标签的width:100%即可。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">img</span> &#123;</div><div class="line"><span class="attribute">width</span>:<span class="number">100%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果 max-width 属性设置为 100%, 图片永远不会大于其原始大小：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">img</span> &#123;</div><div class="line"><span class="attribute">max-width</span>: <span class="number">100%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="18、CSS响应式网格系统原理"><a href="#18、CSS响应式网格系统原理" class="headerlink" title="18、CSS响应式网格系统原理"></a>18、CSS响应式网格系统原理</h3><p>总的来说，网格系统就是利用百分比把视口等分为12个，然后利用float属性使之并列显示。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">* &#123;</div><div class="line">    <span class="attribute">box-sizing</span>: border-box;</div><div class="line">&#125;</div><div class="line"><span class="selector-attr">[class*="col-"]</span> &#123;</div><div class="line">    <span class="attribute">float</span>: left;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">15px</span>;</div><div class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid red;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.col-1</span> &#123;<span class="attribute">width</span>: <span class="number">8.33%</span>;&#125;</div><div class="line"><span class="selector-class">.col-2</span> &#123;<span class="attribute">width</span>: <span class="number">16.66%</span>;&#125;</div><div class="line"><span class="selector-class">.col-3</span> &#123;<span class="attribute">width</span>: <span class="number">25%</span>;&#125;</div><div class="line"><span class="selector-class">.col-4</span> &#123;<span class="attribute">width</span>: <span class="number">33.33%</span>;&#125;</div><div class="line"><span class="selector-class">.col-5</span> &#123;<span class="attribute">width</span>: <span class="number">41.66%</span>;&#125;</div><div class="line"><span class="selector-class">.col-6</span> &#123;<span class="attribute">width</span>: <span class="number">50%</span>;&#125;</div><div class="line"><span class="selector-class">.col-7</span> &#123;<span class="attribute">width</span>: <span class="number">58.33%</span>;&#125;</div><div class="line"><span class="selector-class">.col-8</span> &#123;<span class="attribute">width</span>: <span class="number">66.66%</span>;&#125;</div><div class="line"><span class="selector-class">.col-9</span> &#123;<span class="attribute">width</span>: <span class="number">75%</span>;&#125;</div><div class="line"><span class="selector-class">.col-10</span> &#123;<span class="attribute">width</span>: <span class="number">83.33%</span>;&#125;</div><div class="line"><span class="selector-class">.col-11</span> &#123;<span class="attribute">width</span>: <span class="number">91.66%</span>;&#125;</div><div class="line"><span class="selector-class">.col-12</span> &#123;<span class="attribute">width</span>: <span class="number">100%</span>;&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="19、用LESS循环实现栅格类"><a href="#19、用LESS循环实现栅格类" class="headerlink" title="19、用LESS循环实现栅格类"></a>19、用LESS循环实现栅格类</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.generate-columns</span>(<span class="number">12</span>);</div><div class="line"><span class="selector-class">.generate-columns</span>(<span class="variable">@n</span>; <span class="variable">@i</span>: <span class="number">1</span>) <span class="keyword">when</span> (<span class="variable">@i</span> =&lt; <span class="variable">@n</span>) &#123;</div><div class="line">  <span class="selector-class">.column-</span><span class="variable">@&#123;i&#125;</span> &#123;</div><div class="line">    <span class="attribute">width</span>: (<span class="variable">@i</span> * <span class="number">100%</span> / <span class="variable">@n</span>);</div><div class="line">  &#125;</div><div class="line"><span class="selector-class">.generate-columns</span>(<span class="variable">@n</span>, (<span class="variable">@i</span> + <span class="number">1</span>));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="20、使用perspective属性和transform：perspective-函数的区别"><a href="#20、使用perspective属性和transform：perspective-函数的区别" class="headerlink" title="20、使用perspective属性和transform：perspective()函数的区别"></a>20、使用perspective属性和transform：perspective()函数的区别</h3><p>以上的两种书写格式都会生成一个3D立体效果，但是它们之间有一些区别。使用功能函数的方式可以很方便的在单个元素上应用3D transform，但是当在多个元素上使用时，转换的元素不会得到预期的效果。如果你为不同的元素使用相同的transform，每一个元素都会有自己的消失点。为了解决这个问题，可以在父元素上使用perspective属性，这样，所有的子元素都可以共享同一个3D空间。<br>perspective-origin: 25% 75%，等价于perspective-origin x和perspective-origin y的合体，用来设置镜头聚焦点的位置(舞台中心)<br>transform-style: preserve-3d,transform-style属性也是3D效果中经常使用的，其两个参数，flat|preserve-3d. 前者flat为默认值，表示平面的；后者preserve-3d表示3D透视。<br>backface-visibility：hidden|visibility设置背后元素是否可见</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/05/socket.io搭建多聊天室/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          socket.io搭建多聊天室
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/08/2015-12-09-单元测试工具Mocha和SuperTest组合/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">单元测试工具Mocha和SuperTest组合</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="前端笔试面试中的常用到的CSS知识点总结" data-title="前端笔试面试中的常用到的CSS知识点总结" data-url="http://blog.hugzh.com/2015/12/15/前端笔试面试中的常用到的CSS知识点总结/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 橙乡果汁
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Vue初接触实战之账单组件 | 果汁的随笔</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Vue作为一个构建数据驱动web界面的库，是去年最火的MVVM风格库之一。Vue的用起来有Angular的影子，把很多自定义指令注入html，又吸收了React的优点和精华。比如与Vue的配套使用的Vuex就是从Redux和Flux中借鉴了不少思路。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue初接触实战之账单组件">
+<meta property="og:url" content="http://blog.hugzh.com/2016/08/13/Vue初接触实战之账单组件/index.html">
+<meta property="og:site_name" content="果汁的随笔">
+<meta property="og:description" content="Vue作为一个构建数据驱动web界面的库，是去年最火的MVVM风格库之一。Vue的用起来有Angular的影子，把很多自定义指令注入html，又吸收了React的优点和精华。比如与Vue的配套使用的Vuex就是从Redux和Flux中借鉴了不少思路。">
+<meta property="og:image" content="http://vuex.vuejs.org/en/vuex.png">
+<meta property="og:updated_time" content="2016-08-13T09:00:07.031Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue初接触实战之账单组件">
+<meta name="twitter:description" content="Vue作为一个构建数据驱动web界面的库，是去年最火的MVVM风格库之一。Vue的用起来有Angular的影子，把很多自定义指令注入html，又吸收了React的优点和精华。比如与Vue的配套使用的Vuex就是从Redux和Flux中借鉴了不少思路。">
+<meta name="twitter:image" content="http://vuex.vuejs.org/en/vuex.png">
+  
+    <link rel="alternative" href="/atom.xml" title="果汁的随笔" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/author.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">橙乡果汁</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">代码不过百万行，不娶媳妇不见娘</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">归档</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/hugzh/" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/2076290857" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="/sehuguozhi@163.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Vuex/" style="font-size: 10px;">Vuex</a> <a href="/tags/cleaver/" style="font-size: 10px;">cleaver</a> <a href="/tags/css/" style="font-size: 17.5px;">css</a> <a href="/tags/curring/" style="font-size: 10px;">curring</a> <a href="/tags/flexbox/" style="font-size: 10px;">flexbox</a> <a href="/tags/hash/" style="font-size: 12.5px;">hash</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/js/" style="font-size: 12.5px;">js</a> <a href="/tags/location/" style="font-size: 12.5px;">location</a> <a href="/tags/mocha/" style="font-size: 12.5px;">mocha</a> <a href="/tags/node/" style="font-size: 15px;">node</a> <a href="/tags/uncurrying/" style="font-size: 10px;">uncurrying</a> <a href="/tags/virtual-dom/" style="font-size: 17.5px;">virtual dom</a> <a href="/tags/前端工程/" style="font-size: 10px;">前端工程</a> <a href="/tags/前端杂谈/" style="font-size: 12.5px;">前端杂谈</a> <a href="/tags/幻灯/" style="font-size: 10px;">幻灯</a> <a href="/tags/构建工具/" style="font-size: 10px;">构建工具</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件化开发/" style="font-size: 12.5px;">组件化开发</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.jobbole.com/">伯乐在线</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.imooc.com/">慕课网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.barretlee.com/">小胡子歌的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://gold.xitu.io/">稀土掘金</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">梦想做一枚天天向上的前端攻城狮</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">橙乡果汁</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/author.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">橙乡果汁</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">代码不过百万行，不娶媳妇不见娘</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">归档</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/hugzh/" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2076290857" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="/sehuguozhi@163.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Vue初接触实战之账单组件" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/13/Vue初接触实战之账单组件/" class="article-date">
+  	<time datetime="2016-08-13T03:20:36.000Z" itemprop="datePublished">2016-08-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vue初接触实战之账单组件
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vuex/">Vuex</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端开发/">前端开发</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Vue作为一个构建数据驱动web界面的库，是去年最火的MVVM风格库之一。Vue的用起来有Angular的影子，把很多自定义指令注入html，又吸收了React的优点和精华。比如与Vue的配套使用的Vuex就是从Redux和Flux中借鉴了不少思路。<a id="more"></a><br>Vue从去年的下半年开始火起来，目前在Awesomes前端资源库的热度排行里面处于Top2的位置。得益于更加简洁的语法和易用性，Vue目前在社区的受欢迎度不在React之下。很多公司纷纷上手Vue了，我厂的前端团队也已经在使用Vue进行业务重构了。即将发布的Vue2.0版本也采用了和React一样的Virtual Dom技术,而且推出了前后端同构的服务端渲染框架vue-hackernews-2.0，这将会使得Vue在技术社区更加受追捧。目前<a href="http://rc.vuejs.org/guide/" target="_blank" rel="external">Vue2.0的RC文档</a>也已经出来了，可以预期，它的使用前景将会非常非常不错。</p>
+<h2 id="这里要讲的是啥？"><a href="#这里要讲的是啥？" class="headerlink" title="这里要讲的是啥？"></a>这里要讲的是啥？</h2><p>这篇文章不是普及Vue的内部实现原理，也不是要比较MVVM三大法器Angular、React和Vue的优劣。这里主要是对自己最近上手学习Vue，进行SPA开发过程中的思路总结。希望通过展示一个分期账单组件，可以对像我一样的Vue初学者提供一丁点的帮助。因为是Vue新手,如有错误之处，也欢迎各位大神批评指正。</p>
+<h2 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h2><p>首先要介绍的是<a href="http://vuex.vuejs.org/en/index.html" target="_blank" rel="external">Vuex</a>这个神器。关于Vue的基本语法，可以直接打开<a href="https://vuejs.org.cn/guide/" target="_blank" rel="external">官方1.0文档</a>学习。当然，如果你想直接上手Vue2.0，也可以直接<a href="http://rc.vuejs.org/guide/" target="_blank" rel="external">访问这里</a>。</p>
+<blockquote>
+<p>Vuex 是一个专门为 Vue.js 应用所设计的集中式状态管理架构。它借鉴了 Flux 和 Redux 的设计思想，但简化了概念，并且采用了一种为能更好发挥 Vue.js 数据响应机制而专门设计的实现。</p>
+</blockquote>
+<p>也就是说，Vuex将父组件与子组件之间的props传递，组件与组件之间的消息传递集中起来管理。在一个小型应用中，我们可能不会用到Vuex，这样会把原本很简单的任务复杂化了。但是，企业级的项目都是多条业务线交叉的，如果单纯使用Vue本身的组件通信，业务组件之间复杂的关系网会让项目后期的调试和Bug跟踪非常困难，尤其是当你在构建一个SPA项目的时候。</p>
+<blockquote>
+<p>为了更好的解决在大型应用中状态的共用问题，我们需要对组件的 组件本地状态(component local state) 和 应用层级状态(application level state) 进行区分。应用级的状态不属于任何特定的组件，但每一个组件仍然可以监视(Observe)其变化从而响应式地更新 DOM。通过汇总应用的状态管理于一处，我们就不必到处传递事件。</p>
+</blockquote>
+<p>Vuex的数据流模型如下图所示：<br><img src="http://vuex.vuejs.org/en/vuex.png" alt="vuex数据流模型"></p>
+<ol>
+<li>用户在组件中的输入操作触发 action 调用；</li>
+<li>Actions 通过分发 mutations 来修改 store 实例的状态；</li>
+<li>Store 实例的状态变化反过来又通过 getters 被组件获知，组件获悉状态变更之后就是数据驱动的魔法——实时更新DOM状态。</li>
+</ol>
+<p>需要注意的一点是，mutation本身是一个事件系统，通过定义事件来触发Store的状态变更。mutation里面定义的函数必须是同步函数，涉及到API调用的逻辑要放到Action进行，因为Action是可以定义异步函数的。</p>
+<h2 id="Vue-route"><a href="#Vue-route" class="headerlink" title="Vue-route"></a>Vue-route</h2><p>介绍完Vuex，我们来说说<a href="http://router.vuejs.org/zh-cn/index.html" target="_blank" rel="external">vue-router</a>。vue-router是Vue官方提供的路由插件，通过vue-router配合Vuex，我们可以非常高效地开发大型SPA。vue-router最基本的作用是做SPA路由映射。<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">router.<span class="keyword">map</span>(&#123;</div><div class="line">    <span class="string">'/foo'</span>: &#123;</div><div class="line">        component: Foo</div><div class="line">    &#125;,</div><div class="line">    <span class="string">'/bar'</span>: &#123;</div><div class="line">        component: Bar</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>上面的配置中，当访问路径”/foo”的时候，SPA就会在<router-view>挂载组件Foo，改变访问路径为 “/bar”，Bar组件就会切换到主视口。这就是一个最基本的SAP路由配置。</router-view></p>
+<h2 id="一步一步使用Vue构建S一个PA账单组件"><a href="#一步一步使用Vue构建S一个PA账单组件" class="headerlink" title="一步一步使用Vue构建S一个PA账单组件"></a>一步一步使用Vue构建S一个PA账单组件</h2><p>在简单了解了Vuex和Vue-router的基本概念之后，我们可以进入实践环节。如果还没有完全理解清楚Vue的语法和Vuex数据流的概念，可以继续多看几次官方文档，尤其是对刚接触MVVM的人来说，可能要多看几次才能对数据驱动的编程理念有更好的理解。</p>
+<h3 id="1、项目目录"><a href="#1、项目目录" class="headerlink" title="1、项目目录"></a>1、项目目录</h3><figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="string">|-vue-demo</span></div><div class="line">    <span class="string">|-node_modules</span></div><div class="line"></div><div class="line">    <span class="string">|-order</span></div><div class="line">        <span class="string">|-app</span></div><div class="line">            <span class="string">|-components</span></div><div class="line">                <span class="string">|-All.vue</span></div><div class="line"></div><div class="line">                <span class="string">|-Latest.vue</span></div><div class="line"></div><div class="line">                <span class="string">|-Nav.vue</span></div><div class="line"></div><div class="line">                <span class="string">|-Order.vue</span></div><div class="line">            <span class="string">|-vuex</span></div><div class="line">                <span class="string">|-modules</span></div><div class="line">                    <span class="string">|-orderList.js</span></div><div class="line">                <span class="string">|-action.js</span></div><div class="line"></div><div class="line">                <span class="string">|-mutation.js</span></div><div class="line"></div><div class="line">                <span class="string">|-mutation-type.js</span></div><div class="line"></div><div class="line">                <span class="string">|-store.js</span></div><div class="line">            <span class="string">|-App.vue</span></div><div class="line"></div><div class="line">            <span class="string">|-main.js</span></div><div class="line"></div><div class="line">            <span class="string">|-router.js</span></div><div class="line">        <span class="string">|-index.html</span></div><div class="line"></div><div class="line">        <span class="string">|-webpack.config.js</span></div><div class="line">    <span class="string">|-package.json</span></div><div class="line"></div><div class="line">    <span class="string">|-README.md</span></div></pre></td></tr></table></figure>
+<p>这个是比较推荐的项目目录结构。其中order是我们要展示的账单组件的根目录，组件目录划分为入口index.html、webpack配置文件和app文件夹。在app目录内：</p>
+<ul>
+<li>App.vue - 组件的根节点;</li>
+<li>main.js - 组件入口;</li>
+<li>router.js - 路由相关配置;</li>
+<li>component - 组件根节点下的各个子组件;</li>
+<li>vuex - 顾名思义，数据流架构vuex相关的文件，包括action、mutation和store。</li>
+</ul>
+<p>在大型项目中，组件数量多，涉及的数据流是比较复杂的。为了更好地管理store，我们又把store定义在不同的模块中，比如modules目录下的orderList就是账单列表相关的数据流。事件类型比较多的情况下，我们把事件名称定义在mutation-type中。</p>
+<h3 id="2、创建组件入口"><a href="#2、创建组件入口" class="headerlink" title="2、创建组件入口"></a>2、创建组件入口</h3><p>组件入口需要做的事情包括创建Vue组件实例、挂载插件、配置路由，main.js如下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"><span class="keyword">import</span> VueRouter <span class="keyword">from</span> <span class="string">'vue-router'</span></div><div class="line"><span class="keyword">import</span> ConfigRouter <span class="keyword">from</span> <span class="string">'./router'</span></div><div class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></div><div class="line"><span class="comment">// import './style/order.css'</span></div><div class="line">Vue.config.devtools = <span class="literal">true</span></div><div class="line"></div><div class="line">Vue.use(VueRouter)</div><div class="line"></div><div class="line"><span class="comment">// 创建vue-router实例</span></div><div class="line"><span class="keyword">var</span> router = <span class="keyword">new</span> VueRouter()</div><div class="line"><span class="comment">//配置路由</span></div><div class="line">ConfigRouter(router)</div><div class="line"></div><div class="line"><span class="comment">// 滚动到页面顶部</span></div><div class="line">router.beforeEach(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, <span class="number">0</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">//全路径匹配，防止出现404</span></div><div class="line">router.redirect(&#123;</div><div class="line">  <span class="string">'*'</span>: <span class="string">'/'</span></div><div class="line">&#125;)</div><div class="line"><span class="comment">//启动APP</span></div><div class="line">router.start(App, <span class="string">'#root'</span>)</div></pre></td></tr></table></figure></p>
+<h3 id="3、使用vue-router配置SPA路由"><a href="#3、使用vue-router配置SPA路由" class="headerlink" title="3、使用vue-router配置SPA路由"></a>3、使用vue-router配置SPA路由</h3><p>账单组件的路由包括“最近7天待还”以及“全部待还”，router.js:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">export default <span class="function"><span class="keyword">function</span><span class="params">(router)</span> &#123;</span></div><div class="line">  router.<span class="keyword">map</span>(&#123;</div><div class="line">    <span class="string">'/'</span>: &#123;</div><div class="line">      componen<span class="variable">t:</span> require(<span class="string">"./components/Latest.vue"</span>),</div><div class="line">      linkActiveClas<span class="variable">s:</span> <span class="string">'active'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="string">'/latest'</span>: &#123;</div><div class="line">      componen<span class="variable">t:</span> require(<span class="string">"./components/Latest.vue"</span>),</div><div class="line">      linkActiveClas<span class="variable">s:</span> <span class="string">'active'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="string">'/all'</span>: &#123;</div><div class="line">      componen<span class="variable">t:</span> require(<span class="string">"./components/All.vue"</span>),</div><div class="line">      linkActiveClas<span class="variable">s:</span> <span class="string">'active'</span></div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="4、创建-Vuex-Store"><a href="#4、创建-Vuex-Store" class="headerlink" title="4、创建 Vuex Store"></a>4、创建 Vuex Store</h3><p>尝试列出组件用到的所有数据，在vuex目录下创建store.js文件：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// vuex/store.js</span></div><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></div><div class="line"><span class="comment">// 导入各个模块的初始状态和 mutations</span></div><div class="line"><span class="keyword">import</span> orderList <span class="keyword">from</span> <span class="string">'./modules/orderList'</span></div><div class="line"></div><div class="line">Vue.use(Vuex)</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</div><div class="line">  <span class="comment">// 组合各个模块</span></div><div class="line">  modules: &#123;</div><div class="line">    orderList</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>由于我们把store拆分到不同的模块，所以创建store实例的时候需要引入orderList模块，它包括账单列表orders对象和当前被激活的账单对象activeOrder。需要定义的mutation只有一个”SHOW_DETAIL”,当用户点击账单列表的某一个账单的时候，SHOW_DETAIL更新store的activeOrder，表示当前被展开的账单对象。modules/orderList.js如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// vuex/modules/index.js</span></div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">  SHOW_DETAIL,</div><div class="line">&#125; from <span class="string">'../mutation-types'</span></div><div class="line"></div><div class="line"><span class="comment">// 该模块的初始状态</span></div><div class="line"><span class="keyword">const</span> state = &#123;</div><div class="line">  orders: [&#123;</div><div class="line">    id: <span class="string">'aedf9c25'</span>,</div><div class="line">    tradeDate: <span class="string">'2016.04.08'</span>,</div><div class="line">    name: <span class="string">'Nike跑步鞋青年版'</span>,</div><div class="line">    totalPrice: <span class="number">888</span>,</div><div class="line">    repayDate: <span class="string">'2016.08.08'</span>,</div><div class="line">    capital: <span class="string">'880'</span>,</div><div class="line">    interest: <span class="string">'5.5'</span>,</div><div class="line">    extra: <span class="string">'2.5'</span>,</div><div class="line">    <span class="keyword">type</span>: <span class="string">'消费'</span>,</div><div class="line">    currentTerm: <span class="number">1</span>,</div><div class="line">    totalTerms: <span class="number">1</span></div><div class="line">  &#125;, &#123;</div><div class="line">    id: <span class="string">'cves9chs'</span>,</div><div class="line">    tradeDate: <span class="string">'2016.04.10'</span>,</div><div class="line">    name: <span class="string">'支付宝提现'</span>,</div><div class="line">    totalPrice: <span class="number">773.5</span>,</div><div class="line">    repayDate: <span class="string">'2016.08.10'</span>,</div><div class="line">    capital: <span class="string">'769'</span>,</div><div class="line">    interest: <span class="string">'4.5'</span>,</div><div class="line">    extra: <span class="string">'0'</span>,</div><div class="line">    <span class="keyword">type</span>: <span class="string">'现金'</span>,</div><div class="line">    currentTerm: <span class="number">1</span>,</div><div class="line">    totalTerms: <span class="number">4</span></div><div class="line">  &#125;, &#123;</div><div class="line">    id: <span class="string">'deef1d3g'</span>,</div><div class="line">    tradeDate: <span class="string">'2016.05.15'</span>,</div><div class="line">    name: <span class="string">'喜洋洋抱枕'</span>,</div><div class="line">    totalPrice: <span class="number">204.8</span>,</div><div class="line">    repayDate: <span class="string">'2016.08.15'</span>,</div><div class="line">    capital: <span class="string">'203.5'</span>,</div><div class="line">    interest: <span class="string">'1.3'</span>,</div><div class="line">    extra: <span class="string">'0'</span>,</div><div class="line">    <span class="keyword">type</span>: <span class="string">'消费'</span>,</div><div class="line">    currentTerm: <span class="number">2</span>,</div><div class="line">    totalTerms: <span class="number">3</span></div><div class="line">  &#125;],</div><div class="line">  activeOrder: &#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 相关的 mutations</span></div><div class="line"><span class="keyword">const</span> mutations = &#123;</div><div class="line">  [SHOW_DETAIL](state, id) &#123;</div><div class="line">    state.activeOrder = state.orders.find(<span class="function"><span class="keyword">function</span>(<span class="params">ele</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> ele.id == id;</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  state,</div><div class="line">  mutations</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>mutation-types.js:<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> SHOW_DETAIL = <span class="string">'SHOW_DETAIL'</span></div></pre></td></tr></table></figure></p>
+<h3 id="5、Action"><a href="#5、Action" class="headerlink" title="5、Action"></a>5、Action</h3><p>Actions 是组件内用来分发 mutations 的函数。第一个参数固定为store。在这里，当用户点击账单列表的某一个账单区域的时候，要调用dispatch(‘SHOW_DETAIL’)。这里的demo只涉及到一个简单的用户事件，所以action.js也比较简单：<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// index actions</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> showDetail = makeAction(<span class="string">'SHOW_DETAIL'</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeAction</span>(<span class="params"><span class="keyword">type</span></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> (&#123;</div><div class="line">    dispatch</div><div class="line">  &#125;, ...args) =&gt; dispatch(<span class="keyword">type</span>, ...args)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="6、Vue组件"><a href="#6、Vue组件" class="headerlink" title="6、Vue组件"></a>6、Vue组件</h3><p>我们在第一步，创建入口文件main.js的时候import进来App.vue这个根组件：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></div><div class="line">...</div><div class="line">router.start(App, <span class="string">'#root'</span>)</div></pre></td></tr></table></figure></p>
+<p>定义App.vue也很简单，创建一个Vue实例，把vuex的store注入到根实例即可，这样组件内的所有子组件都能访问到store：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">// App.vue</div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">  <span class="keyword">import</span> Nav <span class="keyword">from</span> <span class="string">'./components/Nav.vue'</span></div><div class="line">  <span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">'./vuex/store'</span></div><div class="line"></div><div class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    name: <span class="string">'App'</span>,</div><div class="line">    <span class="comment">// 注入store到根组件</span></div><div class="line">    store,</div><div class="line">    data() &#123;</div><div class="line">      <span class="keyword">return</span> &#123;&#125;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    components: &#123;</div><div class="line">      <span class="comment">//子组件order-nav</span></div><div class="line">      <span class="string">'order-nav'</span>: Nav</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">order-nav</span>&gt;</span><span class="tag">&lt;/<span class="name">order-nav</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>这里的order-nav是一个导航栏组件，包括“最近7天待还”和“全部待还”两个，由于”全部待还”的展示和“最近7天待还”基本一样，demo里面就没有再做实现，只提供一个占位方便展示router切换。Latest.vue就是最近7天待还子组件，它获取近7天待还账单列表，并在下一级子组件(order)中渲染组件列表。组件获取store的数据是通过getter来实现的。</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="xml">// Latest.vue</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript"></span></div><div class="line">  <span class="meta"><span class="meta-keyword">import</span> </span><span class="template-variable">&#123; showDetail&#125;</span><span class="xml"><span class="javascript"> <span class="keyword">from</span> <span class="string">'../vuex/actions'</span>;</span></span></div><div class="line">  <span class="keyword">import</span> Order <span class="keyword">from</span> <span class="string">'./Order.vue'</span>;</div><div class="line"></div><div class="line">  <span class="keyword">export</span> <span class="keyword">default</span> <span class="template-variable">&#123;</span></div><div class="line">    name: 'Latest',</div><div class="line"></div><div class="line">    data() &#123;</div><div class="line">      return &#123;</div><div class="line">      &#125;<span class="xml"><span class="undefined"></span></span></div><div class="line">    &#125;,</div><div class="line">    components:<span class="template-variable">&#123;</span></div><div class="line">      'order':Order</div><div class="line">    &#125;<span class="xml"><span class="undefined">,</span></span></div><div class="line">    vuex: <span class="template-variable">&#123;</span></div><div class="line">     //解构函数，&#123;orderList&#125;<span class="xml"><span class="undefined">对象指的是store的orderList模块的state.orderList</span></span></div><div class="line">      getters: <span class="template-variable">&#123;</span></div><div class="line">        orders: (&#123;orderList&#125;<span class="xml"><span class="actionscript">) =&gt; orderList.orders</span></span></div><div class="line">      &#125;,</div><div class="line">      <span class="comment">//注入actoin</span></div><div class="line">      actions: <span class="template-variable">&#123;</span></div><div class="line">        showDetail</div><div class="line">      &#125;<span class="xml"><span class="undefined">,</span></span></div><div class="line">      computed:<span class="template-variable">&#123;</span></div><div class="line">      &#125;<span class="xml"><span class="undefined"></span></span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container-fluid"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"list-unstyled row"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">order</span>&gt;</span><span class="tag">&lt;/<span class="name">order</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Order.vue是这个账单组件中负责内容显示和用户事件分发的组件模块。Order组件中包括比较详细的Vue指令语法，比如v-for,v-show,track-by等。为了增强用户体验，Order组件在用户点击账单展示详情的时候，通过定义trasitoin属性达到简单的动画切换效果。</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="xml">// Order.vue</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">  <span class="keyword">import</span> &#123;fold,showDetail&#125; <span class="keyword">from</span> <span class="string">'../vuex/actions'</span></div><div class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    name: <span class="string">'Order'</span>,</div><div class="line">    vuex: &#123;</div><div class="line">      getters: &#123;</div><div class="line">        orders: (&#123;orderList&#125;) =&gt; orderList.orders,</div><div class="line">        activeOrder:(&#123;orderList&#125;)=&gt;orderList.activeOrder</div><div class="line">      &#125;,</div><div class="line">      actions:&#123;</div><div class="line">        showDetail</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>  <span class="attr">class</span>=<span class="string">"bill"</span> <span class="attr">v-for</span>=<span class="string">"order in orders"</span> @<span class="attr">click</span>=<span class="string">"showDetail(order.id)"</span> <span class="attr">track-by</span>=<span class="string">"id"</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">h4</span>&gt;</span><span class="template-variable">&#123;&#123;order.name&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span></div><div class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>待还</div><div class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"text-danger"</span>&gt;</span><span class="template-variable">&#123;&#123;order.totalPrice&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span>元&amp;nbsp;&amp;nbsp;</span></div><div class="line">      <span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">small</span>&gt;</span>[<span class="template-variable">&#123;&#123;order.currentTerm&#125;&#125;</span><span class="xml">/</span><span class="template-variable">&#123;&#123;order.totalTerms&#125;&#125;</span><span class="xml">]<span class="tag">&lt;/<span class="name">small</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></div><div class="line">      <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bill-detail"</span> <span class="attr">v-show</span>=<span class="string">"order.id==activeOrder.id"</span> <span class="attr">transition</span>=<span class="string">"fade"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"order-item"</span>&gt;</span>最后还款日期：<span class="template-variable">&#123;&#123;order.repayDate&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"order-item"</span>&gt;</span>交易类型期：<span class="template-variable">&#123;&#123;order.type&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"order-item"</span>&gt;</span>应还本金：<span class="template-variable">&#123;&#123;order.capital&#125;&#125;</span><span class="xml">元<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"order-item"</span>&gt;</span>应还利息：<span class="template-variable">&#123;&#123;order.interest&#125;&#125;</span><span class="xml">元<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"order-item"</span>&gt;</span>手续费：<span class="template-variable">&#123;&#123;order.extra&#125;&#125;</span><span class="xml">元<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"order-item"</span>&gt;</span>交易日期：<span class="template-variable">&#123;&#123;order.tradeDate&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span> </div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">media</span>=<span class="string">"screen"</span>&gt;</span><span class="css"></span></div><div class="line"><span class="selector-class">.bill</span> &#123;</div><div class="line">  <span class="attribute">border-top</span>:<span class="number">2px</span> solid <span class="number">#e7e7e7</span>;</div><div class="line">  <span class="attribute">border-bottom</span>: <span class="number">2px</span> solid <span class="number">#e7e7e7</span>;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">5px</span>; </div><div class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</div><div class="line">  <span class="attribute">cursor</span>: pointer;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.bill-detail</span> &#123;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">10px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.order-item</span> &#123;</div><div class="line">  <span class="attribute">display</span>: inline-block;</div><div class="line">  <span class="attribute">width</span>: <span class="number">45%</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 过渡效果 */</span></div><div class="line"><span class="selector-class">.fade-transition</span> &#123;</div><div class="line">  <span class="attribute">transition</span>: all .<span class="number">8s</span> ease;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.fade-enter</span>,</div><div class="line"><span class="selector-class">.fade-leave</span> &#123;</div><div class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>最后附上的是组件导航子组件，主要是负责router路由切换的Nav.vue:</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="xml">// Nav.vue</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">  <span class="keyword">export</span> <span class="keyword">default</span> <span class="template-variable">&#123;</span></div><div class="line">    name: 'nav',</div><div class="line">    vuex: &#123;</div><div class="line">      getters: &#123;</div><div class="line">        current: (&#123;orderList&#125;<span class="xml"><span class="undefined">) =&gt; orderList.activeOrder</span></span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"navbar navbar-default"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container-fluid"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"navbar-header"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"navbar-brand"</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">v-link</span>=<span class="string">"</span></span><span class="template-variable">&#123; path: '/' &#125;</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span>Vue-订单demo<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"collapse navbar-collapse"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav navbar-nav"</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-link</span>=<span class="string">"</span></span><span class="template-variable">&#123; path: '/latest',activeClass:'active'&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#!"</span>&gt;</span>近7天待还 <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sr-only"</span>&gt;</span>(current)<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">          <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-link</span>=<span class="string">"</span></span><span class="template-variable">&#123; path: '/all',activeClass:'active'&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#!"</span>&gt;</span> 全部待还 <span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>至此，我们已经一步步实现了一个基于Vue+Vuex+vue-router搭建的SPA组件demo，如果大家还没学会，可以直接去把完整的demo看一遍，喜欢的话也麻烦给个star。<a href="https://github.com/hugzh/vue-demo" target="_blank" rel="external">点击这里</a>进入账单组件的github地址。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/02/webpack学习实践系列-一/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Webpack学习实践系列(一)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Vue初接触实战之账单组件" data-title="Vue初接触实战之账单组件" data-url="http://blog.hugzh.com/2016/08/13/Vue初接触实战之账单组件/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 橙乡果汁
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
