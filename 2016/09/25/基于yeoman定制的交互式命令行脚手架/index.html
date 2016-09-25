@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>基于Yeoman定制的交互式命令行脚手架 | 果汁的随笔</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="脚手架这个词估计做前端的都很熟悉。在没有实现前端工程化的年代，前端代码的组织都是纯手工维护的。比如我要做一个网站页面，那么我需要手动创建一个文件夹来存放代码文件，我把它命名为demo。然后在demo目录下创建src文件夹，在src文件夹内创建css文件夹、js文件夹、image文件夹、lib文件夹等等…一切都是手工维护">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Yeoman定制的交互式命令行脚手架">
+<meta property="og:url" content="http://blog.hugzh.com/2016/09/25/基于yeoman定制的交互式命令行脚手架/index.html">
+<meta property="og:site_name" content="果汁的随笔">
+<meta property="og:description" content="脚手架这个词估计做前端的都很熟悉。在没有实现前端工程化的年代，前端代码的组织都是纯手工维护的。比如我要做一个网站页面，那么我需要手动创建一个文件夹来存放代码文件，我把它命名为demo。然后在demo目录下创建src文件夹，在src文件夹内创建css文件夹、js文件夹、image文件夹、lib文件夹等等…一切都是手工维护">
+<meta property="og:image" content="http://p1.bpimg.com/575150/b729cf88363ad5db.png">
+<meta property="og:image" content="http://p1.bpimg.com/575150/10d75b6287edabd0.png">
+<meta property="og:image" content="http://p1.bpimg.com/575150/ac10496e5496593a.png">
+<meta property="og:updated_time" content="2016-09-25T10:09:10.418Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于Yeoman定制的交互式命令行脚手架">
+<meta name="twitter:description" content="脚手架这个词估计做前端的都很熟悉。在没有实现前端工程化的年代，前端代码的组织都是纯手工维护的。比如我要做一个网站页面，那么我需要手动创建一个文件夹来存放代码文件，我把它命名为demo。然后在demo目录下创建src文件夹，在src文件夹内创建css文件夹、js文件夹、image文件夹、lib文件夹等等…一切都是手工维护">
+<meta name="twitter:image" content="http://p1.bpimg.com/575150/b729cf88363ad5db.png">
+  
+    <link rel="alternative" href="/atom.xml" title="果汁的随笔" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/author.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">橙乡果汁</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">代码不过百万行，不娶媳妇不见娘</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">归档</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/hugzh/" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/2076290857" title="weibo">weibo</a>
+					        
+								<a class="linkedin" target="_blank" href="http://www.linkedin.com/in/%E5%9B%BD%E6%B2%BB-%E8%83%A1-471918a1?trk=nav_responsive_tab_profile" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Vuex/" style="font-size: 10px;">Vuex</a> <a href="/tags/cleaver/" style="font-size: 10px;">cleaver</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/curring/" style="font-size: 10px;">curring</a> <a href="/tags/hash/" style="font-size: 10px;">hash</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/location/" style="font-size: 10px;">location</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/node/" style="font-size: 15px;">node</a> <a href="/tags/uncurrying/" style="font-size: 10px;">uncurrying</a> <a href="/tags/virtual-dom/" style="font-size: 15px;">virtual dom</a> <a href="/tags/前端工程/" style="font-size: 10px;">前端工程</a> <a href="/tags/前端杂谈/" style="font-size: 15px;">前端杂谈</a> <a href="/tags/幻灯/" style="font-size: 10px;">幻灯</a> <a href="/tags/构建工具/" style="font-size: 15px;">构建工具</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件化开发/" style="font-size: 10px;">组件化开发</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.jobbole.com/">伯乐在线</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.imooc.com/">慕课网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.barretlee.com/">小胡子歌的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://gold.xitu.io/">稀土掘金</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">招联金融前端工程师</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">橙乡果汁</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/author.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">橙乡果汁</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">代码不过百万行，不娶媳妇不见娘</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">归档</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/hugzh/" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2076290857" title="weibo">weibo</a>
+			        
+						<a class="linkedin" target="_blank" href="http://www.linkedin.com/in/%E5%9B%BD%E6%B2%BB-%E8%83%A1-471918a1?trk=nav_responsive_tab_profile" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-基于yeoman定制的交互式命令行脚手架" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/25/基于yeoman定制的交互式命令行脚手架/" class="article-date">
+  	<time datetime="2016-09-25T06:07:19.000Z" itemprop="datePublished">2016-09-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      基于Yeoman定制的交互式命令行脚手架
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/构建工具/">构建工具</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Nodejs/">Nodejs</a><a class="article-category-link" href="/categories/Nodejs/前端开发/">前端开发</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>脚手架这个词估计做前端的都很熟悉。在没有实现前端工程化的年代，前端代码的组织都是纯手工维护的。比如我要做一个网站页面，那么我需要手动创建一个文件夹来存放代码文件，我把它命名为demo。然后在demo目录下创建src文件夹，在src文件夹内创建css文件夹、js文件夹、image文件夹、lib文件夹等等…一切都是手工维护<a id="more"></a>。自从node.js出现后，前端开发才慢慢开始告别刀耕火种，越来越多的自动化工具充斥我们的眼球。模板生成、代码压缩、构建打包、自动部署…这些已经成为构建前端工程项目的标配。那么，一个模板生成的命令行工具的原理是什么？怎样开发一个属于自己的命令行脚手架工具？希望我写的这篇小文章会给大家带来一点启发。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>生成模板文件的方式可以是本地新建空白文件，然后进行文件内容读写；又或者是把本地已有的模板进行配置信息填充。然而我们知道，IO读写的速度非常慢，性能消耗大。但是一个模板生成器(Generator)如果是基于已有的模板文件进行配置填充，然后在copy到项目目录对应的位置，那会比直接读写磁盘效率更高。所以一般来说，模板生成器会采用第二种工作原理。</p>
+<h2 id="Yeoman-generator"><a href="#Yeoman-generator" class="headerlink" title="Yeoman-generator"></a>Yeoman-generator</h2><p>模板生成器的脚手架有很多，前端领域每天都会有很多类似的轮子源源不断地从开源社区流出。这里我用来开发自己的generator的工具是<a href="http://yeoman.io/" target="_blank" rel="external">Yeoman</a>。Yeoman的Logo是一个戴着红帽子的大胡子，它是一个通用的脚手架搭建系统，可以创建任何的类型的app。同时它又是”语言无感知”的，支持创建任何类型开发语言的项目，Web, Java, Python, C# 等等。Yeoman的通用性在于，它本身不做任何决定，所有的操作都是通过Yeoman环境里面的各种generator实现的。通过自定义generator，我们可以创建任何格式的项目目录。这是Yeoman的最大魅力之处。另外，Yeoman通过提供promting这个方法实现输入式命令行交互，可以让用户自由填写配置信息，交互体验也非常棒。下面说说怎样基于Yeoman开发一个简单的generator：</p>
+<h3 id="Simple-dir"><a href="#Simple-dir" class="headerlink" title="Simple-dir"></a>Simple-dir</h3><p>simple-dir是我自己捣鼓的一个很简单的Yeoman-generator，在这里我拿它来作为讲解示例，大家也可以打开<a href="https://github.com/hugzh/generator-simple-dir" target="_blank" rel="external">详细代码</a>来看，欢迎star，也欢迎提issue。</p>
+<h3 id="第一步，package-json"><a href="#第一步，package-json" class="headerlink" title="第一步，package.json"></a>第一步，package.json</h3><p>开发一个Yeoman-generator，我们要做的第一步就是配置package.json。有几个关键的地方，一个是，name的值的格式必须是”generator-“前缀 + Yeoman-generators官方源列表上的唯一值（如果你要共享你的generator到官方generator源的话）；第二个就是，keywords属性必须包括”yeoman-generator”这个值；第三，files属性是命令自定义文件,app是默认的命令；第四，必须要安装最新版本的yeoman-generator依赖，可以直接运行：npm install –save yeoman-generator 获取最新的版本号。详细的package.json可以看下面这份：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"generator-simple-dir"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"0.0.1"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">"A very simple template generator"</span>,</div><div class="line">  <span class="attr">"files"</span>: [</div><div class="line">    <span class="string">"generators/app"</span>,</div><div class="line">    <span class="string">"generators/comp"</span>,</div><div class="line">    <span class="string">"generators/page"</span></div><div class="line">  ],</div><div class="line">  <span class="attr">"author"</span>: <span class="string">"橙乡果汁"</span>,</div><div class="line">  <span class="attr">"license"</span>: <span class="string">"MIT"</span>,</div><div class="line">  <span class="attr">"keywords"</span>: [</div><div class="line">    <span class="string">"yeoman-generator"</span></div><div class="line">  ],</div><div class="line">  <span class="attr">"repository"</span>: &#123;</div><div class="line">    <span class="attr">"type"</span>: <span class="string">"git"</span>,</div><div class="line">    <span class="attr">"url"</span>: <span class="string">"git@github.com:hugzh/generator-simple-dir.git"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"bugs"</span>: &#123;</div><div class="line">    <span class="attr">"url"</span>: <span class="string">"https://github.com/hugzh/generator-simple-dir/issues"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"dependencies"</span>: &#123;</div><div class="line">    <span class="attr">"glob"</span>: <span class="string">"^7.1.0"</span>,</div><div class="line">    <span class="attr">"mkdirp"</span>: <span class="string">"^0.5.1"</span>,</div><div class="line">    <span class="attr">"yeoman-generator"</span>: <span class="string">"^0.24.1"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>对应的src目录格式应该是这样的：</p>
+<blockquote>
+<p>├───package.json<br>└───generators/<br>    ├───app/<br>    │   └───index.js<br>    ├───comp/<br>    │   └───index.js<br>    └───page/<br>        └───index.js</p>
+</blockquote>
+<p>你也可以直接把files属性直接写成：</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="string">"files"</span>: [</div><div class="line">  <span class="string">"app"</span>,</div><div class="line">  <span class="string">"comp"</span>,</div><div class="line">  <span class="string">"page"</span></div><div class="line">]</div></pre></td></tr></table></figure>
+<p>但是这样的话，你的代码根目录就必须直接包含app,comp和page文件夹。</p>
+<h3 id="第二步，拓展generator"><a href="#第二步，拓展generator" class="headerlink" title="第二步，拓展generator"></a>第二步，拓展generator</h3><p>这里我们有三个generator——app,comp和page。以page为例，我们来实现一个generator。</p>
+<p>首先，需要继承Yeoman提供的generator基类:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> generators = <span class="built_in">require</span>(<span class="string">'yeoman-generator'</span>);</div><div class="line"><span class="built_in">module</span>.exports = generators.Base.extend();</div></pre></td></tr></table></figure>
+<p>然后我们就可以在基类内部重写generator的方法了。Yeoman提供了一系列的基类方法：</p>
+<blockquote>
+<p>initializing - 初始化 (检查当前项目状态、获取配置文件内容等等)<br>prompting - 获取用户输入，实现与用户的交互 (通过this.prompt()调用)<br>configuring - 保存配置并配置整个项目 (比如创建 .editorconfig 文件和其他媒介文件)<br>default - 当定义的方法没有匹配任何基类方法的时候用到<br>writing - 根据自定义的规则写入具体的generator文件 (routes, controllers, etc)<br>conflicts - 内部冲突处理<br>install - 安装npm、bower等依赖的地方<br>end - 在最后调用, 实现cleanup, say good bye等功能。</p>
+</blockquote>
+<p>在示例<a href="https://github.com/hugzh/generator-simple-dir" target="_blank" rel="external">generator-simple-dir</a>里，page这个generator的作用是创建页面，需要生成html/css/js文件。在generators.Base.extend函数内部，page实现了 initializing、prompting、writing、end这几个方法。对于prompting这样的异步方法，需要在交互结束的时候调用this.async()来结束异步任务。Yeoman实现用户交互的核心方法是prompting，它是一个异步的方法，并且返回一个promise。prompting方法通过一个数组参数，可以实现链式的用户输入。其中input类型的是用户输入自定义内容，confirm类型是作为True/False判断的prompt，输入Y/N。官方的示例如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = generators.Base.extend(&#123;</div><div class="line">  prompting: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.prompt([&#123;</div><div class="line">      type    : <span class="string">'input'</span>,</div><div class="line">      name    : <span class="string">'name'</span>,</div><div class="line">      message : <span class="string">'Your project name'</span>,</div><div class="line">      <span class="keyword">default</span> : <span class="keyword">this</span>.appname <span class="comment">// Default to current folder name</span></div><div class="line">    &#125;, &#123;</div><div class="line">      type    : <span class="string">'confirm'</span>,</div><div class="line">      name    : <span class="string">'cool'</span>,</div><div class="line">      message : <span class="string">'Would you like to enable the Cool feature?'</span></div><div class="line">    &#125;]).then(<span class="function"><span class="keyword">function</span> (<span class="params">answers</span>) </span>&#123;</div><div class="line">      <span class="keyword">this</span>.log(<span class="string">'app name'</span>, answers.name);</div><div class="line">      <span class="keyword">this</span>.log(<span class="string">'cool feature'</span>, answers.cool);</div><div class="line">    &#125;.bind(<span class="keyword">this</span>));</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>如果你想要记住用户输入的一个内容，用来做后面输入的默认值的话，还可以通过增加store:true配置来实现。<br>在generator-simple-dir里面，page这个generator包含4个执行步骤：初始化、获取用户输入、根据用户输入生产模板文件、结束返回，实现的代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="keyword">var</span> generators = <span class="built_in">require</span>(<span class="string">'yeoman-generator'</span>);</div><div class="line"><span class="keyword">var</span> glob = <span class="built_in">require</span>(<span class="string">'glob'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = generators.Base.extend(&#123;</div><div class="line">  <span class="comment">// init</span></div><div class="line">  initializing: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.existedFile = [];</div><div class="line">    <span class="keyword">this</span>.pageName = <span class="string">''</span>;</div><div class="line">    <span class="comment">// 遍历./pages</span></div><div class="line">    <span class="keyword">var</span> pageFiles = glob.sync(<span class="keyword">this</span>.destinationPath(<span class="string">'./pages/*/'</span>));</div><div class="line">    <span class="keyword">var</span> reg = <span class="regexp">/\/(\w+)(\/$)/</span>;</div><div class="line">    pageFiles.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</div><div class="line">      <span class="keyword">if</span> (v &amp;&amp; v.lastIndexOf(<span class="string">'/'</span>) &gt; <span class="number">-1</span>) &#123;</div><div class="line">        <span class="keyword">this</span>.existedFile.push(reg.exec(v)[<span class="number">1</span>]);</div><div class="line">      &#125;</div><div class="line">    &#125;.bind(<span class="keyword">this</span>));</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  prompting: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> done = <span class="keyword">this</span>.async();</div><div class="line">    <span class="keyword">var</span> promptConf = [&#123;</div><div class="line">      type: <span class="string">'input'</span>,</div><div class="line">      name: <span class="string">'pageName'</span>,</div><div class="line">      message: <span class="string">'请输入页面名称:'</span>,</div><div class="line">      <span class="keyword">default</span>: <span class="string">'page_demo'</span>,</div><div class="line">      <span class="comment">// 校验page是否已存在</span></div><div class="line">      validate: <span class="function"><span class="keyword">function</span>(<span class="params">input</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.existedFile &amp;&amp; <span class="keyword">this</span>.existedFile.indexOf(input) &gt;</div><div class="line">          <span class="number">-1</span>) &#123;</div><div class="line">          <span class="keyword">this</span>.log(<span class="string">'页面已存在，请换一个页面名称！'</span>);</div><div class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">          <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line">      &#125;.bind(<span class="keyword">this</span>)</div><div class="line">    &#125;, &#123;</div><div class="line">      type: <span class="string">'input'</span>,</div><div class="line">      name: <span class="string">'pageTitle'</span>,</div><div class="line">      message: <span class="string">'页面Title描述：'</span>,</div><div class="line">      <span class="keyword">default</span>: <span class="string">'Title'</span></div><div class="line">    &#125;, &#123;</div><div class="line">      type: <span class="string">'confirm'</span>,</div><div class="line">      name: <span class="string">'isNeedStyle'</span>,</div><div class="line">      message: <span class="string">'是否需要样式表?'</span>,</div><div class="line">      <span class="keyword">default</span>: <span class="literal">true</span></div><div class="line">    &#125;, &#123;</div><div class="line">      type: <span class="string">'confirm'</span>,</div><div class="line">      name: <span class="string">'isPc'</span>,</div><div class="line">      message: <span class="string">'是否PC端的页面？'</span>,</div><div class="line">      <span class="keyword">default</span>: <span class="literal">false</span></div><div class="line">    &#125;];</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.prompt(promptConf)</div><div class="line">      .then(<span class="function"><span class="keyword">function</span>(<span class="params">props</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.pageName = props.pageName;</div><div class="line">        <span class="keyword">this</span>.pageTitle = props.pageTitle;</div><div class="line">        <span class="keyword">this</span>.isNeedStyle = props.isNeedStyle;</div><div class="line">        <span class="keyword">this</span>.isPc = props.isPc;</div><div class="line"></div><div class="line">        done();</div><div class="line">      &#125;.bind(<span class="keyword">this</span>));</div><div class="line">  &#125;,</div><div class="line">  writing: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> tplArr = [<span class="string">'page.html'</span>, <span class="string">'page.js'</span>, <span class="string">'page.css'</span>];</div><div class="line">    <span class="keyword">var</span> pageConf = &#123;</div><div class="line">      pageName: <span class="keyword">this</span>.pageName,</div><div class="line">      pageTitle: <span class="keyword">this</span>.pageTitle,</div><div class="line">      isNeedStyle: <span class="keyword">this</span>.isNeedStyle,</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.isPc) &#123;</div><div class="line">      tplArr[<span class="number">0</span>] = <span class="string">'page.pc.html'</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.isNeedStyle) &#123;</div><div class="line">      tplArr.pop();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    tplArr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">value, index</span>) </span>&#123;</div><div class="line">      <span class="comment">// (from,to,content)</span></div><div class="line">      <span class="keyword">this</span>.fs.copyTpl(</div><div class="line">        <span class="keyword">this</span>.templatePath(value),</div><div class="line">        <span class="keyword">this</span>.destinationPath(<span class="string">'pages/'</span> + pageConf.pageName + <span class="string">'/'</span> + pageConf.pageName +</div><div class="line">          <span class="string">'.'</span> + value.split(</div><div class="line">            <span class="string">'.'</span>).pop()),</div><div class="line">        pageConf</div><div class="line">      );</div><div class="line">    &#125;.bind(<span class="keyword">this</span>));</div><div class="line"></div><div class="line">  &#125;,</div><div class="line">  end: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.log(<span class="string">'新建页面完成!'</span>)</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="定制模板"><a href="#定制模板" class="headerlink" title="定制模板"></a>定制模板</h3><p>prompting方法是用来获取用户输入，writing方法是根据用户输入内容生成模板文件。之前说到，模板生成器的一般原理是用获取的配置信息渲染好模板，再拷贝到项目目录对应的位置。所以，在writing方法里面，需要实现模板渲染和拷贝。在Yeoman-generator里，需要的模板文件默认放在templates文件夹里，所有文件相关的操作通过<a href="https://github.com/sboudrias/mem-fs-editor" target="_blank" rel="external">this.fs对象</a>来实现。this.fs.copyTpl就是我们用来拷贝渲染好的模板文件的方法，需要输入三个参数：模板源路径、需要拷贝到的项目路径、模板渲染内容对象。模板的渲染是基于ejs模板引擎的语法。根据我们定义的项目结构，page的实现如下：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.fs.copyTpl(</div><div class="line">  <span class="keyword">this</span>.templatePath(value),</div><div class="line">  <span class="keyword">this</span>.destinationPath(<span class="string">'pages/'</span> + pageConf.pageName + <span class="string">'/'</span> + pageConf.pageName +</div><div class="line">    <span class="string">'.'</span> + value.split(</div><div class="line">      <span class="string">'.'</span>).pop()),</div><div class="line">  pageConf</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>更详细的Yeoman-generator文件操作文档请点击<a href="http://yeoman.io/authoring/file-system.html" target="_blank" rel="external">这里</a>。</p>
+<h2 id="commander"><a href="#commander" class="headerlink" title="commander"></a>commander</h2><p>上面我们讲解了Yeoman-generator的定制，也展示了一个简单的generator——“simple-dir”。为了把simple-dir很优雅地跑起来，我们需要搞一个命令行工具。基于Nodejs开发自己的命令行工具是很简单的事情，因为TJ大神已经为我们贡献了屌炸天的工具——commander.js。关于commander的使用教程有很多，也比较容易上手，如果你还没有了解过commander.js，推荐阅读这两篇文章：<a href="http://hao.jobbole.com/commander-js/" target="_blank" rel="external">《Commander：node.js命令行接口的完全解决方案》</a>和<a href="http://blog.fens.me/nodejs-commander/" target="_blank" rel="external">《Commander写自己的Nodejs命令》</a>。</p>
+<p>有了commander的基础之后，我们将Yeoman-generator封装到自定义好的命令中。比如我已经封装好了自己的命令行工具，它的名字叫做atdir(取自auto director)，我们想要实现只需要运行 “atdir page” 就会自动生成需要的 html/css/js。然后我们只需要在atdir里面定义page.js：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> yeoman = <span class="built_in">require</span>(<span class="string">'yeoman-environment'</span>);</div><div class="line">  <span class="keyword">var</span> env = yeoman.createEnv();</div><div class="line">  env.lookup(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    env.run(<span class="string">'simple-dir:page'</span>, &#123;</div><div class="line">      <span class="string">'skip-install'</span>: <span class="literal">true</span></div><div class="line">    &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">      <span class="keyword">if</span> (err) &#123;</div><div class="line">        <span class="keyword">throw</span> err;</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>env.lookup()的作用是遍历用户机器上安装好的generator，接入到Yeoman-environment，比如我们simple-dir的init、page或者comp命令。然后运行env.run()。由于我已经将simple-dir发布到npm包了，所以可以直接调用env.run(‘simple-dir:page’，function（）{}）。如果你不想将generator发布到npm，然后又想在本地使用generator的话也可以，直接进入generator的根目录，执行npm link，simple-dir 指令就会关联到本地的npm里面，Yeoman就能找到 “simple-dir:page” 这个指令啦！</p>
+<h2 id="小工具——atdir"><a href="#小工具——atdir" class="headerlink" title="小工具——atdir"></a>小工具——atdir</h2><p>atdir就是上面说的命令行小工具，想要了解命令行的详细封装方法可以<a href="https://github.com/hugzh/atdir" target="_blank" rel="external">戳这里</a>。由于atdir没有发布到npm源，不能直接npm i。如果想要运行起来的话，请先把atdir源码clone到本地，进入到atdir根目录，执行npm link，npm install 之后就可以愉快的执行atdir命令啦~~~<br>附上几张运行界面截图:<br>$ atdir init<br><img src="http://p1.bpimg.com/575150/b729cf88363ad5db.png" alt="atdir init"></p>
+<p>$ atdir page<br><img src="http://p1.bpimg.com/575150/10d75b6287edabd0.png" alt="atdir page"></p>
+<p>$ atdir comp<br><img src="http://p1.bpimg.com/575150/ac10496e5496593a.png" alt="atdir comp"></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这只是Yeoman-generator的简单用法，意图在于学习搭建一个自己的命令行脚手架，其实还有很多可以完善的地方，比如目前的模板目录是固定的，可以考虑实现更灵活的配置；还可以加上webpack等打包工具的config实现自动构建等等，这个就留到后面再去拓展。大家有什么想法也可以在github上提issue，欢迎指正!</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/08/13/Vue初接触实战之账单组件/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue初接触实战之账单组件</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="基于yeoman定制的交互式命令行脚手架" data-title="基于Yeoman定制的交互式命令行脚手架" data-url="http://blog.hugzh.com/2016/09/25/基于yeoman定制的交互式命令行脚手架/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 橙乡果汁
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
