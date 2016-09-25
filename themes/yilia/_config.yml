@@ -8,14 +8,14 @@ menu:
 subnav:
   github: "https://github.com/hugzh/"
   weibo: "http://weibo.com/u/2076290857"
-  rss: "/atom.xml"
+  #rss: "/atom.xml"
   #zhihu: "#"
   #douban: "#"
-  mail: "sehuguozhi@163.com"
+  #mail: "sehuguozhi@163.com"
   #facebook: "#"
   #google: "#"
   #twitter: "#"
-  #linkedin: "#"
+  linkedin: "http://www.linkedin.com/in/%E5%9B%BD%E6%B2%BB-%E8%83%A1-471918a1?trk=nav_responsive_tab_profile"
 
 rss: /atom.xml
 
@@ -59,4 +59,4 @@ friends:
 #不开启——
 #aboutme: false
 #开启——
-aboutme: 梦想做一枚天天向上的前端攻城狮
+aboutme: 招联金融前端工程师

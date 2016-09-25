@@ -75,5 +75,5 @@ theme: yilia
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:hugzh/hugzh.github.io.git
+  repo: https://github.com/hugzh/hugzh.github.io.git
   branch: master
