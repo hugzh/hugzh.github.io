@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>React.js那些事(介绍篇) | 果汁的随笔</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="引言WEB前端开发的发展历史大概经过了“原始时代——类库时代——工程构建时代——模块化时代”。目前前端领域的发展正处在一个空前繁荣的阶段——“模块化/组件化时代”。
+原始时代曾几何时，前端开发在软件工程的技术栈里面只被视为设计类岗位，甚至现在为止也有一些小企业依然把前端的职责视为简单的编写html+css页面。早期的前端开发完全依赖于后端技术，所有的数据渲染都由后端开发者进行，界面源码和后台逻辑代">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React.js那些事(介绍篇)">
+<meta property="og:url" content="http://blog.hugzh.com/2015/09/11/React-js那些事-介绍篇/index.html">
+<meta property="og:site_name" content="果汁的随笔">
+<meta property="og:description" content="引言WEB前端开发的发展历史大概经过了“原始时代——类库时代——工程构建时代——模块化时代”。目前前端领域的发展正处在一个空前繁荣的阶段——“模块化/组件化时代”。
+原始时代曾几何时，前端开发在软件工程的技术栈里面只被视为设计类岗位，甚至现在为止也有一些小企业依然把前端的职责视为简单的编写html+css页面。早期的前端开发完全依赖于后端技术，所有的数据渲染都由后端开发者进行，界面源码和后台逻辑代">
+<meta property="og:updated_time" content="2016-08-22T13:00:07.404Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React.js那些事(介绍篇)">
+<meta name="twitter:description" content="引言WEB前端开发的发展历史大概经过了“原始时代——类库时代——工程构建时代——模块化时代”。目前前端领域的发展正处在一个空前繁荣的阶段——“模块化/组件化时代”。
+原始时代曾几何时，前端开发在软件工程的技术栈里面只被视为设计类岗位，甚至现在为止也有一些小企业依然把前端的职责视为简单的编写html+css页面。早期的前端开发完全依赖于后端技术，所有的数据渲染都由后端开发者进行，界面源码和后台逻辑代">
+  
+    <link rel="alternative" href="/atom.xml" title="果汁的随笔" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/author.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">橙乡果汁</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">代码不过百万行，不娶媳妇不见娘</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">归档</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/hugzh/" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/2076290857" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Vuex/" style="font-size: 10px;">Vuex</a> <a href="/tags/cleaver/" style="font-size: 10px;">cleaver</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/curring/" style="font-size: 10px;">curring</a> <a href="/tags/hash/" style="font-size: 10px;">hash</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/location/" style="font-size: 10px;">location</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/node/" style="font-size: 15px;">node</a> <a href="/tags/uncurrying/" style="font-size: 10px;">uncurrying</a> <a href="/tags/virtual-dom/" style="font-size: 15px;">virtual dom</a> <a href="/tags/前端工程/" style="font-size: 10px;">前端工程</a> <a href="/tags/前端杂谈/" style="font-size: 15px;">前端杂谈</a> <a href="/tags/幻灯/" style="font-size: 10px;">幻灯</a> <a href="/tags/构建工具/" style="font-size: 10px;">构建工具</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件化开发/" style="font-size: 10px;">组件化开发</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.jobbole.com/">伯乐在线</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.imooc.com/">慕课网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.barretlee.com/">小胡子歌的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://gold.xitu.io/">稀土掘金</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">梦想做一枚天天向上的前端攻城狮</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">橙乡果汁</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/author.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">橙乡果汁</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">代码不过百万行，不娶媳妇不见娘</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">归档</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/hugzh/" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2076290857" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-React-js那些事-介绍篇" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/11/React-js那些事-介绍篇/" class="article-date">
+  	<time datetime="2015-09-11T05:28:05.000Z" itemprop="datePublished">2015-09-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React.js那些事(介绍篇)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/virtual-dom/">virtual dom</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端开发/">前端开发</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>WEB前端开发的发展历史大概经过了“原始时代——类库时代——工程构建时代——模块化时代”。目前前端领域的发展正处在一个空前繁荣的阶段——“模块化/组件化时代”。</p>
+<h2 id="原始时代"><a href="#原始时代" class="headerlink" title="原始时代"></a>原始时代</h2><p>曾几何时，前端开发在软件工程的技术栈里面只被视为设计类岗位，甚至现在为止也有一些小企业依然把前端的职责视为简单的编写html+css页面。早期的前端开发完全依赖于后端技术，所有的数据渲染都由后端开发者进行，界面源码和后台逻辑代码混在一起。这个时代的前端无疑是非常薄的，薄到“网页开发人员”的入门门槛几乎低至为零。<br><a id="more"></a></p>
+<h2 id="类库时代"><a href="#类库时代" class="headerlink" title="类库时代"></a>类库时代</h2><p>这一阶段出现了对js封装的各种类库，代表作当然就是前端领域从业者无所不知的jquery库啦。类库时代的开发者承担了很大一部分数据交互的工作。借鉴于AJAX，开发过程可以实现很好的前后端分离，MVC开发框架日益盛行。这个时代，前端开发者在一定程度上摆脱了对后端的严重依赖，使得前后端开发依赖于接口，大大加快了开发效率。</p>
+<h2 id="工程构建时代"><a href="#工程构建时代" class="headerlink" title="工程构建时代"></a>工程构建时代</h2><p>基于各种自动化构建工具部署前端代码是这一时代的基本特征，前端发展到今天，自动化构建依然是当前的技术主流，Grunt,gulp.js以及国内的Fis等都是自动化代码优化和部署的热门工具。</p>
+<h2 id="模块化时代"><a href="#模块化时代" class="headerlink" title="模块化时代"></a>模块化时代</h2><p>模块化时代标志着前端开发正式进入工程化阶段，“前端工程师”正式成为名副其实的“工程师”。我之所以这样认为是因为这一阶段前端开发可以完全实现代码的重用，实现模块化开发，系统化、规范化的软件开发就是“软件工程”。所以前端工程师也就是在这一阶段日渐活跃，需求量也迅猛增长。前端模块时代的技术代表就是Require.js以及国内的sea.js这样的模块加载器。在MVC开发模式的基础上实现了对视图层的模块化开发，MVC框架至此达到一个鼎盛阶段。<br>然而前端之所以迷人在于新的开发模式和技术不会停止出现，不同的应用需求催生了新的开发技术的诞生。最近几年，组件化开发正成为前端领域的潮流，组件开发减少了代码的耦合，非常适合大型网站应用的开发（这类大型网站的特点就是大量的模块类似或者重复）。可实现代码高度重用的MVVM框架开发进入开发者眼中——这就是React.js的诞生背景</p>
+<h1 id="React-js"><a href="#React-js" class="headerlink" title="React.js"></a>React.js</h1><h2 id="React是什么东西？"><a href="#React是什么东西？" class="headerlink" title="React是什么东西？"></a>React是什么东西？</h2><p>来自官网的介绍：</p>
+<ul>
+<li>仅仅是UI<br>许多人使用React作为MVC架构的V层。尽管React并没有假设过你的其余技术栈，但它仍可以作为一个小特征轻易地在已有项目中使用。</li>
+<li>虚拟DOM<br>React为了更高超的性能而使用虚拟DOM作为其不同的实现。它同时也可以由服务端Node.js渲染而不需要过重的浏览器DOM支持。</li>
+<li>数据流<br>React实现了单向响应的数据流，从而减少了重复代码，这也是它为什么比传统数据绑定更简单。</li>
+</ul>
+<p>也就是说，React是一个视图层的应用，并且是一个高效的视图。React提供了和以往不一样的方式来看待视图，它以组件开发为基础。对React应用而言，你需要分割你的页面，使其成为一个个的组件。也就是说，你的应用是由这些组件组合而成的。组件本身可以实现数据流的的单向流动，实现独立开发。这就是我们所说的“组件驱动开发”。</p>
+<h2 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h2><p>React的一大特点是其所拥有的虚拟DOM，它让页面渲染变得非常的高效，并且比直接操纵DOM变得更为可控。由于虚拟DOM的绘制是在内存里面进行的，高效是它的特征。这两大特点的组合使得React具有强大的自上而下的页面渲染能力。</p>
+<p>React提供了一个观察者模型用于替代传统的脏检查（dirty checking）， 也就是持续的检查模型的变化。这也就是解释了为什么React不需要计算哪些发生了改变的原因，因为它根据state的变化会立即知道。这个过程减少了DOM操作，并让应用程序变得更平滑。我们知道DOM操作是非常耗性能的，更少的DOM操作意味着更高效的渲染。React在底层实现了一个diffing算法，该算法使用DOM的树形表示法，当某个 节点发生变化（标记为dirty）时它会重新计算整个子树，你会注意到你的模型发生了改变，因为整个子树在之后会被重新渲染。</p>
+<h2 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h2><p>JSX是什么鬼？？？JSX是一个看起来很像XML的JavaScript语法扩展。React可以用来做简单的JSX句法转换。React提供了（也是建议使用）JSX代替JS进行组件绘制，然后运行的时候使用一个JSX编译器进行转换。JSX的使用还是比较简单的：<br>要渲染 HTML 标签，只需在 JSX 里使用小写字母开头的标签名。<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myDivElement = <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">"foo"</span> /&gt;</span>;</span></div><div class="line">React.render(myDivElement, document.body);</div></pre></td></tr></table></figure></p>
+<p>要渲染 React 组件，只需创建一个大写字母开头的本地变量。<br><figure class="highlight jsx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> MyComponent = React.createClass(&#123;<span class="comment">/*一些代码*/</span>&#125;);</div><div class="line"><span class="keyword">var</span> myElement = <span class="xml"><span class="tag">&lt;<span class="name">MyComponent</span> <span class="attr">someProperty</span>=<span class="string">&#123;true&#125;</span> /&gt;</span>;</span></div><div class="line">React.render(myElement, document.body);</div></pre></td></tr></table></figure></p>
+<h1 id="本节结语"><a href="#本节结语" class="headerlink" title="本节结语"></a>本节结语</h1><p>关于React.js的入门介绍暂时到这里，想要更多地了解React.js的朋友可以进入<a href="http://reactjs.cn/" target="_blank" rel="external">官方文档</a>进行学习。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/09/14/React-js那些事-入门篇/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          React.js那些事(入门篇)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/09/02/Flexbox-布局/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Flexbox 布局</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="React-js那些事-介绍篇" data-title="React.js那些事(介绍篇)" data-url="http://blog.hugzh.com/2015/09/11/React-js那些事-介绍篇/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 橙乡果汁
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>JavaScript高阶函数之currying和uncurrying | 果汁的随笔</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在JavaScript高阶函数的应用里面，柯里化 （currying）和反柯里化（uncurrying）是两组比较有意思的应用例子。
+一、函数柯里化（function currying）1、什么是柯里化柯里化，俗称“部分求值”。一个柯里化函数首先是会接受一些参数，但是接受这些参数之后，该函数并不会立即求值，而是继续返回另一个函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript高阶函数之currying和uncurrying">
+<meta property="og:url" content="http://blog.hugzh.com/2016/01/26/JavaScript高阶函数之currying和uncurrying/index.html">
+<meta property="og:site_name" content="果汁的随笔">
+<meta property="og:description" content="在JavaScript高阶函数的应用里面，柯里化 （currying）和反柯里化（uncurrying）是两组比较有意思的应用例子。
+一、函数柯里化（function currying）1、什么是柯里化柯里化，俗称“部分求值”。一个柯里化函数首先是会接受一些参数，但是接受这些参数之后，该函数并不会立即求值，而是继续返回另一个函数">
+<meta property="og:updated_time" content="2016-08-22T13:00:07.403Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript高阶函数之currying和uncurrying">
+<meta name="twitter:description" content="在JavaScript高阶函数的应用里面，柯里化 （currying）和反柯里化（uncurrying）是两组比较有意思的应用例子。
+一、函数柯里化（function currying）1、什么是柯里化柯里化，俗称“部分求值”。一个柯里化函数首先是会接受一些参数，但是接受这些参数之后，该函数并不会立即求值，而是继续返回另一个函数">
+  
+    <link rel="alternative" href="/atom.xml" title="果汁的随笔" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/author.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">橙乡果汁</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">代码不过百万行，不娶媳妇不见娘</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">归档</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/hugzh/" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/2076290857" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Vuex/" style="font-size: 10px;">Vuex</a> <a href="/tags/cleaver/" style="font-size: 10px;">cleaver</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/curring/" style="font-size: 10px;">curring</a> <a href="/tags/hash/" style="font-size: 10px;">hash</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/location/" style="font-size: 10px;">location</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/node/" style="font-size: 15px;">node</a> <a href="/tags/uncurrying/" style="font-size: 10px;">uncurrying</a> <a href="/tags/virtual-dom/" style="font-size: 15px;">virtual dom</a> <a href="/tags/前端工程/" style="font-size: 10px;">前端工程</a> <a href="/tags/前端杂谈/" style="font-size: 15px;">前端杂谈</a> <a href="/tags/幻灯/" style="font-size: 10px;">幻灯</a> <a href="/tags/构建工具/" style="font-size: 10px;">构建工具</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件化开发/" style="font-size: 10px;">组件化开发</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.jobbole.com/">伯乐在线</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.imooc.com/">慕课网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.barretlee.com/">小胡子歌的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://gold.xitu.io/">稀土掘金</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">梦想做一枚天天向上的前端攻城狮</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">橙乡果汁</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/author.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">橙乡果汁</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">代码不过百万行，不娶媳妇不见娘</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">归档</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/hugzh/" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2076290857" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-JavaScript高阶函数之currying和uncurrying" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/26/JavaScript高阶函数之currying和uncurrying/" class="article-date">
+  	<time datetime="2016-01-26T09:27:49.000Z" itemprop="datePublished">2016-01-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript高阶函数之currying和uncurrying
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/curring/">curring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uncurrying/">uncurrying</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端开发/">前端开发</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在JavaScript高阶函数的应用里面，柯里化 （currying）和反柯里化（uncurrying）是两组比较有意思的应用例子。</p>
+<h2 id="一、函数柯里化（function-currying）"><a href="#一、函数柯里化（function-currying）" class="headerlink" title="一、函数柯里化（function currying）"></a>一、函数柯里化（function currying）</h2><h3 id="1、什么是柯里化"><a href="#1、什么是柯里化" class="headerlink" title="1、什么是柯里化"></a>1、什么是柯里化</h3><p>柯里化，俗称“部分求值”。一个柯里化函数首先是会接受一些参数，但是接受这些参数之后，该函数并不会立即求值，而是继续返回另一个函数<a id="more"></a>，刚才传入的参数在函数形成的闭包中被保存起来。等到函数被真正需要求值的时候，之前传入的所有参数会被一次性用于求值(注：摘自AlloyTeam出版的《JavaScript设计模式与开发实践》)。也就是说，柯里化是函数式编程的一种技巧，用于把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数。<br>听起来是比较抽象的，下面就拿一个具体的函数柯里化实际场景来做例子：<br>假设有这样一个需求：小明去某著名旅游区玩，想吃一下小龙虾。小明是个吃货，一两只虾肯定是不够塞牙缝的，又不知道要买多少才能填饱胃口。于是打算先吃饱再结账。也就是说，小明在这个过程中不关心吃了多少虾，只关心吃饱了之后结账银行卡要减多少数字。这就是柯里化的场景！餐厅老板可能会选择使用下面的算法来结算：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var <span class="section">money</span> = <span class="number">0</span>;</div><div class="line">var pay = function(oneLobster) &#123;</div><div class="line">    <span class="section">money</span>+=oneLobster;</div><div class="line">&#125;</div><div class="line">pay(<span class="number">38</span>);</div><div class="line">pay(<span class="number">38</span>);</div><div class="line">pay(<span class="number">38</span>);</div><div class="line">console.log(<span class="section">money</span>)</div><div class="line"><span class="comment">// 小明吃了三只虾，money=114</span></div></pre></td></tr></table></figure></p>
+<p>上面的代码虽然也可以计算这次吃虾要花多少，但是小明每吃一次都要计算一次总价格，岂不是要累死？于是老板想要一个通用的curry函数，用来计算小明吃饱之后买单要花多少，函数如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> curry = <span class="function"><span class="keyword">function</span> (<span class="params">fn</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> args = [];</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (<span class="built_in">arguments</span>.length === <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, args);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            args = args.concat([].slice.call(<span class="built_in">arguments</span>));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>接下来就是用这个函数柯里化小明吃虾的函数了：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> pay = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> money = <span class="number">0</span>;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>,l=<span class="built_in">arguments</span>.length;i &lt;l; i++) &#123;</div><div class="line">            money+=<span class="built_in">arguments</span>[i];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> money; </div><div class="line">    &#125;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line"><span class="keyword">var</span> pay = curry(pay)</div><div class="line">pay(<span class="number">38</span>);</div><div class="line">pay(<span class="number">38</span>);</div><div class="line">pay(<span class="number">38</span>);</div><div class="line">pay(<span class="number">38</span>);</div><div class="line">... <span class="comment">//吃饱买单!</span></div><div class="line">pay();</div></pre></td></tr></table></figure></p>
+<p>最终小明吃了两盘虾，叫老板来结账。老板说：“上帝你好，您一共消费RMB 760块！”<br>“What?我才吃了两盘，怎么算都是76块钱嘛。欺负我没读过书？”小明愤怒道。<br>“不好意思，我们的虾来自火星，38块钱一只，您吃了两盘，一共20只”老板一边诡辩一边拿出餐牌，上面只标记“来自星星的虾 38”。<br>小明当场吐血！！！<br>…<br>好吧，以上就是函数柯里化的一个应用场景，当调用pay()的时候，如果明确带上一个参数，那么本次不进行真正的求值计算，只是保存参数（每吃一只虾先记账），并返回一个函数。只有当老板要结算的时候调用不带参数的pay()，才会正真利用前面保存的所有参数进行计算求值（吃完虾结账）。<br>但是，从买虾的例子来看，函数柯里化和第一个不使用柯里化的方案看起来并没有什么高端的地方，反而使得代码更复杂。那为什么要介绍柯里化呢？</p>
+<h3 id="2、柯里化的作用"><a href="#2、柯里化的作用" class="headerlink" title="2、柯里化的作用"></a>2、柯里化的作用</h3><p>柯里化的应用之一就是惰性加载函数（也有人叫“提前返回”）。很常见的一个例子就是跨浏览器的事件注册，为了兼容ie它老人家，我们一般会这么写事件注册：<br><figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var addEvent = function(ele, <span class="built_in">type</span>, <span class="function"><span class="keyword">fn</span>) &#123;</span></div><div class="line">    <span class="keyword">if</span> <span class="params">(<span class="built_in">window</span>.addEventListener)</span> &#123;</div><div class="line">        <span class="keyword">return</span> ele.addEventListener<span class="params">(<span class="built_in">type</span>,<span class="keyword">fn</span>,false)</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.attachEvent) &#123;</div><div class="line">        <span class="keyword">return</span> ele.attachEvent(<span class="built_in">type</span>, <span class="function"><span class="keyword">fn</span>)</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>那这么写的问题在哪里呢？我们每次使用addEvent为元素添加事件的时候，都会走一遍if…else if …分支，其实只要一次判定就可以了，这就是惰性函数的用处了。此时函数在第一次进入分支之后，会在函数内部重写这个函数，重写的这个函数就是我们需要的addEvent函数了，下一次进入addEvent函数的时候，函数不再存在条件分支。详细实现如下：<br><figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var addEvent = function(ele, <span class="built_in">type</span>, <span class="function"><span class="keyword">fn</span>) &#123;</span></div><div class="line">    <span class="keyword">if</span> <span class="params">(<span class="built_in">window</span>.addEventListener)</span> &#123;</div><div class="line">        <span class="title">addEvent</span> = function<span class="params">(ele, <span class="built_in">type</span>, <span class="keyword">fn</span>)</span> &#123;</div><div class="line">            ele.addEventListener<span class="params">(<span class="built_in">type</span>,<span class="keyword">fn</span>,false)</span>;</div><div class="line">        &#125; </div><div class="line"></div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.attachEvent) &#123;</div><div class="line">        addEvent = function(ele, <span class="built_in">type</span>, <span class="function"><span class="keyword">fn</span>) &#123;</span></div><div class="line">            ele.attachEvent<span class="params">(<span class="built_in">type</span>,<span class="keyword">fn</span>)</span>;</div><div class="line">        &#125; </div><div class="line">    &#125;</div><div class="line">    <span class="comment">//执行</span></div><div class="line">    addEvent(ele, <span class="built_in">type</span>, <span class="function"><span class="keyword">fn</span>)</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="二、反柯里化-uncurrying"><a href="#二、反柯里化-uncurrying" class="headerlink" title="二、反柯里化(uncurrying)"></a>二、反柯里化(uncurrying)</h2><p>个人觉得，其实“反柯里化”这种译法不是特别的贴切。从字面上看，它的作用好像是和柯里化的作用相反，事实上两者之间并没有存在这种关系。<br>Uncurrying的话题来自JavaScript之父 Brendan Eich在2011年发表的一篇推特，它解决的问题是让对象去借用一个原本不属于自己的方法。在JS的语言环境中，我们可以通过call和apply完成this的转化，同样，用uncurrying可以解决this的转化问题。<br>uncurrying的实现非常地简单：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Function</span>.prototype.uncurrying = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> self = <span class="keyword">this</span>; <span class="comment">//保存现场</span></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">//截去第一个参数</span></div><div class="line">        <span class="keyword">var</span> obj = <span class="built_in">Array</span>.prototype.shift.call(<span class="built_in">arguments</span>);</div><div class="line">        <span class="keyword">return</span> self.apply(obj,<span class="built_in">arguments</span>);</div><div class="line">    &#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>这段代码的作用就是把属于数组原型对象的函数转化为一个普通的函数，实现相同的功能。比如说，实现一个slice()函数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> slice = <span class="built_in">Array</span>.prototype.slice.uncurrying();</div><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line"><span class="built_in">console</span>.log(slice(a,<span class="number">1</span>));<span class="comment">// [2,3]</span></div></pre></td></tr></table></figure></p>
+<p>这样，我们就可以把很长的一坨Array.prototype.slice.call()转化为普通的slice函数给自己定义的对象使用，使得代码更加简洁明了。<br>Uncurrying的另一种实现方式：<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">Function</span>.<span class="title">prototype</span></span>.uncurrying = <span class="function"><span class="keyword">function</span><span class="params">()</span></span> &#123;</div><div class="line">    var self = this;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">Function</span>.<span class="title">prototype</span></span>.<span class="keyword">call</span>.apply(self, arguments);</div><div class="line">    &#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>函数柯里化和反柯里化是高阶函数运用中比较有意思的技巧，在进行js代码编写的时候恰当地使用高阶函数可以使代码性能得到很大的提升。目前这些技巧在JavaScript的各种设计模式里面得到很好地使用。</p>
+<p>参考资料：<br>《JavaScript设计模式与开发实践》<br><a href="http://www.zhangxinxu.com/wordpress/2013/02/js-currying/" target="_blank" rel="external">JS中的柯里化(currying)</a><br><a href="http://web.jobbole.com/32059/" target="_blank" rel="external">JavaScript中有趣的反柯里化</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/14/关于软件工程的一点感想——以前端为例/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          关于软件工程的一点感想——以前端为例
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/23/一个应届生对近来前端界流派之争的一点思考/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">一个应届生对近来前端界流派之争的一点思考</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="JavaScript高阶函数之currying和uncurrying" data-title="JavaScript高阶函数之currying和uncurrying" data-url="http://blog.hugzh.com/2016/01/26/JavaScript高阶函数之currying和uncurrying/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 橙乡果汁
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

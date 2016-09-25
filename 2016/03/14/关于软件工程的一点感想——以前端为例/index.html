@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>关于软件工程的一点感想——以前端为例 | 果汁的随笔</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近在某知名创业公众号里面看到一篇抨击国内高校当前软件工程教育“名不副实”的文章(原文链接)。博主当时转发在朋友圈的时候是倾向于认同作者的观点，但是仔细想想，也不尽然。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于软件工程的一点感想——以前端为例">
+<meta property="og:url" content="http://blog.hugzh.com/2016/03/14/关于软件工程的一点感想——以前端为例/index.html">
+<meta property="og:site_name" content="果汁的随笔">
+<meta property="og:description" content="最近在某知名创业公众号里面看到一篇抨击国内高校当前软件工程教育“名不副实”的文章(原文链接)。博主当时转发在朋友圈的时候是倾向于认同作者的观点，但是仔细想想，也不尽然。">
+<meta property="og:updated_time" content="2016-08-22T13:00:07.410Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于软件工程的一点感想——以前端为例">
+<meta name="twitter:description" content="最近在某知名创业公众号里面看到一篇抨击国内高校当前软件工程教育“名不副实”的文章(原文链接)。博主当时转发在朋友圈的时候是倾向于认同作者的观点，但是仔细想想，也不尽然。">
+  
+    <link rel="alternative" href="/atom.xml" title="果汁的随笔" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/author.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">橙乡果汁</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">代码不过百万行，不娶媳妇不见娘</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">归档</a></li>
+				        
+							<li><a href="/categories/杂谈">杂谈</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/hugzh/" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/2076290857" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Vuex/" style="font-size: 10px;">Vuex</a> <a href="/tags/cleaver/" style="font-size: 10px;">cleaver</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/curring/" style="font-size: 10px;">curring</a> <a href="/tags/hash/" style="font-size: 10px;">hash</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/location/" style="font-size: 10px;">location</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/node/" style="font-size: 15px;">node</a> <a href="/tags/uncurrying/" style="font-size: 10px;">uncurrying</a> <a href="/tags/virtual-dom/" style="font-size: 15px;">virtual dom</a> <a href="/tags/前端工程/" style="font-size: 10px;">前端工程</a> <a href="/tags/前端杂谈/" style="font-size: 15px;">前端杂谈</a> <a href="/tags/幻灯/" style="font-size: 10px;">幻灯</a> <a href="/tags/构建工具/" style="font-size: 10px;">构建工具</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/组件化开发/" style="font-size: 10px;">组件化开发</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.jobbole.com/">伯乐在线</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.imooc.com/">慕课网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.barretlee.com/">小胡子歌的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://gold.xitu.io/">稀土掘金</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">梦想做一枚天天向上的前端攻城狮</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">橙乡果汁</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/author.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">橙乡果汁</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">代码不过百万行，不娶媳妇不见娘</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">归档</a></li>
+		        
+					<li><a href="/categories/杂谈">杂谈</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/hugzh/" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2076290857" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-关于软件工程的一点感想——以前端为例" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/14/关于软件工程的一点感想——以前端为例/" class="article-date">
+  	<time datetime="2016-03-14T13:17:52.000Z" itemprop="datePublished">2016-03-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于软件工程的一点感想——以前端为例
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端杂谈/">前端杂谈</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/杂谈/">杂谈</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在某知名创业公众号里面看到一篇抨击国内高校当前软件工程教育“名不副实”的文章(<a href="http://36kr.com/p/5044247.html" target="_blank" rel="external">原文链接</a>)。博主当时转发在朋友圈的时候是倾向于认同作者的观点，但是仔细想想，也不尽然。<a id="more"></a></p>
+<p>这篇文章的大体内容是这样的：作者提到当前高校的计算机教育与社会脱节，并且把“软件工程”当成是最脱节的课程。文章认为，教材上的“软件工程”是理论先行的，而现实中的“软件工程”是实践先行的；教材上的 “软件工程” 是单机环境的，现实的 “软件工程” 是网络环境的；教材上的 “软件工程” 侧重的是开发，实际的 “软件工程” 兼顾开发与维护。这几个观点虽然没有错，但是博主个人认为也不是全对，问题在哪里呢？</p>
+<p>首先，大学教材里面关于软件工程的概念一般是——“系统化、规范化的软件开发”，其主要目的是规范软件开发的流程。也就是说，“软件工程”这门课程本身就是一个方法论，它是一个指导规范而不是具体的编码技巧。由于自己目前是做前端的，那就拿“前端工程”这个名词来解释吧。2011年以前，“前端工程”是不存在的，当时的前端开发充其量仅仅是网页开发，一般由后台工程师或设计师负责完成。目前来说，按照概念，“前端工程”至少应该是要解决以下几个方面的问题：<br>1、提供项目开发所需的一整套运行环境，这和IDE作用类似，由于前端开发的特殊性，这个“IDE”是一个集成了多种语言和工具的开发环境；<br>2、资源管理，包括资源获取、依赖处理、实时更新、按需加载、公共模块管理等。这里也可以看成是组件化和模块化；<br>3、打通研发链路的各个环节，debug、mock、proxy、test、build、deploy等，达到一次安装，自动打包的目的。<br>4、解决前端性能问题，尤其是移动前端页面的性能优化，实现组件化开发。<br>所以，一个典型的webapp项目目录是这样的( 注：此目录图来自<a href="https://github.com/chemdemo/chemdemo.github.io/issues/10" target="_blank" rel="external">基于webpack搭建前端工程解决方案探索</a>)：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">- webapp/               <span class="comment"># webapp根目录</span></div><div class="line">  - src/                <span class="comment"># 开发目录</span></div><div class="line">    + css/              <span class="comment"># css资源目录</span></div><div class="line">    + img/              <span class="comment"># webapp图片资源目录</span></div><div class="line">    - js/               <span class="comment"># webapp js&amp;jsx资源目录</span></div><div class="line">      - components/     <span class="comment"># 标准组件存放目录</span></div><div class="line">          - foo/        <span class="comment"># 组件foo</span></div><div class="line">            + css/      <span class="comment"># 组件foo的样式</span></div><div class="line">            + js/       <span class="comment"># 组件foo的逻辑</span></div><div class="line">            + tmpl/     <span class="comment"># 组件foo的模板</span></div><div class="line">            index.js    <span class="comment"># 组件foo的入口</span></div><div class="line">          + bar/        <span class="comment"># 组件bar</span></div><div class="line">      + <span class="class"><span class="keyword">lib</span>/            <span class="comment"># 第三方纯js库</span></span></div><div class="line">      ...               <span class="comment"># 根据项目需要任意添加的代码目录</span></div><div class="line">    + tmpl/             <span class="comment"># webapp前端模板资源目录</span></div><div class="line">    a.html              <span class="comment"># webapp入口文件a</span></div><div class="line">    b.html              <span class="comment"># webapp入口文件b</span></div><div class="line">  - assets/             <span class="comment"># 编译输出目录，即发布目录</span></div><div class="line">    + js/               <span class="comment"># 编译输出的js目录</span></div><div class="line">    + img/              <span class="comment"># 编译输出的图片目录</span></div><div class="line">    + css/              <span class="comment"># 编译输出的css目录</span></div><div class="line">    a.html              <span class="comment"># 编译输出的入口a</span></div><div class="line">    b.html              <span class="comment"># 编译处理后的入口b</span></div><div class="line">  + mock/               <span class="comment"># 假数据目录</span></div><div class="line">  app.js                <span class="comment"># 本地server入口</span></div><div class="line">  routes.js             <span class="comment"># 本地路由配置</span></div><div class="line">  webpack.config.js     <span class="comment"># webpack配置文件</span></div><div class="line">  gulpfile.js           <span class="comment"># gulp任务配置</span></div><div class="line">  package.json          <span class="comment"># 项目配置</span></div><div class="line">  README.md             <span class="comment"># 项目说明</span></div></pre></td></tr></table></figure></p>
+<p>这个目录是由开发环境(配置工具)自动生成的，这个项目目录基本上体现了资源管理、模块管理、调试、打包、发布这几个重要环节。</p>
+<p>那么回到本文主题，按照开头所提文章的观点，因为高校课程“软件工程”名不副实，所以按照“软件工程” 教的去做，多半开发不出来软件（或者说，开发不出好的软件）。但问题是，“软件工程”本身就是一个开发指导原则，一个软件是否能开发完成不是仅仅靠这个指导原则就可以实现的。需要工程师在“软件工程”的指引下，使用（搭建）一套完整的开发工具，通过编码来实现最终的项目成果。所以，从这个角度来讲，高校开设的“软件工程”课程并不算脱节，只是这个课程的教学成果并不能直接体现在学生的编码能力上面。</p>
+<p>至于说，教材上的“软件工程”是理论先行的，而现实中的“软件工程”是实践先行的；教材上的 “软件工程” 是单机环境的，现实的 “软件工程” 是网络环境的；教材上的 “软件工程” 侧重的是开发，实际的 “软件工程” 兼顾开发与维护。那是因为高校的课程由于本身环境的局限性，导致了软件工程的方法论仅仅存在于理论指导层面，而不像实际开发当中，程序员每天都在这套流程的限制下重复自己的工作。所以归根结底，问题的根源是高校的课程并不能很好地与项目实践相结合，而不能单单归咎于教学与社会脱节。</p>
+<p>当然，文章所提的教学与业界脱节的问题确实是当前高校软件工程相关专业存在的最大弊端。像数据结构与算法、C语言基础、计算机网络这样的基础课程并没有太明显的问题。但是为了更好地培养有价值的软件开发人才，高校应该想办法将更多的企业实践机会提供给学生，并且根据业界技术动向及时开设相关的技术课程。在这一方面，博主认为自己所在的华南地区某著名综合院校还是做得不错的，不少选修课程都是与最新的技术相关。另外，从学生的角度来讲，也要提高自己的自学能力和效率，关注最新的业界动态，及早完善自己的技术栈。但是能做到这样子的学生，基本也就是学校大神级的存在了。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/02/webpack学习实践系列-一/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Webpack学习实践系列(一)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/26/JavaScript高阶函数之currying和uncurrying/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript高阶函数之currying和uncurrying</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="关于软件工程的一点感想——以前端为例" data-title="关于软件工程的一点感想——以前端为例" data-url="http://blog.hugzh.com/2016/03/14/关于软件工程的一点感想——以前端为例/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 橙乡果汁
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
